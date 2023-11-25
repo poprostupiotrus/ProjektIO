@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.scrollablePanel = new System.Windows.Forms.Panel();
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.SuspendLayout();
             // 
             // scrollablePanel
@@ -41,22 +41,22 @@
             this.scrollablePanel.Size = new System.Drawing.Size(200, 450);
             this.scrollablePanel.TabIndex = 0;
             // 
-            // cartesianChart1
+            // cartesianChart
             // 
-            this.cartesianChart1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart1.Location = new System.Drawing.Point(200, 0);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(600, 450);
-            this.cartesianChart1.TabIndex = 0;
-            this.cartesianChart1.Text = "cartesianChart1";
+            this.cartesianChart.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.cartesianChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart.Location = new System.Drawing.Point(200, 0);
+            this.cartesianChart.Name = "cartesianChart";
+            this.cartesianChart.Size = new System.Drawing.Size(600, 450);
+            this.cartesianChart.TabIndex = 0;
+            this.cartesianChart.Text = "cartesianChart1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cartesianChart1);
+            this.Controls.Add(this.cartesianChart);
             this.Controls.Add(this.scrollablePanel);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -67,7 +67,7 @@
         #endregion
 
         private System.Windows.Forms.Panel scrollablePanel;
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private LiveCharts.WinForms.CartesianChart cartesianChart;
     }
 }
 

@@ -12,18 +12,46 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiveCharts.Helpers;
+
 
 namespace AplikacjaProjektIO
 {
     public partial class MainForm : Form
     {
         DaneSpolek danespolek;
+        public string[] Xaxis;
         public MainForm()
         {
             InitializeComponent();
             danespolek = new DaneSpolek();
             WygenerujPrzyciski();
-            
+            cartesianChart.AxisX.Clear();
+            Xaxis = new string[danespolek.ListaSpolek[0].Notowania.Count];
+            int i = 0;
+            foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
+            {
+                Xaxis[i] = pair.Key.ToString();
+                i++;
+            }
+            cartesianChart.AxisX.Add(new Axis
+            {
+                Title = "Data",
+                Labels = Xaxis
+            });
+            cartesianChart.AxisY.Add(new Axis
+            {
+                Title = "Wartość akcji"
+            });
+            cartesianChart.Series = new SeriesCollection()
+            {
+                new LineSeries
+                {
+                    Title = danespolek.ListaSpolek[0].Nazwa,
+                    Values = danespolek.ListaSpolek[0].Notowania.Values.AsChartValues(),
+                }
+            };
+
         }
         private void WygenerujPrzyciski()
         {
@@ -43,20 +71,12 @@ namespace AplikacjaProjektIO
             {
                 Button button = (Button)sender;
                 Spolka spolka = danespolek.ZnajdzSpolkePoNazwie(button.Text);
-                List<ObservablePoint> listaPunktow = new List<ObservablePoint>();
-                foreach(KeyValuePair<DateTime, double> keyvalue in spolka.Notowania)
-                {
-                    listaPunktow.Add(new ObservablePoint(keyvalue.Key.ToOADate(), keyvalue.Value));
-                }
-                cartesianChart1.Series = new SeriesCollection()
+                cartesianChart.Series = new SeriesCollection()
                 {
                     new LineSeries
                     {
-                        Stroke = System.Windows.Media.Brushes.Orange,
-                        StrokeThickness = 2,
                         Title = button.Text,
-                        Values = new ChartValues<ObservablePoint>(listaPunktow),
-                        LineSmoothness = 0
+                        Values = spolka.Notowania.Values.AsChartValues()
                     }
                 };
             }
