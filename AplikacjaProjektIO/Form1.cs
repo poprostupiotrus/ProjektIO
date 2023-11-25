@@ -20,25 +20,11 @@ namespace AplikacjaProjektIO
     public partial class MainForm : Form
     {
         DaneSpolek danespolek;
-        public string[] Xaxis;
         public MainForm()
         {
             InitializeComponent();
             danespolek = new DaneSpolek();
-            WygenerujPrzyciski();
-            cartesianChart.AxisX.Clear();
-            Xaxis = new string[danespolek.ListaSpolek[0].Notowania.Count];
-            int i = 0;
-            foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
-            {
-                Xaxis[i] = pair.Key.ToString();
-                i++;
-            }
-            cartesianChart.AxisX.Add(new Axis
-            {
-                Title = "Data",
-                Labels = Xaxis
-            });
+            WygenerujPrzyciski();   
             cartesianChart.AxisY.Add(new Axis
             {
                 Title = "Wartość akcji"
@@ -51,6 +37,19 @@ namespace AplikacjaProjektIO
                     Values = danespolek.ListaSpolek[0].Notowania.Values.AsChartValues(),
                 }
             };
+            string[] Xaxis = new string[danespolek.ListaSpolek[0].Notowania.Count];
+            int i = 0;
+            foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
+            {
+                Xaxis[i] = pair.Key.ToString();
+                i++;
+            }
+            cartesianChart.AxisX.Clear();
+            cartesianChart.AxisX.Add(new Axis
+            {
+                Title = "Data",
+                Labels = Xaxis
+            });
 
         }
         private void WygenerujPrzyciski()
@@ -79,6 +78,19 @@ namespace AplikacjaProjektIO
                         Values = spolka.Notowania.Values.AsChartValues()
                     }
                 };
+                string[] Xaxis = new string[spolka.Notowania.Count];
+                int i = 0;
+                foreach (KeyValuePair<DateTime, double> pair in spolka.Notowania)
+                {
+                    Xaxis[i] = pair.Key.ToString();
+                    i++;
+                }
+                cartesianChart.AxisX.Clear();
+                cartesianChart.AxisX.Add(new Axis
+                {
+                    Title = "Data",
+                    Labels = Xaxis
+                });
             }
         }
     }
