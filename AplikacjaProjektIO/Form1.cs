@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiveCharts.Helpers;
+using LiveCharts.WinForms;
 
 
 namespace AplikacjaProjektIO
@@ -23,6 +24,7 @@ namespace AplikacjaProjektIO
         public MainForm()
         {
             InitializeComponent();
+            cartesianChart.DisableAnimations = true;
             danespolek = new DaneSpolek();
             WygenerujPrzyciski();   
             cartesianChart.AxisY.Add(new Axis
@@ -50,7 +52,6 @@ namespace AplikacjaProjektIO
                 Title = "Data",
                 Labels = Xaxis
             });
-
         }
         private void WygenerujPrzyciski()
         {
