@@ -100,33 +100,7 @@ namespace AplikacjaProjektIO
 
             //Artykuł najbliższy do tej daty
             aktualnyArtykul = listaArtykulow.WyszukajArtykul(data);
-
-            //Wyświetlenie tekstu artykułu
-            label1.Text = aktualnyArtykul.Naglowek;
-            label2.Text = aktualnyArtykul.Tresc;
-            linkLabel1.Text = aktualnyArtykul.Link;
-
-            //lista wyników llm
-            ListaWynikow lista = new ListaWynikow(aktualnyArtykul, danespolek.ListaSpolek);
-            StringBuilder ticker = new StringBuilder();
-            StringBuilder gpt = new StringBuilder();
-            StringBuilder bard = new StringBuilder();
-            label6.Text = "Prawdopodobieństwo zmiany kursu na podstawie artykulu według LLM";
-            ticker.Append("Ticker:\n");
-            gpt.Append("ChatGPT:\n");
-            bard.Append("Bard:\n");
-            foreach(WynikiLLM wynikiLLM in lista.Lista)
-            {
-                ticker.Append(wynikiLLM.Ticker);
-                ticker.Append(":\n");
-                gpt.Append(wynikiLLM.WynikGPT);
-                gpt.Append("\n");
-                bard.Append(wynikiLLM.WynikBARD);
-                bard.Append("\n");
-            }
-            label3.Text=ticker.ToString();
-            label4.Text=gpt.ToString();
-            label5.Text=bard.ToString();
+            WyswietlDaneDlaArtykulu(aktualnyArtykul);
 
             button1.Visible = true;
             button2.Visible = true;
@@ -146,30 +120,7 @@ namespace AplikacjaProjektIO
             {
                 aktualnyArtykul = listaArtykulow.listaArtykulow[index - 1];
             }
-            //Tak jak w dataclick event wyświetla nowy artykół
-            label1.Text = aktualnyArtykul.Naglowek;
-            label2.Text = aktualnyArtykul.Tresc;
-            linkLabel1.Text = aktualnyArtykul.Link;
-            ListaWynikow lista = new ListaWynikow(aktualnyArtykul, danespolek.ListaSpolek);
-            StringBuilder ticker = new StringBuilder();
-            StringBuilder gpt = new StringBuilder();
-            StringBuilder bard = new StringBuilder();
-            label6.Text = "Prawdopodobieństwo zmiany kursu na podstawie artykulu według LLM";
-            ticker.Append("Ticker:\n");
-            gpt.Append("ChatGPT:\n");
-            bard.Append("Bard:\n");
-            foreach (WynikiLLM wynikiLLM in lista.Lista)
-            {
-                ticker.Append(wynikiLLM.Ticker);
-                ticker.Append(":\n");
-                gpt.Append(wynikiLLM.WynikGPT);
-                gpt.Append("\n");
-                bard.Append(wynikiLLM.WynikBARD);
-                bard.Append("\n");
-            }
-            label3.Text = ticker.ToString();
-            label4.Text = gpt.ToString();
-            label5.Text = bard.ToString();
+            WyswietlDaneDlaArtykulu(aktualnyArtykul);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -180,10 +131,16 @@ namespace AplikacjaProjektIO
             {
                 aktualnyArtykul = listaArtykulow.listaArtykulow[index + 1];
             }
-            //Tak jak w dataclick event wyświetla nowy artykół
+            WyswietlDaneDlaArtykulu(aktualnyArtykul);
+        }
+        private void WyswietlDaneDlaArtykulu(Artykul artykul)
+        {
+            //Wyświetlenie tekstu artykułu
             label1.Text = aktualnyArtykul.Naglowek;
             label2.Text = aktualnyArtykul.Tresc;
             linkLabel1.Text = aktualnyArtykul.Link;
+
+            //lista wyników llm
             ListaWynikow lista = new ListaWynikow(aktualnyArtykul, danespolek.ListaSpolek);
             StringBuilder ticker = new StringBuilder();
             StringBuilder gpt = new StringBuilder();
