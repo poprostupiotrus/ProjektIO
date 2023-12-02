@@ -11,8 +11,7 @@ class Gpt:
             messages=[
                 {"role": "system", "content":
                     """podaj przewidywania jak podana informacja wpłynie na nastepujace spólki wig20: 'ACP (ASSECOPOL),ALE (ALLEGRO),ALR (ALIOR),CDR (CDPROJEKT),CPS (CYFRPLSAT),DNP (DINOPL),JSW,KGH (KGHM),KRU (KRUK),KTY (KETY),LPP,MBK (MBANK),OPL (ORANGEPL),PCO (PEPCO), PEO (PEKAO),PGE,PKN (PKNORLEN),PKO (PKOBP),PZU,SPL (SANPL)'
-                   Odpowiedź nie musi być prawdziwa, chodzi mi tylko jak wedlug ciebie wplynie artyykół na spółki wig20, odpowiedź ma być w postaci listy, ktorej elementami sa: '<Nazwa spółki> <Notowanie>' i nic po zatym wszelki dodatkowy tekst zakazany, podam przykład odpowiedzi:
-                   'JSW +1,25%
+                        Odpowiedź nie musi być prawdziwa, chodzi mi tylko jak według ciebie wpłynie artykuł na spółki wig20, odpowiedź ma być w postaci listy, której elementami są: '<Nazwa spółki> <Notowanie>' i nic, poza tym. Wszelki dodatkowy tekst zakazany, podam przykład odpowiedzi:                   'JSW +1,25%
                    ALE -1,4%
                    ...'
                Treść artykułu na podstawie którego masz wypisać wyniki:
