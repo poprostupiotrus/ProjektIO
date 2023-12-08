@@ -6,12 +6,15 @@ using System.Text;
 using System.Windows.Forms;
 using LiveCharts.Helpers;
 using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace AplikacjaProjektIO
 {
     public partial class MainForm : Form
     {
+        List<CustomButton> listaPrzyciskow;
+        List<CustomButton> przyciskiNastepnyIPoprzedni;
         DaneSpolek danespolek;
         ListaArtykulow listaArtykulow;
         string[] Xaxis;
@@ -20,11 +23,14 @@ namespace AplikacjaProjektIO
         {
             InitializeComponent();
             cartesianChart.DisableAnimations = true;
+            listaPrzyciskow = new List<CustomButton>();
+            przyciskiNastepnyIPoprzedni = new List<CustomButton>();
             danespolek = new DaneSpolek();
             listaArtykulow = new ListaArtykulow();
             label2.Text = "";
             linkLabel1.Text = "";
-            WygenerujPrzyciski();   
+            WygenerujPrzyciski();
+            WygenerujPrzyciskiDlaArtykulow();
             cartesianChart.AxisY.Add(new Axis
             {
                 Title = "Wartość akcji"
@@ -57,19 +63,38 @@ namespace AplikacjaProjektIO
                 Title = "Data",
                 Labels = Xaxis
             });
-            button1.Visible = false;
-            button2.Visible = false;
+        }
+        private void WygenerujPrzyciskiDlaArtykulow()
+        {
+            PrzyciskiDlaArtykulow button = new PrzyciskiDlaArtykulow();
+            button.Text = "Poprzedni";
+            button.Click += button2_Click;
+            przewidywaniaPanel.Controls.Add(button);
+            przyciskiNastepnyIPoprzedni.Add(button);
+            button = new PrzyciskiDlaArtykulow();
+            button.Text = "Nastepny";
+            button.Click += button2_Click;
+            przewidywaniaPanel.Controls.Add(button);
+            przyciskiNastepnyIPoprzedni.Add(button);
         }
         private void WygenerujPrzyciski()
         {
-            foreach(Spolka element in danespolek.ListaSpolek)
+            for(int i = danespolek.ListaSpolek.Count - 1; i >= 0; i--)
             {
-                Button button = new Button();
-                button.Text = element.Nazwa;
+                CustomButton button = new CustomButton();
+                button.Text = danespolek.ListaSpolek[i].Nazwa;
                 button.Dock = DockStyle.Top;
-                button.Height = 70;
+                button.Height = scrollablePanel.Height / danespolek.ListaSpolek.Count;
                 button.Click += WygenerujWykres;
                 scrollablePanel.Controls.Add(button);
+                listaPrzyciskow.Add(button);
+            }
+        }
+        private void scrollablePanelResize(object sender, EventArgs e)
+        {
+            foreach(CustomButton button in listaPrzyciskow)
+            {
+                button.Height = scrollablePanel.Height / danespolek.ListaSpolek.Count;
             }
         }
         private void WygenerujWykres(object sender, EventArgs e)
@@ -116,9 +141,10 @@ namespace AplikacjaProjektIO
             //Artykuł najbliższy do tej daty
             aktualnyArtykul = listaArtykulow.WyszukajArtykul(data);
             WyswietlDaneDlaArtykulu(aktualnyArtykul);
-
-            button1.Visible = true;
-            button2.Visible = true;
+            foreach(PrzyciskiDlaArtykulow button in przyciskiNastepnyIPoprzedni)
+            {
+                button.Visible = true;
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

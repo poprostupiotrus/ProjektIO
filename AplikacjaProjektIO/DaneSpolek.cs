@@ -17,7 +17,6 @@ namespace AplikacjaProjektIO
             string filePath = "../../../resources/danespolekWIG20.json";
             string jsonString = File.ReadAllText(filePath);
             listaSpolek = JsonConvert.DeserializeObject<List<Spolka>>(jsonString);
-            listaSpolek.Reverse();
         }
         public Spolka ZnajdzSpolkePoNazwie(string nazwa)
         {
