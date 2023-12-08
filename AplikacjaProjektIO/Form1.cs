@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using LiveCharts.Helpers;
+using System.Globalization;
 
 
 namespace AplikacjaProjektIO
@@ -28,19 +29,26 @@ namespace AplikacjaProjektIO
             {
                 Title = "Wartość akcji"
             });
+            double[] notowania = new double[danespolek.ListaSpolek[0].Notowania.Values.Count];
+            int i = 0;
+            foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
+            {
+                notowania[i] = Math.Round(pair.Value, 2);
+                i++;
+            }
             cartesianChart.Series = new SeriesCollection()
             {
                 new LineSeries
                 {
                     Title = danespolek.ListaSpolek[0].Nazwa,
-                    Values = danespolek.ListaSpolek[0].Notowania.Values.AsChartValues(),
+                    Values = notowania.AsChartValues(),
                 }
             };
             Xaxis = new string[danespolek.ListaSpolek[0].Notowania.Count];
-            int i = 0;
+            i = 0;
             foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
             {
-                Xaxis[i] = pair.Key.ToString();
+                Xaxis[i] = pair.Key.ToString("dd.MM.yyyy HH.mm");
                 i++;
             }
             cartesianChart.AxisX.Clear();
@@ -70,19 +78,26 @@ namespace AplikacjaProjektIO
             {
                 Button button = (Button)sender;
                 Spolka spolka = danespolek.ZnajdzSpolkePoNazwie(button.Text);
+                double[] notowania = new double[spolka.Notowania.Values.Count];
+                int i = 0;
+                foreach(KeyValuePair<DateTime, double> pair in spolka.Notowania)
+                {
+                    notowania[i] = Math.Round(pair.Value,2);
+                    i++;
+                }
                 cartesianChart.Series = new SeriesCollection()
                 {
                     new LineSeries
                     {
                         Title = button.Text,
-                        Values = spolka.Notowania.Values.AsChartValues()
+                        Values = notowania.AsChartValues()
                     }
                 };
                 Xaxis = new string[spolka.Notowania.Count];
-                int i = 0;
+                i = 0;
                 foreach (KeyValuePair<DateTime, double> pair in spolka.Notowania)
                 {
-                    Xaxis[i] = pair.Key.ToString();
+                    Xaxis[i] = pair.Key.ToString("dd.MM.yyyy HH.mm");
                     i++;
                 }
                 cartesianChart.AxisX.Clear();
@@ -96,7 +111,7 @@ namespace AplikacjaProjektIO
         private void cartesianChart_DataClick(object sender, ChartPoint chartPoint)
         {
             //Data naciśniętego punktu
-            DateTime data = DateTime.Parse(Xaxis[(int)chartPoint.X]);
+            DateTime data = DateTime.ParseExact(Xaxis[(int)chartPoint.X], "dd.MM.yyyy HH.mm",CultureInfo.InvariantCulture);
 
             //Artykuł najbliższy do tej daty
             aktualnyArtykul = listaArtykulow.WyszukajArtykul(data);
