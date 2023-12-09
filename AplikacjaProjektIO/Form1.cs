@@ -6,6 +6,9 @@ using System.Text;
 using System.Windows.Forms;
 using LiveCharts.Helpers;
 using System.Globalization;
+using System.Drawing;
+using LiveCharts.Defaults;
+using System.Linq;
 
 
 namespace AplikacjaProjektIO
@@ -16,8 +19,9 @@ namespace AplikacjaProjektIO
         List<CustomButton> przyciskiNastepnyIPoprzedni;
         DaneSpolek danespolek;
         ListaArtykulow listaArtykulow;
-        string[] Xaxis;
+        List<string> WszystkieDaty;
         Artykul aktualnyArtykul;
+        Dictionary<Spolka,LineSeries> listawykresow;
         public MainForm()
         {
             InitializeComponent();
@@ -27,6 +31,8 @@ namespace AplikacjaProjektIO
             przyciskiNastepnyIPoprzedni = new List<CustomButton>();
             danespolek = new DaneSpolek();
             listaArtykulow = new ListaArtykulow();
+            listawykresow = new Dictionary<Spolka, LineSeries>();
+            WszystkieDaty = new List<string>();
             WygenerujPrzyciski();
             WygenerujPrzyciskiDlaArtykulow();
 
@@ -36,6 +42,22 @@ namespace AplikacjaProjektIO
             cartesianChart.AxisY.Add(new Axis
             {
                 Title = "Wartość akcji"
+            });
+
+            //Przygotowanie osi X
+            foreach(Spolka spolka in danespolek.ListaSpolek)
+            {
+                foreach(KeyValuePair<DateTime,double> pair in spolka.Notowania)
+                {
+                    WszystkieDaty.Add(pair.Key.ToString("dd.MM.yyyy HH.mm"));
+                }
+            }
+            WszystkieDaty = WszystkieDaty.Distinct().ToList();
+            WszystkieDaty.Sort();
+            cartesianChart.AxisX.Add(new Axis
+            {
+                Title = "Data",
+                Labels = WszystkieDaty
             });
 
             //Wygeneruj domyślny wykres
@@ -89,40 +111,36 @@ namespace AplikacjaProjektIO
             {
                 Button button = (Button)sender;
                 Spolka spolka = danespolek.ZnajdzSpolkePoNazwie(button.Text);
-                double[] notowania = new double[spolka.Notowania.Values.Count];
-                int i = 0;
-                foreach(KeyValuePair<DateTime, double> pair in spolka.Notowania)
+                if (listawykresow.ContainsKey(spolka) && listawykresow[spolka]!=null)
                 {
-                    notowania[i] = Math.Round(pair.Value,2);
-                    i++;
+                    cartesianChart.Series.Remove(listawykresow[spolka]);
+                    listawykresow[spolka] = null;
+                    button.BackColor = Color.LightGray;
                 }
-                cartesianChart.Series = new SeriesCollection()
+                else
                 {
-                    new LineSeries
+                    List<ObservablePoint> listapunktow=new List<ObservablePoint>();
+                    for(int i = 0;i<WszystkieDaty.Count;i++)
                     {
-                        Title = button.Text,
-                        Values = notowania.AsChartValues()
+                        DateTime data = DateTime.ParseExact(WszystkieDaty[i], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                        if (spolka.Notowania.ContainsKey(data) &&spolka.Notowania[data]!=0)
+                        {
+                            listapunktow.Add(new ObservablePoint(i, Math.Round(spolka.Notowania[data],2)));
+                        }
                     }
-                };
-                Xaxis = new string[spolka.Notowania.Count];
-                i = 0;
-                foreach (KeyValuePair<DateTime, double> pair in spolka.Notowania)
-                {
-                    Xaxis[i] = pair.Key.ToString("dd.MM.yyyy HH.mm");
-                    i++;
+                    listawykresow[spolka] = new LineSeries{
+                        Title = button.Text,
+                        Values = listapunktow.AsChartValues()
+                    };
+                    cartesianChart.Series.Add(listawykresow[spolka]);              
+                    button.BackColor = Color.Aqua;
                 }
-                cartesianChart.AxisX.Clear();
-                cartesianChart.AxisX.Add(new Axis
-                {
-                    Title = "Data",
-                    Labels = Xaxis
-                });
             }
         }
         private void cartesianChart_DataClick(object sender, ChartPoint chartPoint)
         {
             //Data naciśniętego punktu
-            DateTime data = DateTime.ParseExact(Xaxis[(int)chartPoint.X], "dd.MM.yyyy HH.mm",CultureInfo.InvariantCulture);
+            DateTime data = DateTime.ParseExact(WszystkieDaty[(int)chartPoint.X], "dd.MM.yyyy HH.mm",CultureInfo.InvariantCulture);
 
             //Artykuł najbliższy do tej daty
             aktualnyArtykul = listaArtykulow.WyszukajArtykul(data);
