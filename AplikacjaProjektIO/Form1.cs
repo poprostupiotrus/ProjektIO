@@ -66,12 +66,21 @@ namespace AplikacjaProjektIO
                 scrollablePanel.Controls.Add(button);
                 listaPrzyciskow.Add(button);
             }
+            WypelnijLuke();
         }
         private void scrollablePanelResize(object sender, EventArgs e)
         {
             foreach(CustomButton button in listaPrzyciskow)
             {
                 button.Height = scrollablePanel.Height / danespolek.ListaSpolek.Count;
+            }
+            WypelnijLuke();
+        }
+        private void WypelnijLuke()
+        {
+            for(int i = 0; i < scrollablePanel.Height%danespolek.ListaSpolek.Count; i++)
+            {
+                listaPrzyciskow[i].Height++;
             }
         }
         private void WygenerujWykres(object sender, EventArgs e)
