@@ -21,7 +21,7 @@ namespace AplikacjaProjektIO
         ListaArtykulow listaArtykulow;
         List<string> WszystkieDaty;
         Artykul aktualnyArtykul;
-        Dictionary<Spolka,LineSeries> listawykresow;
+        List<Spolka> listawykresow;
         public MainForm()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace AplikacjaProjektIO
             przyciskiNastepnyIPoprzedni = new List<CustomButton>();
             danespolek = new DaneSpolek();
             listaArtykulow = new ListaArtykulow();
-            listawykresow = new Dictionary<Spolka, LineSeries>();
+            listawykresow = new List<Spolka>();
             WszystkieDaty = new List<string>();
             WygenerujPrzyciski();
             WygenerujPrzyciskiDlaArtykulow();
@@ -39,10 +39,7 @@ namespace AplikacjaProjektIO
             label2.Text = "";
             linkLabel1.Text = "";
             label6.Text = "Prawdopodobieństwo zmiany kursu na podstawie artykulu według LLM";
-            cartesianChart.AxisY.Add(new Axis
-            {
-                Title = "Wartość akcji"
-            });
+            
 
             //Przygotowanie osi X
             foreach(Spolka spolka in danespolek.ListaSpolek)
@@ -107,34 +104,57 @@ namespace AplikacjaProjektIO
         }
         private void WygenerujWykres(object sender, EventArgs e)
         {
-            if(sender is Button)
+            if(!(sender is Button))
             {
-                Button button = (Button)sender;
-                Spolka spolka = danespolek.ZnajdzSpolkePoNazwie(button.Text);
-                if (listawykresow.ContainsKey(spolka) && listawykresow[spolka]!=null)
+                return;
+            }
+            cartesianChart.Series.Clear();
+            Button button = (Button)sender;
+            Spolka spolka = danespolek.ZnajdzSpolkePoNazwie(button.Text);
+            if (listawykresow.Contains(spolka))
+            {
+                listawykresow.Remove(spolka);
+                button.BackColor = Color.LightGray;
+            }
+            else
+            {
+                listawykresow.Add(spolka);
+                button.BackColor = Color.Aqua;
+            }
+            foreach (Spolka spolka1 in listawykresow)
+            {
+                List<ObservablePoint> listapunktow = new List<ObservablePoint>();
+                for (int i = 0; i < WszystkieDaty.Count; i++)
                 {
-                    cartesianChart.Series.Remove(listawykresow[spolka]);
-                    listawykresow[spolka] = null;
-                    button.BackColor = Color.LightGray;
-                }
-                else
-                {
-                    List<ObservablePoint> listapunktow=new List<ObservablePoint>();
-                    for(int i = 0;i<WszystkieDaty.Count;i++)
+                    DateTime data = DateTime.ParseExact(WszystkieDaty[i], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                    if (spolka1.Notowania.ContainsKey(data) && spolka1.Notowania[data] != 0)
                     {
-                        DateTime data = DateTime.ParseExact(WszystkieDaty[i], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-                        if (spolka.Notowania.ContainsKey(data) &&spolka.Notowania[data]!=0)
+                        if (listawykresow.Count < 2)
                         {
-                            listapunktow.Add(new ObservablePoint(i, Math.Round(spolka.Notowania[data],2)));
+                            listapunktow.Add(new ObservablePoint(i, Math.Round(spolka1.Notowania[data], 2)));
+                            cartesianChart.AxisY.Clear();
+                            cartesianChart.AxisY.Add(new Axis
+                            {
+                                Title = "Wartość akcji [zł]"
+                            });
+                        }
+                        else
+                        {
+                            DateTime pierwszaData = DateTime.ParseExact(WszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                            listapunktow.Add(new ObservablePoint(i, Math.Round(100 * (spolka1.Notowania[data] / spolka1.Notowania[pierwszaData]), 2)));
+                            cartesianChart.AxisY.Clear();
+                            cartesianChart.AxisY.Add(new Axis
+                            {
+                                Title = "Zmiana kursu akcji względem pierwszej dostępnej daty [%]"
+                            });
                         }
                     }
-                    listawykresow[spolka] = new LineSeries{
-                        Title = button.Text,
-                        Values = listapunktow.AsChartValues()
-                    };
-                    cartesianChart.Series.Add(listawykresow[spolka]);              
-                    button.BackColor = Color.Aqua;
                 }
+                cartesianChart.Series.Add(new LineSeries
+                {
+                    Title = spolka1.Ticker,
+                    Values = listapunktow.AsChartValues()
+                });
             }
         }
         private void cartesianChart_DataClick(object sender, ChartPoint chartPoint)
