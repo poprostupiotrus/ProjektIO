@@ -6,7 +6,6 @@ using System.Text;
 using System.Windows.Forms;
 using LiveCharts.Helpers;
 using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
 
 
 namespace AplikacjaProjektIO
@@ -23,57 +22,35 @@ namespace AplikacjaProjektIO
         {
             InitializeComponent();
             cartesianChart.DisableAnimations = true;
+
             listaPrzyciskow = new List<CustomButton>();
             przyciskiNastepnyIPoprzedni = new List<CustomButton>();
             danespolek = new DaneSpolek();
             listaArtykulow = new ListaArtykulow();
-            label2.Text = "";
-            linkLabel1.Text = "";
             WygenerujPrzyciski();
             WygenerujPrzyciskiDlaArtykulow();
+
+            label2.Text = "";
+            linkLabel1.Text = "";
+            label6.Text = "Prawdopodobieństwo zmiany kursu na podstawie artykulu według LLM";
             cartesianChart.AxisY.Add(new Axis
             {
                 Title = "Wartość akcji"
             });
-            double[] notowania = new double[danespolek.ListaSpolek[0].Notowania.Values.Count];
-            int i = 0;
-            foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
-            {
-                notowania[i] = Math.Round(pair.Value, 2);
-                i++;
-            }
-            cartesianChart.Series = new SeriesCollection()
-            {
-                new LineSeries
-                {
-                    Title = danespolek.ListaSpolek[0].Nazwa,
-                    Values = notowania.AsChartValues(),
-                }
-            };
-            Xaxis = new string[danespolek.ListaSpolek[0].Notowania.Count];
-            i = 0;
-            foreach (KeyValuePair<DateTime, double> pair in danespolek.ListaSpolek[0].Notowania)
-            {
-                Xaxis[i] = pair.Key.ToString("dd.MM.yyyy HH.mm");
-                i++;
-            }
-            cartesianChart.AxisX.Clear();
-            cartesianChart.AxisX.Add(new Axis
-            {
-                Title = "Data",
-                Labels = Xaxis
-            });
+
+            //Wygeneruj domyślny wykres
+            WygenerujWykres(listaPrzyciskow[listaPrzyciskow.Count-1],new EventArgs());
         }
         private void WygenerujPrzyciskiDlaArtykulow()
         {
             PrzyciskiDlaArtykulow button = new PrzyciskiDlaArtykulow();
             button.Text = "Poprzedni";
-            button.Click += button2_Click;
+            button.Click += poprzedni_Click;
             przewidywaniaPanel.Controls.Add(button);
             przyciskiNastepnyIPoprzedni.Add(button);
             button = new PrzyciskiDlaArtykulow();
             button.Text = "Nastepny";
-            button.Click += button2_Click;
+            button.Click += nastepny_Click;
             przewidywaniaPanel.Controls.Add(button);
             przyciskiNastepnyIPoprzedni.Add(button);
         }
@@ -153,7 +130,7 @@ namespace AplikacjaProjektIO
             System.Diagnostics.Process.Start(linkLabel1.Text);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void poprzedni_Click(object sender, EventArgs e)
         {
             //znajduje index artykułu i ustawia nowy
             int index = listaArtykulow.listaArtykulow.IndexOf(aktualnyArtykul);
@@ -164,7 +141,7 @@ namespace AplikacjaProjektIO
             WyswietlDaneDlaArtykulu(aktualnyArtykul);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void nastepny_Click(object sender, EventArgs e)
         {
             //znajduje index artykułu i ustawia nowy
             int index = listaArtykulow.listaArtykulow.IndexOf(aktualnyArtykul);
@@ -186,7 +163,6 @@ namespace AplikacjaProjektIO
             StringBuilder ticker = new StringBuilder();
             StringBuilder gpt = new StringBuilder();
             StringBuilder bard = new StringBuilder();
-            label6.Text = "Prawdopodobieństwo zmiany kursu na podstawie artykulu według LLM";
             ticker.Append("Ticker:\n");
             gpt.Append("ChatGPT:\n");
             bard.Append("Bard:\n");
