@@ -110,50 +110,67 @@ namespace AplikacjaProjektIO
             }
             cartesianChart.Series.Clear();
             Button button = (Button)sender;
-            Spolka spolka = danespolek.ZnajdzSpolkePoNazwie(button.Text);
-            if (listawykresow.Contains(spolka))
+            Spolka spolkaButton = danespolek.ZnajdzSpolkePoNazwie(button.Text);
+
+            //Dodanie lub usunięcie spółki z listy spółek
+            if (listawykresow.Contains(spolkaButton))
             {
-                listawykresow.Remove(spolka);
+                listawykresow.Remove(spolkaButton);
                 button.BackColor = Color.LightGray;
             }
             else
             {
-                listawykresow.Add(spolka);
+                listawykresow.Add(spolkaButton);
                 button.BackColor = Color.Aqua;
             }
-            foreach (Spolka spolka1 in listawykresow)
+            DateTime pierwszaData = DateTime.ParseExact(WszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+
+            //Dodanie wykresu każdej spółki
+            foreach (Spolka spolka in listawykresow)
             {
                 List<ObservablePoint> listapunktow = new List<ObservablePoint>();
-                for (int i = 0; i < WszystkieDaty.Count; i++)
+                double dzielnik;
+                if (listawykresow.Count < 2)
                 {
+                    dzielnik = 1;
+                }
+                else
+                {
+                    dzielnik = 0.01 * spolka.Notowania[pierwszaData];
+                }
+
+                //Dla każdej daty sprawdź czy dla niej jest notowanie
+                for (int i = 0; i < WszystkieDaty.Count; i++)
+                {   
                     DateTime data = DateTime.ParseExact(WszystkieDaty[i], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-                    if (spolka1.Notowania.ContainsKey(data) && spolka1.Notowania[data] != 0)
+                    if (spolka.Notowania.ContainsKey(data) && spolka.Notowania[data] != 0)
                     {
-                        if (listawykresow.Count < 2)
-                        {
-                            listapunktow.Add(new ObservablePoint(i, Math.Round(spolka1.Notowania[data], 2)));
-                            cartesianChart.AxisY.Clear();
-                            cartesianChart.AxisY.Add(new Axis
-                            {
-                                Title = "Wartość akcji [zł]"
-                            });
-                        }
-                        else
-                        {
-                            DateTime pierwszaData = DateTime.ParseExact(WszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-                            listapunktow.Add(new ObservablePoint(i, Math.Round(100 * (spolka1.Notowania[data] / spolka1.Notowania[pierwszaData]), 2)));
-                            cartesianChart.AxisY.Clear();
-                            cartesianChart.AxisY.Add(new Axis
-                            {
-                                Title = "Zmiana kursu akcji względem pierwszej dostępnej daty [%]"
-                            });
-                        }
+                        listapunktow.Add(new ObservablePoint(i, Math.Round(spolka.Notowania[data]/dzielnik, 2)));
                     }
                 }
+
+                //Dodanie wykresu
                 cartesianChart.Series.Add(new LineSeries
                 {
-                    Title = spolka1.Ticker,
+                    Title = spolka.Ticker,
                     Values = listapunktow.AsChartValues()
+                });
+            }
+
+            //Ustawienie nazwy osi Y
+            cartesianChart.AxisY.Clear();
+            if (listawykresow.Count < 2)
+            {
+                cartesianChart.AxisY.Add(new Axis
+                {
+                    Title = "Wartość akcji [zł]"
+                });
+            }
+            else
+            {
+                cartesianChart.AxisY.Add(new Axis
+                {
+                    Title = "Zmiana kursu akcji względem pierwszej dostępnej daty [%]"
                 });
             }
         }
