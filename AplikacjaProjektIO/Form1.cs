@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Drawing;
 using LiveCharts.Defaults;
 using System.Linq;
+using LiveCharts.Events;
 
 
 namespace AplikacjaProjektIO
@@ -56,6 +57,10 @@ namespace AplikacjaProjektIO
                 Title = "Data",
                 Labels = WszystkieDaty
             });
+
+            //Włączenie możliwości powiększenia wykresu
+            cartesianChart.Zoom = ZoomingOptions.X;
+            cartesianChart.AxisX[0].RangeChanged += OgraniczZoom;
 
             //Wygeneruj domyślny wykres
             WygenerujWykres(listaPrzyciskow[listaPrzyciskow.Count-1],new EventArgs());
@@ -190,6 +195,9 @@ namespace AplikacjaProjektIO
                     Title = "Zmiana kursu akcji względem pierwszej dostępnej daty [%]"
                 });
             }
+            //Resetowanie wielkości wykresu
+            cartesianChart.AxisX[0].MinValue = 0;
+            cartesianChart.AxisX[0].MaxValue = WszystkieDaty.Count - 1;
         }
         private void cartesianChart_DataClick(object sender, ChartPoint chartPoint)
         {
@@ -259,6 +267,18 @@ namespace AplikacjaProjektIO
             label3.Text = ticker.ToString();
             label4.Text = gpt.ToString();
             label5.Text = bard.ToString();
+        }
+        //Ograniczenie wielkości wykresu
+        private void OgraniczZoom(RangeChangedEventArgs eventArgs)
+        {
+            if (cartesianChart.AxisX[0].MinValue < 0)
+            {
+                cartesianChart.AxisX[0].MinValue = 0;
+            }
+            if (cartesianChart.AxisX[0].MaxValue > WszystkieDaty.Count - 1)
+            {
+                cartesianChart.AxisX[0].MaxValue = WszystkieDaty.Count - 1;
+            }
         }
     }
 }
