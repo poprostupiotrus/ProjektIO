@@ -107,24 +107,41 @@ namespace AplikacjaProjektIO
             if(!(sender is Button))
             {
                 return;
-            }
-            cartesianChart.Series.Clear();
+            } 
             Button button = (Button)sender;
             Spolka spolkaButton = danespolek.ZnajdzSpolkePoNazwie(button.Text);
-
-            //Dodanie lub usunięcie spółki z listy spółek
-            if (listawykresow.Contains(spolkaButton))
+            DateTime pierwszaData = DateTime.ParseExact(WszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+            //Czy Shift był wciśniety przy kliknięciu
+            if (ModifierKeys.HasFlag(Keys.Shift))
             {
-                listawykresow.Remove(spolkaButton);
-                button.BackColor = Color.LightGray;
+                //Dodanie lub usunięcie spółki z listy spółek
+                if (listawykresow.Contains(spolkaButton))
+                {
+                    //Jeśli jest tylko jeden wykres nic nie usuwaj
+                    if (listawykresow.Count == 1)
+                    {
+                        return;
+                    }
+                    listawykresow.Remove(spolkaButton);
+                    button.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    listawykresow.Add(spolkaButton);
+                    button.BackColor = Color.Aqua;
+                }
             }
             else
             {
+                listawykresow.Clear();
                 listawykresow.Add(spolkaButton);
+                foreach (Button button1 in listaPrzyciskow)
+                {
+                    button1.BackColor = Color.LightGray;
+                }
                 button.BackColor = Color.Aqua;
             }
-            DateTime pierwszaData = DateTime.ParseExact(WszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-
+            cartesianChart.Series.Clear();
             //Dodanie wykresu każdej spółki
             foreach (Spolka spolka in listawykresow)
             {
