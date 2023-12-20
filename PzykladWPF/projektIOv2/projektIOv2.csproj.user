@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="ArtykulButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CheckNox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\MenuItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\NotowanieControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\UserControl1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\UserPopup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ArtykulView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ArtykulyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Settings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ArtykulButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Assets\Icons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\CheckNox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MenuItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\NotowanieControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\UserControl1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\UserPopup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ArtykulView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\ArtykulyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\MainStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Calendar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Dictionary1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\GroupBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

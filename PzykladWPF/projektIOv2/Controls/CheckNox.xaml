@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="projektIOv2.Controls.CheckNox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:projektIOv2.Controls"
+             mc:Ignorable="d" Name="this">
+    <UserControl.Resources>
+
+        <!-- Start: Border Style -->
+        <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="{DynamicResource SecundaryBackgroundColor}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource TextFourthColor}"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- End: Border Style -->
+
+        <!-- Start: Menu Icon Style -->
+        <Style x:Key="MenuIconStyle" TargetType="{x:Type Path}">
+            <Setter Property="Fill" Value="{DynamicResource SecundaryIconColor}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
+                    <Setter Property="Fill" Value="white"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- End: Menu Icon Style -->
+
+
+
+        <!-- Start: Menu Item Style -->
+        <Style x:Key="MenuButtonStyle" TargetType="{x:Type ToggleButton}">
+            <!--<Setter Property="Background" Value="Transparent"/>-->
+            <Setter Property="BorderThickness" Value="{DynamicResource BorderThickness}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border  BorderThickness="{TemplateBinding BorderThickness}" Padding="{Binding Padding, ElementName=this}" CornerRadius="{Binding BorderRadius, ElementName=this, FallbackValue=1,TargetNullValue=20}" Style="{StaticResource BorderStyle}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+
+                                </Grid.RowDefinitions>
+
+
+
+
+                                <!--Icon -->
+                                <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource DefaultIcon}, TargetNullValue={StaticResource DefaultIcon}}"
+                                      Stretch="Uniform" Width="{Binding IconWidth, ElementName=this, FallbackValue=20,TargetNullValue=20}" Style="{StaticResource MenuIconStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"/>
+
+
+
+
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- To set IsChecked property to true on default -->
+                            <DataTrigger Binding="{Binding IsSelected, ElementName=this}" Value="True">
+                                <Setter Property="IsChecked" Value="True"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- End: Menu Item Style -->
+
+    </UserControl.Resources>
+
+    <Grid>
+        <CheckBox Style="{StaticResource MenuButtonStyle}" Margin="0,0,0,0" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1"/>
+    </Grid>
+
+</UserControl>

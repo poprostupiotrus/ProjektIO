@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:projektIOv2.Themes">
+
+    <Style x:Key="DatePickerStyle2" TargetType="DatePicker">
+        <Setter Property="CalendarStyle">
+            <Setter.Value>
+                <!-- Styl dla kalendarza w DatePicker -->
+                <Style TargetType="Calendar">
+                    <!-- Dostosuj tutaj różne właściwości kalendarza -->
+                    <Setter Property="CalendarDayButtonStyle">
+                        <Setter.Value>
+                            <!-- Styl dla przycisku dnia w kalendarzu -->
+                            <Style TargetType="CalendarDayButton">
+                                <!-- Dostosuj tutaj styl przycisku dnia -->
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="CalendarButtonStyle">
+                        <Setter.Value>
+                            <Style TargetType="Button">
+                                <!-- Dostosuj tutaj styl CalendarButton -->
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <!-- Dodaj inne dostosowania -->
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="CalendarItemStyle">
+                        <Setter.Value>
+                            <!-- Styl dla CalendarItem -->
+                            <Style TargetType="CalendarItem">
+                                <!-- Dostosuj tutaj styl CalendarItem -->
+                                <Setter Property="Background" Value="LightGray"/>
+                                <Setter Property="BorderBrush" Value="Gray"/>
+                                <!-- Dodaj inne dostosowania -->
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+
+
+
+
+
+
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
