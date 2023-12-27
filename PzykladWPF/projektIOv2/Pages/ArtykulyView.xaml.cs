@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,19 +22,20 @@ namespace projektIOv2.Pages
     public partial class ArtykulyView : Page
     {
         NavigationService ns;
+        ListaArtykulow l1;
         public ArtykulyView()
         {
             InitializeComponent();
-            ListaArtykulow l1 = new ListaArtykulow();
-            MyListbox.ItemsSource = l1.listaArtykulow;
-            
+            l1 = new ListaArtykulow(MyListbox);
+            //MyListbox.ItemsSource = l1.listaArtykulow;
+
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
         }
 
         private void ArtykulButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +46,18 @@ namespace projektIOv2.Pages
             ArtykulView av = new ArtykulView();
             av.DataContext = art;
             ns.Navigate(av);
+
+        }
+
+        private void czas_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (l1 == null) return;
+
+            DateTime dt1 = (DateTime)czas.SelectedDate;
+
+            l1.Update(dt1);
+
+            // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
 
         }
     }

@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              >
     <UserControl.Resources>
+        <local:VisibilityConverter x:Key="VisibilityConverter"/>
+
+
         <Style x:Key="st1" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="40"/>
@@ -43,6 +46,7 @@
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="Transparent"/>
         <Style x:Key="ResetButton" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -90,16 +94,16 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding YEAR}" Style="{StaticResource st1}" Grid.Row="0" x:Name="d1" Visibility="{Binding Path=YEAR, TargetNullValue=Collapsed }"/>
-        <TextBlock Text="{Binding HOUR}" Grid.Row="1" Style="{StaticResource st2}" Name="d2" Visibility="{Binding Path=HOUR, TargetNullValue=Collapsed }"/>
+        <TextBlock Text="{Binding YEAR}" Style="{StaticResource st1}" Grid.Row="0" x:Name="d1" Visibility="{Binding Path=YEAR, Converter={StaticResource VisibilityConverter} }"/>
+        <TextBlock Text="{Binding HOUR}" Grid.Row="1" Style="{StaticResource st2}" Name="d2" Visibility="{Binding Path=HOUR, Converter={StaticResource VisibilityConverter} }"/>
 
-        <Button Style="{StaticResource ResetButton}" Grid.Row="2" HorizontalAlignment="Left"  Visibility="{Binding Path=NAGLOWEK, TargetNullValue=Collapsed }" Click="Button_Click" >
+        <Button Style="{StaticResource ResetButton}" Grid.Row="2" HorizontalAlignment="Left"  Visibility="{Binding Path=Naglowek, Converter={StaticResource VisibilityConverter} }" Click="Button_Click" >
             <StackPanel Orientation="Horizontal" >
                 <Rectangle Width="5" Height="60" Fill="{DynamicResource PrimaryBlueColor}" RadiusX="2" RadiusY="2" Margin="0,5,0,5"/>
-                <TextBlock Text="{Binding NAGLOWEK}" Grid.Row="2" Name="n1" HorizontalAlignment="Center" FontSize="13" Height="23" Margin="10,0,0,0"/>
+                <TextBlock Text="{Binding Naglowek}" Grid.Row="2" Name="n1" HorizontalAlignment="Center" FontSize="13" Height="23" Margin="10,0,0,0"/>
 
             </StackPanel>
         </Button>
-        
+
     </Grid>
 </UserControl>

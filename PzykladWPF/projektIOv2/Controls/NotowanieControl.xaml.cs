@@ -24,5 +24,9 @@ namespace projektIOv2.Controls
         {
             InitializeComponent();
         }
+        public static readonly DependencyProperty MyDataProperty =
+        DependencyProperty.Register("MyData", typeof(object), typeof(NotowanieControl));
+
+
     }
 }

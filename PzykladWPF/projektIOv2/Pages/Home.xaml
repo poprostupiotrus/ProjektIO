@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Początek"/>
-            <DatePicker Style="{StaticResource DatePickerStyle2}"  Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}"/>
+            <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}"/>
             <TextBlock Text="Koniec"/>
             <DatePicker Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}"/>
         </StackPanel>
@@ -60,7 +60,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ctls:CheckNox Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="ALIOR" Loaded="CheckNox_Loaded" Height="71" Grid.Column="0" IsSelected="True" />
-            <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="ASSECOPOL" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Loaded="CheckNox_Loaded" Height="71" Grid.Column="1"/>
+            <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource bb}" IconWidth="16" Text="ASSECOPOL" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Loaded="CheckNox_Loaded" Height="71" Grid.Column="1"/>
             <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="CDPROJEKT" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Loaded="CheckNox_Loaded" Height="71" Grid.Column="2"/>
             <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="CYFRPOLSAT" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Loaded="CheckNox_Loaded" Height="71" Grid.Column="3"/>
             <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="DINOPL" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Loaded="CheckNox_Loaded" Height="71" Grid.Column="4"/>

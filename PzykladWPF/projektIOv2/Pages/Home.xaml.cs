@@ -42,7 +42,7 @@ namespace projektIOv2.Pages
 
         }
 
-   
+
         private void CheckNox_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -50,11 +50,11 @@ namespace projektIOv2.Pages
 
         private void CheckNox_Checked(object sender, RoutedEventArgs e)
         {
-            if(viewModel==null) return;
+            if (viewModel == null) return;
             var t1 = (sender as CheckNox).Text;
             viewModel.AddSeries(t1);
 
-            
+
         }
 
         private void CheckNox_Unchecked(object sender, RoutedEventArgs e)
@@ -66,13 +66,13 @@ namespace projektIOv2.Pages
 
         private void StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-         
+
         }
 
         private void EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
+
+
         }
     }
 }

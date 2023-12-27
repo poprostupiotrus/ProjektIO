@@ -6,7 +6,10 @@
       xmlns:local="clr-namespace:projektIOv2.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ArtykulView">
+      Title="ArtykulView"
+      Loaded="Page_Loaded"
+      
+      >
     <Page.Resources>
         <Style x:Key="Naglowek" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold"/>
@@ -28,30 +31,37 @@
             <Setter Property="Foreground" Value="white"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
-        
-
-            <DataTemplate x:Key="ListTemplate">
-                <StackPanel Orientation="Horizontal">
-                    <Controls:NotowanieControl DataContext="{Binding}"/>
-
-                </StackPanel>
-            </DataTemplate>
 
 
-            <ItemsPanelTemplate x:Key="ListPanel">
-                <StackPanel/>
-            </ItemsPanelTemplate>
+        <DataTemplate x:Key="ListTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Controls:NotowanieControl DataContext="{Binding}" />
 
-            <Style TargetType="ListBox">
+            </StackPanel>
+        </DataTemplate>
 
-                <Setter Property="ItemsPanel" Value="{StaticResource ListPanel}"/>
-                <Setter Property="ItemTemplate" Value="{StaticResource ListTemplate}"/>
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
-                <Setter Property="BorderThickness" Value="0"/>
 
-            </Style>
-       
+        <ItemsPanelTemplate x:Key="ListPanel">
+            <StackPanel/>
+        </ItemsPanelTemplate>
+
+        <Style TargetType="ListBox">
+
+            <Setter Property="ItemsPanel" Value="{StaticResource ListPanel}"/>
+            <Setter Property="ItemTemplate" Value="{StaticResource ListTemplate}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -59,37 +69,131 @@
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="0" Style="{DynamicResource GroupBoxStyle1}" Margin="10,5,10,10">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+
+                    <Button Click="Button_Click">
+                        <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  >
+                            <Canvas  Width="24" Height="24">
+                                <Canvas.RenderTransform>
+                                    <TranslateTransform X="0" Y="0"/>
+                                </Canvas.RenderTransform>
+                                <Canvas.Resources/>
+                                <!--Unknown tag: metadata-->
+                                <!--Unknown tag: sodipodi:namedview-->
+                                <Canvas>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  StrokeThickness="2" Stroke="White" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 9V6.2002C9 5.08009 9 4.51962 9.21799 4.0918C9.40973 3.71547 9.71547 3.40973 10.0918 3.21799C10.5196 3 11.0801 3 12.2002 3H17.8002C18.9203 3 19.4801 3 19.9079 3.21799C20.2842 3.40973 20.5905 3.71547 20.7822 4.0918C21.0002 4.51962 21.0002 5.07967 21.0002 6.19978V11.7998C21.0002 12.9199 21.0002 13.48 20.7822 13.9078C20.5905 14.2841 20.2839 14.5905 19.9076 14.7822C19.4802 15 18.921 15 17.8031 15H15M9 9H6.2002C5.08009 9 4.51962 9 4.0918 9.21799C3.71547 9.40973 3.40973 9.71547 3.21799 10.0918C3 10.5196 3 11.0801 3 12.2002V17.8002C3 18.9203 3 19.4801 3.21799 19.9079C3.40973 20.2842 3.71547 20.5905 4.0918 20.7822C4.5192 21 5.07899 21 6.19691 21H11.8036C12.9215 21 13.4805 21 13.9079 20.7822C14.2842 20.5905 14.5905 20.2839 14.7822 19.9076C15 19.4802 15 18.921 15 17.8031V15M9 9H11.8002C12.9203 9 13.4801 9 13.9079 9.21799C14.2842 9.40973 14.5905 9.71547 14.7822 10.0918C15 10.5192 15 11.079 15 12.1969L15 15" FillRule="NonZero"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+
+
+
+                </ContextMenu>
+
+            </GroupBox.ContextMenu>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="sg1">
                 <StackPanel>
-                    <TextBlock Text="{Binding NAGLOWEK}" Style="{DynamicResource Naglowek}"/>
-                    <TextBlock Text="{Binding TRESC}" Style="{DynamicResource akapit}"/>
+                    <TextBlock Text="{Binding Naglowek}" Style="{DynamicResource Naglowek}"/>
+                    <TextBlock Text="{Binding Data}" Style="{DynamicResource akapit}"/>
+                    <TextBlock Text="{Binding Tresc}" Style="{DynamicResource akapit}"/>
 
                 </StackPanel >
+
             </ScrollViewer>
         </GroupBox>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions> 
+            </Grid.ColumnDefinitions>
             <GroupBox  Grid.Column="0" Style="{DynamicResource GroupBoxStyle1}" Margin="10,0,5,10">
-               <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel>
-                    <TextBlock Style="{DynamicResource h2}" Text="GPT"/>
-                    
-                        <ListBox  ItemsSource="{Binding gpt}" />
-                    
-                </StackPanel></ScrollViewer>
-            </GroupBox>
-            <GroupBox Grid.Column="1" Style="{DynamicResource GroupBoxStyle1}" Margin="5,0,10,10">
-               <ScrollViewer VerticalScrollBarVisibility="Auto"> <StackPanel>
-                    <TextBlock Style="{DynamicResource h2}" Text="BARD"/>
+                <GroupBox.ContextMenu>
+                    <ContextMenu>
 
-                        <ListBox  ItemsSource="{Binding bard}"  >
-                           
-                        </ListBox>
 
-                    </StackPanel></ScrollViewer>
+                        <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20" MouseLeftButtonDown="gpt_MouseLeftButtonDown" MouseLeftButtonUp="gpt_MouseLeftButtonDown">
+                            <Canvas  Width="24" Height="24">
+                                <Canvas.RenderTransform>
+                                    <TranslateTransform X="0" Y="0"/>
+                                </Canvas.RenderTransform>
+                                <Canvas.Resources/>
+                                <!--Unknown tag: metadata-->
+                                <!--Unknown tag: sodipodi:namedview-->
+                                <Canvas>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  StrokeThickness="2" Stroke="White" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 9V6.2002C9 5.08009 9 4.51962 9.21799 4.0918C9.40973 3.71547 9.71547 3.40973 10.0918 3.21799C10.5196 3 11.0801 3 12.2002 3H17.8002C18.9203 3 19.4801 3 19.9079 3.21799C20.2842 3.40973 20.5905 3.71547 20.7822 4.0918C21.0002 4.51962 21.0002 5.07967 21.0002 6.19978V11.7998C21.0002 12.9199 21.0002 13.48 20.7822 13.9078C20.5905 14.2841 20.2839 14.5905 19.9076 14.7822C19.4802 15 18.921 15 17.8031 15H15M9 9H6.2002C5.08009 9 4.51962 9 4.0918 9.21799C3.71547 9.40973 3.40973 9.71547 3.21799 10.0918C3 10.5196 3 11.0801 3 12.2002V17.8002C3 18.9203 3 19.4801 3.21799 19.9079C3.40973 20.2842 3.71547 20.5905 4.0918 20.7822C4.5192 21 5.07899 21 6.19691 21H11.8036C12.9215 21 13.4805 21 13.9079 20.7822C14.2842 20.5905 14.5905 20.2839 14.7822 19.9076C15 19.4802 15 18.921 15 17.8031V15M9 9H11.8002C12.9203 9 13.4801 9 13.9079 9.21799C14.2842 9.40973 14.5905 9.71547 14.7822 10.0918C15 10.5192 15 11.079 15 12.1969L15 15" FillRule="NonZero"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Canvas>
+                        </Viewbox>
+
+
+
+                    </ContextMenu>
+
+                </GroupBox.ContextMenu>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{DynamicResource h2}" Text="GPT" Grid.Row="0"/>
+
+                    <ListBox  ItemsSource="{Binding gpt}" Grid.Row="1"/>
+
+                </Grid>
             </GroupBox>
+
+            <GroupBox  Grid.Column="1" Style="{DynamicResource GroupBoxStyle1}" Margin="10,0,10,10">
+                <GroupBox.ContextMenu>
+                    <ContextMenu x:Name="bardmenu">
+                        <MenuItem Header="fg"/>
+
+                        <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  MouseLeftButtonDown="bard_MouseLeftButtonDown" MouseLeftButtonUp="bard_MouseLeftButtonDown">
+                            <Canvas Width="24" Height="24">
+                                <Canvas.RenderTransform>
+                                    <TranslateTransform X="0" Y="0"/>
+                                </Canvas.RenderTransform>
+                                <Canvas.Resources/>
+                                <!--Unknown tag: metadata-->
+                                <!--Unknown tag: sodipodi:namedview-->
+                                <Canvas>
+                                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" StrokeThickness="2" Stroke="White" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                                        <Path.Data>
+                                            <PathGeometry Figures="M9 9V6.2002C9 5.08009 9 4.51962 9.21799 4.0918C9.40973 3.71547 9.71547 3.40973 10.0918 3.21799C10.5196 3 11.0801 3 12.2002 3H17.8002C18.9203 3 19.4801 3 19.9079 3.21799C20.2842 3.40973 20.5905 3.71547 20.7822 4.0918C21.0002 4.51962 21.0002 5.07967 21.0002 6.19978V11.7998C21.0002 12.9199 21.0002 13.48 20.7822 13.9078C20.5905 14.2841 20.2839 14.5905 19.9076 14.7822C19.4802 15 18.921 15 17.8031 15H15M9 9H6.2002C5.08009 9 4.51962 9 4.0918 9.21799C3.71547 9.40973 3.40973 9.71547 3.21799 10.0918C3 10.5196 3 11.0801 3 12.2002V17.8002C3 18.9203 3 19.4801 3.21799 19.9079C3.40973 20.2842 3.71547 20.5905 4.0918 20.7822C4.5192 21 5.07899 21 6.19691 21H11.8036C12.9215 21 13.4805 21 13.9079 20.7822C14.2842 20.5905 14.5905 20.2839 14.7822 19.9076C15 19.4802 15 18.921 15 17.8031V15M9 9H11.8002C12.9203 9 13.4801 9 13.9079 9.21799C14.2842 9.40973 14.5905 9.71547 14.7822 10.0918C15 10.5192 15 11.079 15 12.1969L15 15" FillRule="NonZero"/>
+                                        </Path.Data>
+                                    </Path>
+                                </Canvas>
+                            </Canvas>
+                        </Viewbox>
+
+
+
+                    </ContextMenu>
+
+                </GroupBox.ContextMenu>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{DynamicResource h2}" Text="BARD" Grid.Row="0"/>
+
+                    <ListBox  ItemsSource="{Binding bard}" Grid.Row="1" />
+
+                </Grid>
+            </GroupBox>
+
         </Grid>
     </Grid>
 </Page>

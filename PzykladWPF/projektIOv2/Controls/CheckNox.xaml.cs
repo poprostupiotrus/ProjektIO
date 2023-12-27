@@ -37,7 +37,7 @@ namespace projektIOv2.Controls
             set { SetValue(IconProperty, value); }
         }
 
-       
+
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(PathGeometry), typeof(CheckNox));
 
@@ -69,7 +69,7 @@ namespace projektIOv2.Controls
             set { SetValue(IndicatorBrushProperty, value); }
         }
 
-       
+
         public static readonly DependencyProperty IndicatorBrushProperty =
             DependencyProperty.Register("IndicatorBrush", typeof(SolidColorBrush), typeof(CheckNox));
 
@@ -81,7 +81,7 @@ namespace projektIOv2.Controls
             set { SetValue(IndicatorIndicatorCornerRadiusProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty IndicatorIndicatorCornerRadiusProperty =
             DependencyProperty.Register("IndicatorIndicatorCornerRadius", typeof(int), typeof(CheckNox));
 
@@ -93,7 +93,7 @@ namespace projektIOv2.Controls
             set { SetValue(TextProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(CheckNox));
 
@@ -105,7 +105,7 @@ namespace projektIOv2.Controls
             set { SetValue(PaddingProperty, value); }
         }
 
-        
+
         public static new readonly DependencyProperty PaddingProperty =
             DependencyProperty.Register("Padding", typeof(Thickness), typeof(CheckNox));
 
@@ -120,7 +120,7 @@ namespace projektIOv2.Controls
             }
         }
 
-        
+
         public static readonly DependencyProperty IsSelectedProperty =
             DependencyProperty.Register("IsSelected", typeof(bool), typeof(CheckNox));
 

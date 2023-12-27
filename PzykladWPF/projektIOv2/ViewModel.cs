@@ -44,7 +44,7 @@ namespace projektIOv2
             Spolka sp1 = spolek.ZnajdzSpolkePoNazwie("ALIOR");
             ChartValues<DateTimePoint> wals = new ChartValues<DateTimePoint>();
             var mindate = new DateTime(2023, 11, 7);
-           var maxdate = new DateTime(2023, 11, 7,23,59,59);
+            var maxdate = new DateTime(2023, 11, 7, 23, 59, 59);
             foreach (var item in sp1.Notowania)
             {
                 //Trace.WriteLine(item.Key);
@@ -55,6 +55,7 @@ namespace projektIOv2
             s1.Values = wals;
             s1.Title = sp1.Nazwa;
             s1.Fill = Brushes.Transparent;
+            s1.PointGeometry = null;
             var dayConfig = Mappers.Xy<DateTimePoint>()
           .X(dateModel => dateModel.DateTime.Ticks / TimeSpan.FromMinutes(1).Ticks)
           .Y(dateModel => dateModel.Value);
@@ -63,16 +64,16 @@ namespace projektIOv2
         {s1};
             //s1.Values.Remove(XamlGeneratedNamespace );
             Formatter = value => new System.DateTime((long)(value * TimeSpan.FromMinutes(1).Ticks)).ToString("G");
-            TimeStampMin = new DateTime(2023, 11, 7,0,0,0);
-            TimeStampMax = new DateTime(2023, 11, 12,0,0,0);
+            TimeStampMin = new DateTime(2023, 11, 7, 0, 0, 0);
+            TimeStampMax = new DateTime(2023, 11, 12, 0, 0, 0);
 
             //stockChart.Series = Series;
             //fmt.LabelFormatter = Formatter;
 
-        } 
-        
+        }
+
         public DateTime TimeStampMin { get; set; }
-        public DateTime TimeStampMax { get=> timeStampMax; set { if(value!=null) timeStampMax = value; } }
+        public DateTime TimeStampMax { get => timeStampMax; set { if (value != null) timeStampMax = value; } }
         private DateTime timeStampMax = new DateTime(2023, 11, 13, 23, 59, 59);
 
 
@@ -111,16 +112,16 @@ namespace projektIOv2
             {
                 //Trace.WriteLine(item.Key);
                 if (item.Key >= mindate && item.Key <= maxdate)
-                    wals.Add(new DateTimePoint(item.Key, item.Value));
+                wals.Add(new DateTimePoint(item.Key, item.Value));
             }
             LineSeries s1 = new LineSeries();
             s1.Values = wals;
             s1.Title = txt;
-            
+            s1.PointGeometry = null;
             s1.Fill = Brushes.Transparent;
             Series.Add(s1);
         }
-        
+
         public bool SeriesExists(String txt)
         {
             foreach (var item in Series)
@@ -143,19 +144,19 @@ namespace projektIOv2
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var t1 = ((DateTime)value);
-            var t2 = new DateTime(1,1,1);
+            var t2 = new DateTime(1, 1, 1);
             long t3 = (t1 - t2).Hours;
             Trace.WriteLine($"{t1}");
             return t3;
         }
 
-        
+
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return null;
         }
 
-        
+
     }
 }

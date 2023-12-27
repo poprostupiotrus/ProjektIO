@@ -75,19 +75,31 @@
     <Page Update="Pages\Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\CleanListBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\DatePicker.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\MainStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\Calendar.xaml">
+    <Page Update="Styles\Calendar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ScrollBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\DarkTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\Dictionary1.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\GroupBox.xaml">
+    <Page Update="Styles\GroupBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\LightTheme.xaml">

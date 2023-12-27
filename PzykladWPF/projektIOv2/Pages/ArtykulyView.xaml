@@ -6,10 +6,11 @@
       xmlns:local="clr-namespace:projektIOv2.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Dashboard">
+      Title="Dashboard"
+      >
     <Page.Resources>
-        
-        <DataTemplate x:Key="ListTemplate">
+
+        <DataTemplate x:Key="ListTemplate" >
             <StackPanel Orientation="Horizontal">
                 <projektIOv2:ArtykulButton DataContext="{Binding}" MyData="{Binding}" Click="ArtykulButton_Click" />
 
@@ -28,27 +29,39 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Style.Triggers>
 
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+
+                </Trigger>
+            </Style.Triggers>
         </Style>
-        
+
+
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
             <!--<RowDefinition Height="auto"/>-->
- 
+
         </Grid.RowDefinitions>
-        <ListBox x:Name="MyListbox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="0" >
+        <StackPanel Grid.Row="0">
+            <DatePicker x:Name="czas" HorizontalAlignment="Center" SelectedDate="11.07.2023" SelectedDateChanged="czas_SelectedDateChanged"/>
+        </StackPanel>
+        <ListBox x:Name="MyListbox" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
 
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+
             </ListBox.Resources>
+
         </ListBox>
 
-        <!-- <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}" Grid.Column="1">
-            <Calendar />
-        </Border>-->
+
     </Grid>
 </Page>

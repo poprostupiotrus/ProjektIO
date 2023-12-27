@@ -1,6 +1,8 @@
 ﻿using projektIOv2.Pages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,21 +31,39 @@ namespace projektIOv2
         public static readonly DependencyProperty MyDataProperty =
         DependencyProperty.Register("MyData", typeof(object), typeof(ArtykulButton));
 
-    public object MyData
-    {
-        get { return GetValue(MyDataProperty); }
-        set { SetValue(MyDataProperty, value); }
-    }
+        public object MyData
+        {
+            get { return GetValue(MyDataProperty); }
+            set { SetValue(MyDataProperty, value); }
+        }
         protected virtual void OnClick(RoutedEventArgs e)
         {
             Click?.Invoke(this, e);
         }
 
-        
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OnClick(new RoutedEventArgs());
         }
+    }
+
+    public class VisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null) return Visibility.Collapsed;
+            return Visibility.Visible;
+        }
+
+
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+
+
     }
 }

@@ -34,5 +34,5 @@ namespace projektIOv2
             return listaSpolek?.Find(x => x.Nazwa == nazwa);
         }
     }
-   
+
 }

@@ -1,4 +1,5 @@
 ﻿using projektIOv2.Themes;
+using projektIOv2.Themes.projektIOv2.Themes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,16 +25,31 @@ namespace projektIOv2.Pages
         public Settings()
         {
             InitializeComponent();
+
         }
 
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
             ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
+
         }
 
         private void ComboBoxItem_Selected_1(object sender, RoutedEventArgs e)
         {
             ThemesController.SetTheme(ThemesController.ThemeTypes.Light);
+
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var b = ThemesController.GetTheme().ToString();
+            foreach (var item in cb1.Items)
+            {
+                if ((item as ComboBoxItem).Content.ToString().Equals(b))
+                {
+                    (item as ComboBoxItem).IsSelected = true;
+                }
+            }
         }
     }
 }

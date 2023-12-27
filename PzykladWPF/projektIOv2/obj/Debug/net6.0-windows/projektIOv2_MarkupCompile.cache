@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\patryk\Desktop\projektIOv2\projektIOv2\obj\Debug\net6.0-windows\
+C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\
 projektIOv2
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\patryk\Desktop\projektIOv2\projektIOv2\App.xaml
-18-1306213227
+C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\App.xaml
+221163248025
 
-20-195838927
-198-60273033
-ArtykulButton.xaml;Assets\Icons.xaml;Controls\CheckNox.xaml;Controls\MenuItem.xaml;Controls\NotowanieControl.xaml;Controls\UserControl1.xaml;Controls\UserPopup.xaml;MainWindow.xaml;Pages\ArtykulView.xaml;Pages\ArtykulyView.xaml;Pages\Home.xaml;Pages\Settings.xaml;Styles\MainStyle.xaml;Themes\Calendar.xaml;Themes\DarkTheme.xaml;Themes\Dictionary1.xaml;Themes\GroupBox.xaml;Themes\LightTheme.xaml;
+23974185157
+1991195439206
+ArtykulButton.xaml;Assets\Icons.xaml;Controls\CheckNox.xaml;Controls\MenuItem.xaml;Controls\NotowanieControl.xaml;Controls\UserControl1.xaml;Controls\UserPopup.xaml;MainWindow.xaml;Pages\ArtykulView.xaml;Pages\ArtykulyView.xaml;Pages\Home.xaml;Pages\Settings.xaml;Styles\Calendar.xaml;Styles\CleanListBox.xaml;Styles\ComboBox.xaml;Styles\ContextMenu.xaml;Styles\DatePicker.xaml;Styles\GroupBox.xaml;Styles\MainStyle.xaml;Styles\ScrollBar.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;
 
 False
 

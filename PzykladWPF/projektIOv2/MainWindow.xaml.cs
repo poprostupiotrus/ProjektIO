@@ -14,6 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Resources;
+using System.Reflection;
+using projektIOv2.Themes.projektIOv2.Themes;
+using projektIOv2.Pages;
 
 namespace projektIOv2
 {
@@ -22,11 +26,15 @@ namespace projektIOv2
     public partial class MainWindow : Window
     {
         private DragAndDrop dragAndDropWindow;
-
+        ArtykulyView art;
+        Home home1;
+        Settings settings;
         public MainWindow()
         {
             InitializeComponent();
             dragAndDropWindow = new DragAndDrop(this);
+
+
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -69,9 +77,9 @@ namespace projektIOv2
             Popup.IsOpen = false;
         }
 
-        
 
-        
+
+
         private void btnSetting_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
@@ -112,12 +120,14 @@ namespace projektIOv2
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            if (home1 == null) home1 = new Home();
+            fContainer.Navigate(home1);
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/ArtykulyView.xaml", UriKind.RelativeOrAbsolute));
+            if (art == null) art = new ArtykulyView();
+            fContainer.Navigate(art);
         }
 
         private new void PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -146,12 +156,15 @@ namespace projektIOv2
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Settings.xaml", UriKind.RelativeOrAbsolute));
+            if (settings == null) settings = new Settings();
+            fContainer.Navigate(settings);
         }
 
         private void home_Loaded(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            ThemesController.SetTheme(ThemesController.GetTheme());
+            home1 = new Home();
+            fContainer.Navigate(home1);
         }
     }
 }
