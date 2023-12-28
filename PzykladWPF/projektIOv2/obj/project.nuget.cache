@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4oruQnb07p2i+ZTleUAeXKLwsosb6EkRy5VnMluhB47VGMJcb2SjeS0/BSNKbOW66HVRE/4N37JtDv8k3jyD0g==",
+  "dgSpecHash": "W1Mrpr8758Q+ZymzsqcippgPlWI+VyJ0dLB0OKID7epIo5JaJjn/ZkBAeq7D+y/GMeRsipjRdZE0o/CNRUjw9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\patr-\\Source\\Repos\\poprostupiotrus\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
+  "projectFilePath": "C:\\Users\\patr-\\source\\repos\\poprostupiotrus\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\patr-\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\patr-\\.nuget\\packages\\htmlagilitypack\\1.11.54\\htmlagilitypack.1.11.54.nupkg.sha512",

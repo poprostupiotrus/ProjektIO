@@ -2,7 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\PzykladWPF",
-    "\\PzykladWPF\\projektIOv2"
+    "\\PzykladWPF\\projektIOv2",
+    "\\PzykladWPF\\projektIOv2\\Controls",
+    "\\PzykladWPF\\projektIOv2\\Pages",
+    "\\PzykladWPF\\projektIOv2\\Styles",
+    "\\PzykladWPF\\projektIOv2\\Themes"
   ],
   "PreviewInSolutionExplorer": false
 }

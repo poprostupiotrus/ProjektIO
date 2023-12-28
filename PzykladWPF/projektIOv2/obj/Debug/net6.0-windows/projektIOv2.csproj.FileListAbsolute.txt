@@ -209,7 +209,6 @@ C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Styles\ContextMenu.baml
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Styles\DatePicker.baml
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Styles\ScrollBar.baml
-C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\ArtykulButton.g.cs
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\CheckNox.g.cs
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\MenuItem.g.cs
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\NotowanieControl.g.cs
@@ -252,7 +251,6 @@ C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\bin
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\bin\Debug\net6.0-windows\LiveCharts.Wpf.dll
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\App.baml
-C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\ArtykulButton.baml
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Assets\Icons.baml
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\CheckNox.baml
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\MenuItem.baml
@@ -265,3 +263,5 @@ C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2.dll
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\refint\projektIOv2.dll
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2.genruntimeconfig.cache
+C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\ArtykulButton.g.cs
+C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\ArtykulButton.baml
