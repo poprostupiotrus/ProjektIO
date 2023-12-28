@@ -66,13 +66,13 @@ namespace projektIOv2.Pages
 
         private void StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            viewModel.update();
         }
 
         private void EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
-
+           // viewModel.update();
         }
     }
 }

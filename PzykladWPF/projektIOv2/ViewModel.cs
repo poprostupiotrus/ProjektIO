@@ -38,13 +38,13 @@ namespace projektIOv2
         LineSeries l1;
         public ViewModel()
         {
-            XRangeChangedCommand = new RelayCommand<PreviewRangeChangedEventArgs>(e => XRangeChanged(e));
-
+           // XRangeChangedCommand = new RelayCommand<PreviewRangeChangedEventArgs>(e => XRangeChanged(e));
+           
             DaneSpolek spolek = new DaneSpolek();
             Spolka sp1 = spolek.ZnajdzSpolkePoNazwie("ALIOR");
             ChartValues<DateTimePoint> wals = new ChartValues<DateTimePoint>();
-            var mindate = new DateTime(2023, 11, 7);
-            var maxdate = new DateTime(2023, 11, 7, 23, 59, 59);
+            var mindate = new DateTime(TimeStampMin.Year, TimeStampMin.Month, TimeStampMin.Day);
+            var maxdate = new DateTime(TimeStampMax.Year, TimeStampMax.Month, TimeStampMax.Day, 23, 59, 59);
             foreach (var item in sp1.Notowania)
             {
                 //Trace.WriteLine(item.Key);
@@ -64,24 +64,25 @@ namespace projektIOv2
         {s1};
             //s1.Values.Remove(XamlGeneratedNamespace );
             Formatter = value => new System.DateTime((long)(value * TimeSpan.FromMinutes(1).Ticks)).ToString("G");
-            TimeStampMin = new DateTime(2023, 11, 7, 0, 0, 0);
-            TimeStampMax = new DateTime(2023, 11, 12, 0, 0, 0);
+            //TimeStampMin = new DateTime(2023, 11, 7, 0, 0, 0);
+           // TimeStampMax = new DateTime(2023, 11, 12, 0, 0, 0);
 
             //stockChart.Series = Series;
             //fmt.LabelFormatter = Formatter;
 
         }
 
-        public DateTime TimeStampMin { get; set; }
-        public DateTime TimeStampMax { get => timeStampMax; set { if (value != null) timeStampMax = value; } }
+        public DateTime TimeStampMin { get => timeStampMin; set { if (value != null) timeStampMin = value; update(); } }
+        public DateTime TimeStampMax { get => timeStampMax; set { if (value != null) timeStampMax = value; update(); } }
         private DateTime timeStampMax = new DateTime(2023, 11, 13, 23, 59, 59);
+        private DateTime timeStampMin = new DateTime(2023, 11, 10);
 
 
-        public void XRangeChanged(PreviewRangeChangedEventArgs e)
-        {
-            TimeStampMin = DateTime.FromBinary((long)e.PreviewMinValue);
-            TimeStampMax = DateTime.FromBinary((long)e.PreviewMaxValue);
-        }
+        /* public void XRangeChanged(PreviewRangeChangedEventArgs e)
+         {
+             TimeStampMin = DateTime.FromBinary((long)e.PreviewMinValue);
+             TimeStampMax = DateTime.FromBinary((long)e.PreviewMaxValue);
+         }*/
 
 
         /*public DateTime GetMinDate()
@@ -106,20 +107,24 @@ namespace projektIOv2
             DaneSpolek spolek = new DaneSpolek();
             Spolka sp1 = spolek.ZnajdzSpolkePoNazwie(txt);
             ChartValues<DateTimePoint> wals = new ChartValues<DateTimePoint>();
-            var mindate = new DateTime(2023, 11, 7);
-            var maxdate = new DateTime(2023, 11, 7, 23, 59, 59);
-            foreach (var item in sp1.Notowania)
+            var mindate = new DateTime(TimeStampMin.Year, TimeStampMin.Month, TimeStampMin.Day);
+            var maxdate = new DateTime(TimeStampMax.Year, TimeStampMax.Month, TimeStampMax.Day, 23, 59, 59);
+            if(sp1!=null)
             {
-                //Trace.WriteLine(item.Key);
-                if (item.Key >= mindate && item.Key <= maxdate)
-                wals.Add(new DateTimePoint(item.Key, item.Value));
+                foreach (var item in sp1.Notowania)
+                {
+                    //Trace.WriteLine(item.Key);
+                    if (item.Key >= mindate && item.Key <= maxdate)
+                        wals.Add(new DateTimePoint(item.Key, item.Value));
+
+                }
+                LineSeries s1 = new LineSeries();
+                s1.Values = wals;
+                s1.Title = txt;
+                s1.PointGeometry = null;
+                s1.Fill = Brushes.Transparent;
+                Series.Add(s1);
             }
-            LineSeries s1 = new LineSeries();
-            s1.Values = wals;
-            s1.Title = txt;
-            s1.PointGeometry = null;
-            s1.Fill = Brushes.Transparent;
-            Series.Add(s1);
         }
 
         public bool SeriesExists(String txt)
@@ -137,6 +142,22 @@ namespace projektIOv2
                 if ((item as LineSeries).Title.Equals(txt)) Series.Remove(item);
             }
 
+        }
+
+        public void update()
+        {
+
+            if (Series == null) return;
+            
+
+            foreach (var item in Series)
+            {
+                var name = (item as LineSeries).Title;
+                    if (name == null || name == "") return;
+                //MessageBox.Show(name);
+                Series.Remove(item);
+                AddSeries(name);
+            }
         }
     }
     public class DateTimeConverter : IValueConverter

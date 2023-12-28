@@ -61,7 +61,7 @@ namespace projektIOv2.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/projektIOv2;V1.0.0.0;component/controls/checknox.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/projektIOv2;component/controls/checknox.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\CheckNox.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

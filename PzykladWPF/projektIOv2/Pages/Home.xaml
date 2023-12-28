@@ -26,9 +26,9 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Początek"/>
-            <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}"/>
+            <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}" SelectedDateChanged="StartDate_SelectedDateChanged"/>
             <TextBlock Text="Koniec"/>
-            <DatePicker Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}"/>
+            <DatePicker Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}" SelectedDateChanged="EndDate_SelectedDateChanged"/>
         </StackPanel>
         <Grid Grid.Row="1">
             <GroupBox Style="{DynamicResource GroupBoxStyle1}">
