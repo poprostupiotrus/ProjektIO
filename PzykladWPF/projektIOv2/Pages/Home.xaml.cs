@@ -19,6 +19,8 @@ using System.Windows.Shapes;
 
 using projektIOv2.Themes;
 using projektIOv2.Controls;
+using projektIOv2.wykres;
+using System.Windows.Threading;
 
 namespace projektIOv2.Pages
 {
@@ -33,29 +35,31 @@ namespace projektIOv2.Pages
         {
             InitializeComponent();
             viewModel = new ViewModel();
-            //viewModel.XAxes[0].MaxLimit = new DateTime(2021, 1, 6).Ticks;
-            //abc.Series = viewModel.Series;
-            //abc.XAxes=viewModel.XAxes;
+
             this.DataContext = viewModel;
             stockChart.Series = viewModel.Series;
-            fmt.LabelFormatter = viewModel.Formatter;
+
+            viewModel.AddSeries("ALIOR");
 
         }
 
 
-        private void CheckNox_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
 
-        private void CheckNox_Checked(object sender, RoutedEventArgs e)
+        private async void CheckNox_Checked(object sender, RoutedEventArgs e)
         {
             if (viewModel == null) return;
-            var t1 = (sender as CheckNox).Text;
-            viewModel.AddSeries(t1);
-
-
+            var t1 = (sender as CheckNox)?.Text;
+            //viewModel.AddSeries(t1);
+            if (t1 != null)
+            {
+                ChartValues<NDatePoint> series = await viewModel.getSeriesAsync(t1);
+                // stockChart.Dispatcher.BeginInvoke((Action)(() => { viewModel.AddSeries(t1); }));
+                await Application.Current.Dispatcher.InvokeAsync(() => { viewModel.addafterasync(series, t1); });
+            }
         }
+
+
 
         private void CheckNox_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -66,13 +70,15 @@ namespace projektIOv2.Pages
 
         private void StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            viewModel.update();
+
+            fmt.MinValue = new NDate(viewModel.TimeStampMin).Ticks;
+
         }
 
         private void EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
-           // viewModel.update();
+            fmt.MaxValue = new NDate(viewModel.TimeStampMax).Ticks;
         }
     }
 }

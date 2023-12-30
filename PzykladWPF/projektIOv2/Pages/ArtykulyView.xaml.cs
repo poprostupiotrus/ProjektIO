@@ -49,16 +49,26 @@ namespace projektIOv2.Pages
 
         }
 
-        private void czas_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private async void czas_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (l1 == null) return;
 
             DateTime dt1 = (DateTime)czas.SelectedDate;
 
-            l1.Update(dt1);
-
+            var b = await l1.Update(dt1);
+            MyListbox.ItemsSource = b;
             // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
 
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (l1 == null) return;
+
+            DateTime dt1 = (DateTime)czas.SelectedDate;
+
+            var b = await l1.Update(dt1);
+            MyListbox.ItemsSource = b;
         }
     }
 }

@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace projektIOv2.Skraper
 {
@@ -45,22 +47,34 @@ namespace projektIOv2.Skraper
                     if (firstRow != null)
                     {
                         var cells = firstRow.Descendants("td");
-
+                        DateTime godz = DateTime.Now;
+                        var txtd = "";
                         foreach (var cell in cells)
                         {
                             bool b1 = cell.HasClass("dni");
 
                             if (b1 && DateTime.TryParseExact(cell.InnerText.Trim(), "yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime result))
                             {
+                                txtd = cell.InnerText.Trim();
                                 if (isRun == true && result != dt) return;
                                 if (isRun == null || isRun == false) isRun = result == dt;
                                 continue;
+                            }
+                            if (cell.HasClass("wdgodz"))
+                            {
+
+                                var godzi = dt.Year + "." + dt.Month + ".0" + dt.Day + " " + cell.InnerText.Trim();
+
+                                godz = DateTime.ParseExact(godzi, "yyyy.MM.dd HH:mm", CultureInfo.InvariantCulture);
+
+
                             }
                             var link = cell.Descendants("a").FirstOrDefault();
                             if (isRun == true && link != null)
                             {
                                 string linkText = link.GetAttributeValue("href", "");
-                                lista.Add(new Artykul() { Naglowek = link.InnerText, Link = linkText });
+                                //MessageBox.Show(godz.ToLongDateString());
+                                lista.Add(new Artykul() { Naglowek = link.InnerText, Link = linkText, Data = godz });
 
                                 //new Thread(() => { tresclist.Add(new Tresc(linkText)); }   ).Start();
                             }

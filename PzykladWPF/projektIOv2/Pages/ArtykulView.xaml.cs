@@ -1,4 +1,5 @@
 ﻿using projektIOv2.Controls;
+using projektIOv2.Skraper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,10 +72,14 @@ namespace projektIOv2.Pages
             }
             Clipboard.SetText(outt);
         }
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-
+            var ob = DataContext as Artykul;
+            if(ob.Tresc == null) {
+                Tresc t = new Tresc(ob.Link);
+                DataContext = await t.get();
+            }
         }
     }
 }
