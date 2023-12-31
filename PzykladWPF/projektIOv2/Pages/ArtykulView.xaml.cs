@@ -74,12 +74,25 @@ namespace projektIOv2.Pages
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
             var ob = DataContext as Artykul;
             if(ob.Tresc == null) {
                 Tresc t = new Tresc(ob.Link);
                 DataContext = await t.get();
             }
+             
+            if((ob.gpt == null || ob.gpt.Count()==0)&& ob.Tresc!=null)
+            {
+               // ob = DataContext as Artykul;
+                String txt = "Indeks WIG20 jest indeksem cenowym największych spółek giełdowych w Polsce. Wartość indeksu obliczana jest na podstawie obrotów i cen akcji 20 spółek giełdowych.podaj przewidywania jak podana informacja wpłynie na nastepujace spólki wig20:\r\n 'ACP (ASSECOPOL),ALE (ALLEGRO),ALR (ALIOR),CDR (CDPROJEKT),CPS (CYFRPLSAT),DNP (DINOPL),JSW,KGH (KGHM),KRU (KRUK),KTY (KETY),LPP,MBK (MBANK),OPL (ORANGEPL),PCO (PEPCO), PEO (PEKAO),PGE,PKN (PKNORLEN),PKO (PKOBP),PZU,SPL (SANPL)' \r\n Odpowiedź nie musi być prawdziwa, chodzi mi tylko jak według ciebie wpłynie artykuł na spółki wig20,  odpowiedź ma być w postaci listy, której elementami są: '<Nazwa spółki> <Przewidywanie>' i nic, poza tym(przewidywanie liczba z przedzialu <-10;10> gdzie -10 to wysokie prawdopodobienstwo spatku notowania danej spółki, \r\n 10-wysokie prawdopodobieństwo ze artykuł wplynie pozytywnie na notowania spolki,Nazwa spółki- trzyliterowy TICKERN spolki). Wszelki dodatkowy tekst zakazany, podam przykład odpowiedzi:\r\n'JSW -1\r\nALE +4\r\n...'\r\nTreść artykułu na podstawie którego masz wypisać wyniki:\r\n               ";
+                String query = txt+ob.Naglowek+ob.Tresc;
+                if (ob.Tresc == null) MessageBox.Show("mamy null");
+                GptHandler gptHandler = new GptHandler();
+                DataContext = await gptHandler.ZapytajGpt(ob,query);
+                
+               
+            }
+            
         }
     }
 }

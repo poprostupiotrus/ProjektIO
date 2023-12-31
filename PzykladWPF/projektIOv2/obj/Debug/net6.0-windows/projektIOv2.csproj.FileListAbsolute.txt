@@ -265,3 +265,4 @@ C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2.genruntimeconfig.cache
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\ArtykulButton.g.cs
 C:\Users\patr-\Source\Repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Controls\ArtykulButton.baml
+C:\Users\patr-\source\repos\poprostupiotrus\ProjektIO\PzykladWPF\projektIOv2\bin\Debug\net6.0-windows\OpenAI-DotNet.dll

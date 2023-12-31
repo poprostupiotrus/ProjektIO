@@ -24,10 +24,11 @@ using CommunityToolkit.Mvvm.Input;
 using static System.Net.Mime.MediaTypeNames;
 using projektIOv2.wykres;
 using System.Threading;
+using System.ComponentModel;
 
 namespace projektIOv2
 {
-    public class ViewModel
+    public class ViewModel : INotifyPropertyChanged
     {
         public Func<double, string> Formatter { get; set; }
         public SeriesCollection Series;
@@ -53,12 +54,66 @@ namespace projektIOv2
 
         }
 
-        public DateTime TimeStampMin { get => timeStampMin; set { if (value != null) { timeStampMin = value; } } }
-        public DateTime TimeStampMax { get => timeStampMax; set { if (value != null) { timeStampMax = value; } } }
-        private DateTime timeStampMax = new DateTime(2023, 11, 13, 23, 59, 59);
-        private DateTime timeStampMin = new DateTime(2023, 11, 10);
+        public DateTime TimeStampMin { get => timeStampMin; set { if (value != null) {
 
 
+                   
+                    timeStampMin = new DateTime(value.Year,value.Month,value.Day,minH.Hour,minH.Minute,0); OnPropertyChanged(nameof(TimeStampMin)); } } }
+        public DateTime TimeStampMax { get => timeStampMax; set { 
+                if (value != null) {
+                   
+                    timeStampMax = new DateTime(value.Year, value.Month, value.Day, maxH.Hour, maxH.Minute, 1); 
+                    OnPropertyChanged(nameof(TimeStampMax)); 
+                } 
+            } 
+        }
+        private DateTime timeStampMax = new DateTime(2023, 11, 13, 16, 59, 59);
+        private DateTime timeStampMin = new DateTime(2023, 11,11);
+        public DateTime MinH
+        {
+            get => minH; set
+            {
+                try
+                {
+                    if (value != null)
+                    {
+                        if (value.Hour < 9) { minH = new DateTime(1, 1, 1, 9, 0, 0); OnPropertyChanged(nameof(minH)); TimeStampMin = timeStampMin; return; }
+                        if (value.Hour > 17) { minH = new DateTime(1, 1, 1, 16, 59, 0); OnPropertyChanged(nameof(minH)); TimeStampMin = timeStampMin; return; }
+                        
+                        minH = value;
+                        TimeStampMin = timeStampMin;
+                        OnPropertyChanged(nameof(minH));
+                    }
+                } catch(Exception) { }
+
+            
+            }
+        }
+
+        public DateTime MaxH
+        {
+            get => maxH; set
+            {
+                try
+                {
+                    if (value != null)
+                    {
+                        if (value.Hour < 9) { maxH = new DateTime(1, 1, 1, 9, 0, 0); OnPropertyChanged(nameof(maxH)); TimeStampMax = timeStampMax; return; }
+                        if (value.Hour > 17) { maxH = new DateTime(1, 1, 1, 16, 59, 0); OnPropertyChanged(nameof(maxH)); TimeStampMax = timeStampMax; return; }
+                        
+                        maxH = value;
+                        TimeStampMax = timeStampMax;
+                        OnPropertyChanged(nameof(maxH));
+                    }
+                }
+                catch (Exception) { }
+
+
+            }
+        }
+        
+        private DateTime minH = new DateTime(2023, 11, 11, 9, 0, 0);
+        private DateTime maxH = new DateTime(2023, 11, 13, 16, 59, 59);
 
 
         public void AddSeries(String txt)
@@ -132,7 +187,12 @@ namespace projektIOv2
             }
 
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        public virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
     }
 

@@ -26,9 +26,20 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Początek"/>
-            <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}" SelectedDateChanged="StartDate_SelectedDateChanged"/>
+            <Border BorderBrush="{DynamicResource DatePicker.BorderBrush}" BorderThickness="0,1,1,1"  CornerRadius="15">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}" SelectedDateChanged="StartDate_SelectedDateChanged" />
+                    <TextBox BorderThickness="0" x:Name="nH" TextChanged="TextBox_TextChanged"   Text="{Binding MinH,Mode=TwoWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
+                </StackPanel>
+            </Border>
             <TextBlock Text="Koniec"/>
-            <DatePicker Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}" SelectedDateChanged="EndDate_SelectedDateChanged"/>
+
+            <Border BorderBrush="{DynamicResource DatePicker.BorderBrush}" BorderThickness="0,1,1,1"  CornerRadius="15">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker   Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}" SelectedDateChanged="EndDate_SelectedDateChanged" />
+                    <TextBox BorderThickness="0" x:Name="xH"  TextChanged="TextBox_TextChanged" Text="{Binding MaxH,Mode=TwoWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
+                </StackPanel>
+            </Border>
         </StackPanel>
         <Grid Grid.Row="1">
             <GroupBox Style="{DynamicResource GroupBoxStyle1}">

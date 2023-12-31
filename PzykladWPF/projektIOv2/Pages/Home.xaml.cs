@@ -21,6 +21,8 @@ using projektIOv2.Themes;
 using projektIOv2.Controls;
 using projektIOv2.wykres;
 using System.Windows.Threading;
+using System.Text.RegularExpressions;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace projektIOv2.Pages
 {
@@ -50,11 +52,11 @@ namespace projektIOv2.Pages
         {
             if (viewModel == null) return;
             var t1 = (sender as CheckNox)?.Text;
-            //viewModel.AddSeries(t1);
+            
             if (t1 != null)
             {
                 ChartValues<NDatePoint> series = await viewModel.getSeriesAsync(t1);
-                // stockChart.Dispatcher.BeginInvoke((Action)(() => { viewModel.AddSeries(t1); }));
+               
                 await Application.Current.Dispatcher.InvokeAsync(() => { viewModel.addafterasync(series, t1); });
             }
         }
@@ -70,15 +72,47 @@ namespace projektIOv2.Pages
 
         private void StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(viewModel.TimeStampMax!= viewModel.TimeStampMin)
             fmt.MinValue = new NDate(viewModel.TimeStampMin).Ticks;
 
         }
 
         private void EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (viewModel.TimeStampMax != viewModel.TimeStampMin) { }
+                fmt.MaxValue = new NDate(viewModel.TimeStampMax).Ticks;
+        }
 
-            fmt.MaxValue = new NDate(viewModel.TimeStampMax).Ticks;
+        
+        
+
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var ob = sender as TextBox;
+            string pattern = @"^\d{1,2}:\d{2}$";
+            
+            if(Regex.IsMatch(ob.Text.Trim(), pattern) )
+            {
+                  DateTime dt;
+                    DateTime.TryParseExact(ob.Text.Trim(), "HH:mm", null, System.Globalization.DateTimeStyles.None, out dt);
+                if (ob.Name=="nH")
+                {
+
+                    viewModel.MinH = dt;
+                    if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
+                fmt.MinValue = new NDate(viewModel.TimeStampMin).Ticks;
+                    
+                    
+                }
+                if (ob.Name == "xH")
+                {
+                    viewModel.MaxH = dt;
+                    if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
+                        fmt.MaxValue = new NDate(viewModel.TimeStampMax).Ticks;
+                    
+                }
+            }
         }
     }
 }

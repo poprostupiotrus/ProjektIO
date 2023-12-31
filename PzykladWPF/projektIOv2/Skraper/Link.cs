@@ -29,7 +29,7 @@ namespace projektIOv2.Skraper
 
 
 
-        private async Task addUrlsForPage(HtmlDocument doc, DateTime dt)
+        private void addUrlsForPage(HtmlDocument doc, DateTime dt)
         {
             bool? isRun = null;
 
@@ -90,7 +90,7 @@ namespace projektIOv2.Skraper
                 }
             }
 
-            await Task.CompletedTask;
+            //await Task.CompletedTask;
         }
 
 
@@ -130,7 +130,7 @@ namespace projektIOv2.Skraper
                                     lista.Add(result);
                                     if (result.Equals(dt))
                                     {
-                                        Task.Run(async () => await addUrlsForPage(doc, dt));
+                                        Task.Run( () =>  addUrlsForPage(doc, dt));
                                         return lista;
                                     }
                                 }
