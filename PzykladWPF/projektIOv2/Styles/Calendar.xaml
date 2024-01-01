@@ -355,9 +355,9 @@
 										<RowDefinition Height="Auto"/>
 										<RowDefinition Height="*"/>
 									</Grid.RowDefinitions>
-									<Button x:Name="PART_PreviousButton" Grid.Column="0" Focusable="False" HorizontalAlignment="Left" Height="30" Grid.Row="0" Template="{StaticResource PreviousButtonTemplate}" Width="30" Margin="10,3.483,0,3.483"/>
-									<Button x:Name="PART_HeaderButton" Grid.Column="1" FontWeight="Bold" Focusable="False" FontSize="10.5" HorizontalAlignment="Center" Grid.Row="0" Template="{StaticResource HeaderButtonTemplate}" VerticalAlignment="Center" Width="140"/>
-									<Button x:Name="PART_NextButton" Grid.Column="2" Focusable="False" HorizontalAlignment="Right" Height="30" Grid.Row="0" Template="{StaticResource NextButtonTemplate}" Width="30" Margin="0,0,10,0"/>
+									<Button x:Name="PART_PreviousButton" Grid.Column="0" Focusable="False" HorizontalAlignment="Left" Height="30" Grid.Row="0" Template="{DynamicResource PreviousButtonTemplate}" Width="30" Margin="10,3.483,0,3.483"/>
+									<Button x:Name="PART_HeaderButton" Grid.Column="1" FontWeight="Bold" Focusable="False" FontSize="10.5" HorizontalAlignment="Center" Grid.Row="0" Template="{DynamicResource HeaderButtonTemplate}" VerticalAlignment="Center" Width="140"/>
+									<Button x:Name="PART_NextButton" Grid.Column="2" Focusable="False" HorizontalAlignment="Right" Height="30" Grid.Row="0" Template="{DynamicResource NextButtonTemplate}" Width="30" Margin="0,0,10,0"/>
 									<Grid x:Name="PART_MonthView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-1,6,6" Grid.Row="1" Visibility="Visible">
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition Width="Auto"/>
@@ -394,7 +394,7 @@
 								</Grid>
 							</Border>
 						</Border>
-						<Rectangle x:Name="PART_DisabledVisual" Fill="{StaticResource DisabledColor}" Opacity="0" RadiusY="2" RadiusX="2" Stretch="Fill" Stroke="{StaticResource DisabledColor}" StrokeThickness="1" Visibility="Collapsed"/>
+						<Rectangle x:Name="PART_DisabledVisual" Fill="{DynamicResource DisabledColor}" Opacity="0" RadiusY="2" RadiusX="2" Stretch="Fill" Stroke="{DynamicResource DisabledColor}" StrokeThickness="1" Visibility="Collapsed"/>
 					</Grid>
 
 

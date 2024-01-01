@@ -1,5 +1,5 @@
 import pymysql
-
+from funkcje import *
 class Baza:
     def __init__(self,tabela):
         self.connection = pymysql.connect(host="127.0.0.1", port=3306, database="wiadomosci", user="test4", password="123")
@@ -15,4 +15,5 @@ class Baza:
 
     def insertNotowanie(self,IDt1, Tickern, notowanie):
         self.cursor.execute(f"INSERT INTO {self.tabela}( IDt1, Tickern, notowanie) VALUES ({IDt1},'{Tickern}',{notowanie})")
+        log(f"INSERT INTO {self.tabela}( IDt1, Tickern, notowanie) VALUES ({IDt1},'{Tickern}',{notowanie})")
         self.connection.commit()

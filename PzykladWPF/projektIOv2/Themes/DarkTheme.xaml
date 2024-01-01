@@ -85,9 +85,11 @@
 
 
 	<!--ComboBox-->
-	<SolidColorBrush x:Key="TextBox.Static.Background" Color="red"/>
+    <SolidColorBrush x:Key="TextBox.Static.Background" Color="red"/> 
+    <SolidColorBrush x:Key="TextBox.Static.Foreground" Color="white"/>
+    <SolidColorBrush x:Key="ComboBox.List.Background" Color="white"/>
 
-	<LinearGradientBrush x:Key="ComboBox.Static.Background" EndPoint="0,1" StartPoint="0,0">
+    <LinearGradientBrush x:Key="ComboBox.Static.Background" EndPoint="0,1" StartPoint="0,0">
 		<GradientStop Color="Transparent" Offset="0.0"/>
 		<GradientStop Color="Transparent" Offset="1.0"/>
 	</LinearGradientBrush>
@@ -134,4 +136,6 @@
 	<!--NotowanieControl-->
 	<SolidColorBrush x:Key="NotowanieControl.h1.Foreground" Color="white"/>
 	<SolidColorBrush x:Key="NotowanieControl.p.Foreground" Color="white"/>
+
+    
 </ResourceDictionary>

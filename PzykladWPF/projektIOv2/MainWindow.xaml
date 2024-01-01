@@ -60,9 +60,9 @@
                         <Button x:Name="btnDashboard" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnDashboard_MouseEnter" MouseLeave="btnDashboard_MouseLeave" Click="btnDashboard_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource dashboard}" IconWidth="16" Text="Artykuły" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  >
+                       <!-- <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  >
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource email}" IconWidth="16" Text="Raport" VerticalAlignment="Center"/>
-                        </Button>
+                        </Button>-->
                         <Button x:Name="btnSetting" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnSetting_MouseEnter" MouseLeave="btnSetting_MouseLeave" Click="btnSetting_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource settings}" IconWidth="16" Text="Ustawienia" VerticalAlignment="Center"/>
                         </Button>

@@ -7,10 +7,10 @@ def extract_first_three_letters(string):
         return ''
 
 def extract_number(string):
-    pattern = r"[-+]?\d+\.?\d*%"
+    pattern = r"[-+]?\d+\.?\d*"
     match = re.search(pattern, string)
     if match:
-        return float(match.group(0).replace('%',''))
+        return float(match.group(0).replace(',','.'))
     else:
         return 0
 
@@ -21,3 +21,18 @@ def nieistotnyArtykul(listaa):
         if any(wyraz.lower() in zmienna.lower() for wyraz in brakinfo):
             return True
     return False
+
+def wypisz(nowa_linia):
+    try:
+        with open("raport2.txt", 'a') as plik:
+            plik.write(str(nowa_linia) + '\n')
+        print(nowa_linia)
+    except Exception as e:
+        print(f'Błąd: Nie można zapisać do pliku raport.txt. {e}')
+
+def log(nowa_linia):
+    try:
+        with open("raport2.txt", 'a') as plik:
+            plik.write(str(nowa_linia) + '\n')
+    except Exception as e:
+        print(f'Błąd: Nie można zapisać do pliku raport.txt. {e}')

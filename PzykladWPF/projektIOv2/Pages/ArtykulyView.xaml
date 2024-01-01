@@ -50,7 +50,7 @@
 
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <DatePicker x:Name="czas" HorizontalAlignment="Center" SelectedDate="11.07.2023" SelectedDateChanged="czas_SelectedDateChanged"/>
+            <DatePicker x:Name="czas" HorizontalAlignment="Center" SelectedDate="11.07.2023" SelectedDateChanged="czas_SelectedDateChanged" />
         </StackPanel>
         <ListBox x:Name="MyListbox" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
 

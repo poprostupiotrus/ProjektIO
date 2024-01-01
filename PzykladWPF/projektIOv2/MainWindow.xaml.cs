@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Resources;
 using System.Reflection;
-using projektIOv2.Themes.projektIOv2.Themes;
+using projektIOv2.Themes;
 using projektIOv2.Pages;
 
 namespace projektIOv2
@@ -162,7 +162,9 @@ namespace projektIOv2
 
         private void home_Loaded(object sender, RoutedEventArgs e)
         {
-            ThemesController.SetTheme(ThemesController.GetTheme());
+            var contlorer = ThemesController.GetCurrentSettings();
+            ThemesController.SetTheme(contlorer.ThemeType);
+            ThemesController.SetFont(contlorer.FontType);
             home1 = new Home();
             fContainer.Navigate(home1);
         }

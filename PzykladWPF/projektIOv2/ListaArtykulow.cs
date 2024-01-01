@@ -17,7 +17,7 @@ namespace projektIOv2
         private ListBox listBox;
         public ListaArtykulow(ListBox listBox)
         {
-            string filePath = "artykuly.json";
+            string filePath = "artykulyV2.json";
             string jsonString = File.ReadAllText(filePath);
             listaArtykulowp = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
             listaArtykulowp.Reverse();

@@ -1,5 +1,5 @@
 ﻿using projektIOv2.Themes;
-using projektIOv2.Themes.projektIOv2.Themes;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +50,37 @@ namespace projektIOv2.Pages
                     (item as ComboBoxItem).IsSelected = true;
                 }
             }
+
+            var c = ThemesController.GetFont().ToString();
+            foreach (var item in sfnt.Items)
+            {
+                if ((item as ComboBoxItem).Content.ToString().Equals(c))
+                {
+                    (item as ComboBoxItem).IsSelected = true;
+                }
+            }
+        }
+
+        private void small_Selected(object sender, RoutedEventArgs e)
+        {
+            ThemesController.SetFont(ThemesController.FontTypes.Small);
+        }
+
+        private void normal_Selected(object sender, RoutedEventArgs e)
+        {
+            ThemesController.SetFont(ThemesController.FontTypes.Normal);
+        }
+
+        private void large_Selected(object sender, RoutedEventArgs e)
+        {
+            ThemesController.SetFont(ThemesController.FontTypes.Large);
+        }
+
+        
+
+        private void high_Selected(object sender, RoutedEventArgs e)
+        {
+            ThemesController.SetTheme(ThemesController.ThemeTypes.High);
         }
     }
 }

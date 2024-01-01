@@ -8,46 +8,41 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Settings" Loaded="Page_Loaded">
     <Page.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="0,0,0,9"/>
-        </Style>
-        <Style x:Key="s11" TargetType="StackPanel">
-            <Setter Property="Margin" Value="0,40,0,0"/>
-        </Style>
+       
 
     </Page.Resources>
     <StackPanel >
         <StackPanel>
-            <TextBlock Text="Wybiez motyw"/>
-            <ComboBox x:Name="cb1">
+            <TextBlock Text="Wybiez motyw" Style="{DynamicResource settings.textblock}"/>
+            <ComboBox x:Name="cb1" >
 
                 <ComboBoxItem Content="Dark" Selected="ComboBoxItem_Selected"/>
                 <ComboBoxItem Content="Light" Selected="ComboBoxItem_Selected_1"/>
+                <ComboBoxItem Content="High"  Selected="high_Selected"/>
             </ComboBox>
         </StackPanel>
 
 
-        <StackPanel Style="{StaticResource s11}">
-            <TextBlock Text="Wybiez rozmiar czcionki"/>
-            <ComboBox >
+        <StackPanel Style="{DynamicResource settings.s11}">
+            <TextBlock Text="Wybiez rozmiar czcionki" Style="{DynamicResource settings.textblock}"/>
+            <ComboBox x:Name="sfnt">
 
-                <ComboBoxItem Content="Small" />
-                <ComboBoxItem Content="Medium" IsSelected="True"/>
-                <ComboBoxItem Content="Large" />
+                <ComboBoxItem Content="Small" Name="small" Selected="small_Selected"/>
+                <ComboBoxItem Content="Normal" Name="normal" Selected="normal_Selected"/>
+                <ComboBoxItem Content="Large" Name="large" Selected="large_Selected"/>
+               
             </ComboBox>
         </StackPanel>
-
-        <StackPanel Style="{StaticResource s11}">
-            <TextBlock Text="Wybiez jezyk aplikacji"/>
+<!--
+        <StackPanel Style="{DynamicResource settings.s11}">
+            <TextBlock Text="Wybiez jezyk aplikacji" Style="{DynamicResource settings.textblock}"/>
             <ComboBox >
 
                 <ComboBoxItem Content="Polski" IsSelected="True"/>
                 <ComboBoxItem Content="English" />
                 <ComboBoxItem Content="Deutsch" />
             </ComboBox>
-        </StackPanel>
+        </StackPanel>-->
     </StackPanel>
 
 </Page>

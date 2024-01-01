@@ -4,21 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:projektIOv2.Controls"
-             xmlns:local2="clr-namespace:projektIOv2"
+             xmlns:conv="clr-namespace:projektIOv2.Converters"
              mc:Ignorable="d"
              >
 	<UserControl.Resources>
-		<local2:NameConverter x:Key="NameConverter"/>
-		<Style x:Key="notowanieh1" TargetType="TextBlock">
-			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="FontSize" Value="15"/>
-			<Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
-
-		</Style>
-		<Style x:Key="notowaniep" TargetType="TextBlock">
-			<Setter Property="FontSize" Value="12"/>
-			<Setter Property="Foreground" Value="{DynamicResource NotowanieControl.p.Foreground}"/>
-		</Style>
+        <conv:NameConverter x:Key="NameConverter"/>
+		
 
 	</UserControl.Resources>
 
@@ -30,8 +21,8 @@
 			<StackPanel Orientation="Horizontal">
 				<Rectangle Width="5" Height="60" Fill="{DynamicResource PrimaryBlueColor}" RadiusX="2" RadiusY="2" Margin="0,5,0,5"/>
 				<StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-					<TextBlock x:Name="t1" Text="{Binding Path=Key, Converter={StaticResource NameConverter} }" Style="{DynamicResource notowanieh1}" HorizontalAlignment="Center"  Margin="10,0,0,5"/>
-					<TextBlock x:Name="t2" Text="{Binding Value}" Style="{DynamicResource notowaniep}" HorizontalAlignment="Center" Margin="10,0,0,0"/>
+					<TextBlock x:Name="t1" Text="{Binding Path=Key, Converter={StaticResource NameConverter} }" Style="{DynamicResource notowanie.h1}" HorizontalAlignment="Center"  Margin="10,0,0,5"/>
+					<TextBlock x:Name="t2" Text="{Binding Value}" Style="{DynamicResource notowanie.p}" HorizontalAlignment="left" Margin="10,0,0,0"/>
 
 				</StackPanel>
 

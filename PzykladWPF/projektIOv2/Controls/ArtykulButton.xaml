@@ -10,23 +10,8 @@
         <local:VisibilityConverter x:Key="VisibilityConverter"/>
 
 
-        <Style x:Key="st1" TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="40"/>
-            <Setter Property="Margin" Value="0,15,0,15"/>
-            <Setter Property="Foreground" Value="white"/>
-        </Style>
-
-        <Style x:Key="st2" TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="25"/>
-            <Setter Property="Margin" Value="0,10,0,10"/>
-            <Setter Property="Foreground" Value="white"/>
-        </Style>
-        <Style TargetType="TextBlock">
-
-            <Setter Property="Foreground" Value="white"/>
-        </Style>
+        
+        
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -94,13 +79,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding YEAR}" Style="{StaticResource st1}" Grid.Row="0" x:Name="d1" Visibility="{Binding Path=YEAR, Converter={StaticResource VisibilityConverter} }"/>
-        <TextBlock Text="{Binding HOUR}" Grid.Row="1" Style="{StaticResource st2}" Name="d2" Visibility="{Binding Path=HOUR, Converter={StaticResource VisibilityConverter} }"/>
+        <TextBlock Text="{Binding YEAR}" Style="{DynamicResource ArtykulButton.st1}" Grid.Row="0" x:Name="d1" Visibility="{Binding Path=YEAR, Converter={StaticResource VisibilityConverter} }"/>
+        <TextBlock Text="{Binding HOUR}" Grid.Row="1" Style="{DynamicResource ArtykulButton.st2}" Name="d2" Visibility="{Binding Path=HOUR, Converter={StaticResource VisibilityConverter} }"/>
 
         <Button Style="{StaticResource ResetButton}" Grid.Row="2" HorizontalAlignment="Left"  Visibility="{Binding Path=Naglowek, Converter={StaticResource VisibilityConverter} }" Click="Button_Click" >
             <StackPanel Orientation="Horizontal" >
-                <Rectangle Width="5" Height="60" Fill="{DynamicResource PrimaryBlueColor}" RadiusX="2" RadiusY="2" Margin="0,5,0,5"/>
-                <TextBlock Text="{Binding Naglowek}" Grid.Row="2" Name="n1" HorizontalAlignment="Center" FontSize="13" Height="23" Margin="10,0,0,0"/>
+                <Rectangle Style="{DynamicResource ArtykulButton.kreska}"/>
+                <TextBlock Text="{Binding Naglowek}" Grid.Row="2" Name="n1"  Style="{DynamicResource ArtykulButton.naglowekartykulu}"/>
 
             </StackPanel>
         </Button>

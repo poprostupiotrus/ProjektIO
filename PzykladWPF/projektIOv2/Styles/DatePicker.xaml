@@ -29,7 +29,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Calendar}">
 					<StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
-						<CalendarItem x:Name="PART_CalendarItem" Background="Black" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="#FFFDFDFD" Height="337" Style="{DynamicResource CalendarItemStyle1}" Width="346.356"/>
+                        <CalendarItem x:Name="PART_CalendarItem" Background="{DynamicResource Calendar.Background}" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="#FFFDFDFD" Height="337" Style="{DynamicResource CalendarItemStyle1}" Width="346.356"/>
 					</StackPanel>
 				</ControlTemplate>
 			</Setter.Value>
@@ -195,7 +195,7 @@
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="Auto"/>
 							</Grid.ColumnDefinitions>
-							<Button x:Name="PART_Button" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="False" HorizontalAlignment="Left" Margin="3,0,3,0" Grid.Row="0" Template="{StaticResource DropDownButtonTemplate}" VerticalAlignment="Top" Width="20"/>
+							<Button x:Name="PART_Button" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="False" HorizontalAlignment="Left" Margin="3,0,3,0" Grid.Row="0" Template="{DynamicResource DropDownButtonTemplate}" VerticalAlignment="Top" Width="20"/>
 							<DatePickerTextBox Style="{DynamicResource DatePickerTextBoxStyle1}" x:Name="PART_TextBox" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="Stretch" Grid.Row="0" VerticalContentAlignment="Stretch"/>
 							<Grid x:Name="PART_DisabledVisual" Grid.Column="0" Grid.ColumnSpan="2" IsHitTestVisible="False" Opacity="0" Grid.Row="0" Margin="0,40,-261,-40">
 								<Grid.ColumnDefinitions>

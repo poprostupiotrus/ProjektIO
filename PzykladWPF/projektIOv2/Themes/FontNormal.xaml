@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- ArtykulView -->
+    <Style x:Key="Artykul.Naglowek" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Margin" Value="0,15,0,15"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style x:Key="Artykul.h2" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="0,0,0,15"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.p.Foreground}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style x:Key="Artykul.akapit" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.p.Foreground}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <!--Notowania barda i gpt-->
+    <Style x:Key="notowanie.h1" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
+
+    </Style>
+    <Style x:Key="notowanie.p" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.p.Foreground}"/>
+    </Style>
+
+    <!--Widok artykulow-->
+    <Style x:Key="ArtykulButton.st1" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="Margin" Value="0,15,0,15"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
+    </Style>
+
+    <Style x:Key="ArtykulButton.st2" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Margin" Value="0,10,0,10"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
+    </Style> 
+
+    <Style x:Key="ArtykulButton.kreska" TargetType="Rectangle">
+        <Setter Property="Width" Value="5"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Fill" Value="{DynamicResource PrimaryBlueColor}"/>
+        <Setter Property="RadiusX" Value="2"/>
+        <Setter Property="RadiusY" Value="2"/>
+        <Setter Property="Margin" Value="0,5,0,5"/>
+    </Style>
+
+    <Style x:Key="ArtykulButton.naglowekartykulu" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
+    </Style>
+
+    <!-- Strona ustawien-->
+    <Style x:Key="settings.textblock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
+        <Setter Property="Padding" Value="0,0,0,9"/>
+    </Style>
+    <Style x:Key="settings.s11" TargetType="StackPanel">
+        <Setter Property="Margin" Value="0,40,0,0"/>
+    </Style>
+    
+    <!-- etykietka menu podpowiedzi do zakladek-->
+    <Style x:Key="Popupstyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+</ResourceDictionary>

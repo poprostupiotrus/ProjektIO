@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
+                <ResourceDictionary Source="Themes/FontNormal.xaml"/> 
 
                 <ResourceDictionary Source="Assets/Icons.xaml"/>
 

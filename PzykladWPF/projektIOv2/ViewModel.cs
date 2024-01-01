@@ -116,7 +116,7 @@ namespace projektIOv2
         private DateTime maxH = new DateTime(2023, 11, 13, 16, 59, 59);
 
 
-        public void AddSeries(String txt)
+        public void AddSeries(String txt, SolidColorBrush brush)
         {
             if (IfExistMakeVisible(txt)) return;
             DaneSpolek spolek = new DaneSpolek();
@@ -138,6 +138,7 @@ namespace projektIOv2
                 s1.PointGeometry = null;
                 s1.Fill = Brushes.Transparent;
                 s1.LineSmoothness = 0;
+                s1.Stroke = brush;
                 Series.Add(s1);
             }
         }
@@ -157,13 +158,14 @@ namespace projektIOv2
                 return wals;
             });
         }
-        public void addafterasync(ChartValues<NDatePoint> wals, String txt)
+        public void addafterasync(ChartValues<NDatePoint> wals, String txt, SolidColorBrush brush)
         {
             LineSeries s1 = new LineSeries();
             s1.Values = wals;
             s1.Title = txt;
             s1.PointGeometry = null;
             s1.Fill = Brushes.Transparent;
+            s1.Stroke = brush;
             s1.LineSmoothness = 0;
             Series.Add(s1);
         }

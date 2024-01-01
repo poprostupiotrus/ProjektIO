@@ -63,7 +63,7 @@ namespace projektIOv2.Skraper
                             if (cell.HasClass("wdgodz"))
                             {
 
-                                var godzi = dt.Year + "." + dt.Month + ".0" + dt.Day + " " + cell.InnerText.Trim();
+                                var godzi = dt.Year + "." + formatnum(dt.Month) + "." + formatnum(dt.Day) + " " + cell.InnerText.Trim();
 
                                 godz = DateTime.ParseExact(godzi, "yyyy.MM.dd HH:mm", CultureInfo.InvariantCulture);
 
@@ -93,7 +93,11 @@ namespace projektIOv2.Skraper
             //await Task.CompletedTask;
         }
 
-
+        String formatnum(int num)
+        {
+            if (num < 10) return "0" + num;
+            return "" + num;
+        }
 
 
 

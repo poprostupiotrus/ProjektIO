@@ -41,7 +41,7 @@ namespace projektIOv2.Pages
             this.DataContext = viewModel;
             stockChart.Series = viewModel.Series;
 
-            viewModel.AddSeries("ALIOR");
+            viewModel.AddSeries("ALIOR", (SolidColorBrush)new BrushConverter().ConvertFrom("#69002A"));
 
         }
 
@@ -52,12 +52,13 @@ namespace projektIOv2.Pages
         {
             if (viewModel == null) return;
             var t1 = (sender as CheckNox)?.Text;
-            
+            var t2 = (sender as CheckNox).IndicatorBrush;
+
             if (t1 != null)
             {
                 ChartValues<NDatePoint> series = await viewModel.getSeriesAsync(t1);
                
-                await Application.Current.Dispatcher.InvokeAsync(() => { viewModel.addafterasync(series, t1); });
+                await Application.Current.Dispatcher.InvokeAsync(() => { viewModel.addafterasync(series, t1,t2); });
             }
         }
 

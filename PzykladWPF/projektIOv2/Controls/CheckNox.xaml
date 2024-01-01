@@ -16,7 +16,7 @@
                     <Setter Property="Cursor" Value="Hand"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"/>
+                    <Setter Property="Background" Value="{Binding IndicatorBrush,TargetNullValue=red, RelativeSource={RelativeSource AncestorType={x:Type local:CheckNox}}}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>

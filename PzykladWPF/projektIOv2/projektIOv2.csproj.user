@@ -16,9 +16,6 @@
     <Compile Update="Controls\NotowanieControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Controls\UserControl1.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Controls\UserPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,9 +43,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\NotowanieControl.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Controls\UserControl1.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\UserPopup.xaml">
@@ -94,6 +88,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\GroupBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\FontLarge.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\FontNormal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\FontSmall.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\HighTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\LightTheme.xaml">

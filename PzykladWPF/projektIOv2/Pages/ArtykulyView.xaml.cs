@@ -55,8 +55,16 @@ namespace projektIOv2.Pages
 
             DateTime dt1 = (DateTime)czas.SelectedDate;
 
-            var b = await l1.Update(dt1);
-            MyListbox.ItemsSource = b;
+            try
+            {
+                var b = await l1.Update(dt1);
+                MyListbox.ItemsSource = b;
+            }
+            catch (Exception)
+            {
+
+               
+            }
             // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
 
         }
