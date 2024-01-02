@@ -10,6 +10,9 @@
     <Compile Update="Controls\CheckNox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\ErrorBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\MenuItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\CheckNox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ErrorBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\MenuItem.xaml">
