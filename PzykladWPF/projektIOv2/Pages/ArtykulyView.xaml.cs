@@ -57,19 +57,23 @@ namespace projektIOv2.Pages
             try
             {
                 var b = await l1.Update(dt1);
+                if (b.Count == 0)
+                {
+                    errorBox.ErrorMessage = "NIE UDAŁO SIĘ ZAŁADOWAĆ ŻADNYCH ARTYKUŁÓW";
+                    OdpowiedzNaError();
+                }
                 MyListbox.ItemsSource = b;
             }
             catch (Exception)
             {
 
-               
+
             }
             if (DateTime.Now < dt1)
             {
-                errorBox.Visibility = Visibility.Visible;
-                WylaczInneKontrolki();
-                BlurEffect blurEffect = new BlurEffect { Radius = 5 };
-                grid.Effect = blurEffect;
+                errorBox.ErrorMessage = "NIE MOŻESZ WYBRAC DATY Z PRZYSZŁOŚCI";
+                OdpowiedzNaError();
+                return;
             }
             // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
 
@@ -86,6 +90,13 @@ namespace projektIOv2.Pages
                 var b = await l1.Update(dt1);
                 MyListbox.ItemsSource = b;
             } catch (Exception) { }
+        }
+        private void OdpowiedzNaError()
+        {
+            errorBox.Visibility = Visibility.Visible;
+            WylaczInneKontrolki();
+            BlurEffect blurEffect = new BlurEffect { Radius = 5 };
+            grid.Effect = blurEffect;
         }
         private void WylaczInneKontrolki()
         {

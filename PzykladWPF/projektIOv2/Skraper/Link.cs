@@ -152,6 +152,10 @@ namespace projektIOv2.Skraper
             {
                 Console.WriteLine("Błąd podczas wysyłania zapytania GET: " + ex.Message);
             }
+            catch (Exception e)
+            {
+
+            }
 
             return lista;
         }
