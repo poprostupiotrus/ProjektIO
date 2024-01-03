@@ -8,17 +8,17 @@
              d:DesignHeight="170" d:DesignWidth="600">
     <Grid>
         <StackPanel>
-            <Border BorderBrush="Red" BorderThickness="0,0,0,5" CornerRadius="5" Background="#1d2335">
+            <Border BorderBrush="Red" BorderThickness="0,0,0,5" CornerRadius="5" Background="{DynamicResource ErrorBox.BackgroundColor}">
                 <StackPanel Margin="10">
-                    <TextBlock Text="BŁĄD" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,10"/>
-                    <TextBlock HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Margin="0,10,0,10" Foreground="White"/>
-                    <Button FontWeight="Bold" BorderThickness="0" FontSize="16" Foreground="White" Content="ZAMKNIJ" HorizontalAlignment="Center" Margin="0,10,0,10" Click="CloseButtonClick">
+                    <TextBlock Text="BŁĄD" FontWeight="Bold" FontSize="16" Foreground="{DynamicResource ErrorBox.TextColor}" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+                    <TextBlock HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Margin="0,10,0,10" Foreground="{DynamicResource ErrorBox.TextColor}"/>
+                    <Button FontWeight="Bold" BorderThickness="0" FontSize="16" Foreground="{DynamicResource ErrorBox.TextColor}" Content="ZAMKNIJ" HorizontalAlignment="Center" Margin="0,10,0,10" Click="CloseButtonClick">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="#2e3446"/>
+                                <Setter Property="Background" Value="{DynamicResource ErrorBox.Button.BackgroundColor}"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#4c556a" />
+                                        <Setter Property="Background" Value="{DynamicResource ErrorBox.Button.IsMouseOverColor}" />
                                         <Setter Property="Cursor" Value="Hand" />
                                     </Trigger>
                                 </Style.Triggers>

@@ -41,7 +41,7 @@ namespace projektIOv2.Pages
             this.DataContext = viewModel;
             stockChart.Series = viewModel.Series;
 
-            viewModel.AddSeries("ALIOR", (SolidColorBrush)new BrushConverter().ConvertFrom("#69002A"));
+            viewModel.AddSeries("ALIOR", (SolidColorBrush)new BrushConverter().ConvertFrom("#07f045"));
 
         }
 

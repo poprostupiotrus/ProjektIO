@@ -18,7 +18,7 @@
     </Style>
 
     <Style x:Key="Artykul.akapit" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="0,10,0,0"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.p.Foreground}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
@@ -27,26 +27,26 @@
     <!--Notowania barda i gpt-->
     <Style x:Key="notowanie.h1" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
 
     </Style>
     <Style x:Key="notowanie.p" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.p.Foreground}"/>
     </Style>
 
     <!--Widok artykulow-->
     <Style x:Key="ArtykulButton.st1" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontSize" Value="45"/>
         <Setter Property="Margin" Value="0,15,0,15"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
     </Style>
 
     <Style x:Key="ArtykulButton.st2" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontSize" Value="30"/>
         <Setter Property="Margin" Value="0,10,0,10"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
     </Style>
@@ -62,7 +62,7 @@
 
     <Style x:Key="ArtykulButton.naglowekartykulu" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Height" Value="23"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
@@ -70,7 +70,7 @@
 
     <!-- Strona ustawien-->
     <Style x:Key="settings.textblock" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="30"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
         <Setter Property="Padding" Value="0,0,0,9"/>
     </Style>

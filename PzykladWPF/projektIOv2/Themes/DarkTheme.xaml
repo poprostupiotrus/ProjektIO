@@ -136,6 +136,11 @@
 	<!--NotowanieControl-->
 	<SolidColorBrush x:Key="NotowanieControl.h1.Foreground" Color="white"/>
 	<SolidColorBrush x:Key="NotowanieControl.p.Foreground" Color="white"/>
+    <!--ErrorBox-->
+    <SolidColorBrush x:Key="ErrorBox.TextColor" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ErrorBox.Button.BackgroundColor" Color="#2e3446"/>
+    <SolidColorBrush x:Key="ErrorBox.BackgroundColor" Color="#1d2335"/>
+    <SolidColorBrush x:Key="ErrorBox.Button.IsMouseOverColor" Color="#4c556a"/>
 
-    
+
 </ResourceDictionary>
