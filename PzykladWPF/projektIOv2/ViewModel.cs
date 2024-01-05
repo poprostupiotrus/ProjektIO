@@ -1,201 +1,199 @@
 ﻿using LiveCharts;
-using LiveCharts.Configurations;
-using LiveCharts.Defaults;
 using LiveCharts.Wpf;
-using System.Linq;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Diagnostics;
-using System.Globalization;
 using LiveCharts.Events;
 using CommunityToolkit.Mvvm.Input;
-using static System.Net.Mime.MediaTypeNames;
-using projektIOv2.wykres;
-using System.Threading;
 using System.ComponentModel;
+using System.Collections.Generic;
+using LiveCharts.Defaults;
+using System.Globalization;
+using System.Linq;
 
 namespace projektIOv2
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        public Func<double, string> Formatter { get; set; }
-        public SeriesCollection Series;
+        private DaneSpolek daneSpolek;
+        public List<string> wszystkieDaty;
+        private CartesianChart chart;
+        public bool czyWykresProcentowy = false;
+        private List<(Spolka, SolidColorBrush)> listaWykresow;
+        public int MinIndex;
+        public int MaxIndex;
         public RelayCommand<PreviewRangeChangedEventArgs> XRangeChangedCommand
         {
             get;
             private set;
         }
-        LineSeries l1;
-        public ViewModel()
+        public ViewModel(CartesianChart cartesianChart)
         {
+            chart = cartesianChart;
+            listaWykresow = new List<(Spolka, SolidColorBrush)>();
+            daneSpolek = new DaneSpolek();
 
-            var dayConfig = Mappers.Xy<NDatePoint>()
-          .X(dateModel => dateModel.NDate.Ticks)
-          .Y(dateModel => dateModel.Value);
+            wszystkieDaty = new List<string>();
+            foreach (Spolka spolka in daneSpolek.ListaSpolek)
+            {
+                foreach (KeyValuePair<DateTime, double> pair in spolka.Notowania)
+                {
+                    wszystkieDaty.Add(pair.Key.ToString("dd.MM.yyyy HH.mm"));
+                }
+            }
+            wszystkieDaty = wszystkieDaty.Distinct().ToList();
+            wszystkieDaty.Sort();
+            chart.AxisX.Clear();
+            chart.AxisX.Add(new Axis
+            {
+                Title = "Data",
+                Labels = wszystkieDaty
+            });
+            TimeStampMinHour = DateTime.ParseExact(wszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+            TimeStampMaxHour = DateTime.ParseExact(wszystkieDaty[wszystkieDaty.Count-1], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
 
-            Series = new SeriesCollection(dayConfig);
+            MinIndex = 0;
+            MaxIndex = wszystkieDaty.Count - 1;
 
-
-            Formatter = value => NDate.toString((long)value);
-
-
-
+            chart.AxisY.Add(new Axis
+            {
+                Title = "Wartość akcji [zł]"
+            });
         }
-
-        public DateTime TimeStampMin { get => timeStampMin; set { if (value != null) {
-
-
-                   
-                    timeStampMin = new DateTime(value.Year,value.Month,value.Day,minH.Hour,minH.Minute,0); OnPropertyChanged(nameof(TimeStampMin)); } } }
+        public DateTime TimeStampMin { get => timeStampMin; set {                   
+                    timeStampMin = new DateTime(value.Year,value.Month,value.Day,timeStampMin.Hour,timeStampMin.Minute,0); OnPropertyChanged(nameof(TimeStampMin)); } } 
         public DateTime TimeStampMax { get => timeStampMax; set { 
-                if (value != null) {
-                   
-                    timeStampMax = new DateTime(value.Year, value.Month, value.Day, maxH.Hour, maxH.Minute, 1); 
-                    OnPropertyChanged(nameof(TimeStampMax)); 
-                } 
-            } 
-        }
-        private DateTime timeStampMax = new DateTime(2023, 11, 13, 16, 59, 59);
-        private DateTime timeStampMin = new DateTime(2023, 11,11);
-        public DateTime MinH
+                timeStampMax = new DateTime(value.Year, value.Month, value.Day, timeStampMax.Hour, timeStampMax.Minute, 0); OnPropertyChanged(nameof(TimeStampMax)); } }
+        public DateTime TimeStampMinHour { set {timeStampMin = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); OnPropertyChanged(nameof(TimeStampMin)); } }
+        public DateTime TimeStampMaxHour { set {timeStampMax = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); OnPropertyChanged(nameof(TimeStampMax)); } }
+        private DateTime timeStampMax;
+        private DateTime timeStampMin;
+        public void AddSeriesToChart(string nazwa, SolidColorBrush brush)
         {
-            get => minH; set
+            Spolka spolka = daneSpolek.ZnajdzSpolkePoNazwie(nazwa);
+            listaWykresow.Add((spolka,brush));
+            if(listaWykresow.Count>1)
             {
-                try
+                czyWykresProcentowy = true;
+                chart.AxisY.Clear();
+                chart.AxisY.Add(new Axis
                 {
-                    if (value != null)
-                    {
-                        if (value.Hour < 9) { minH = new DateTime(1, 1, 1, 9, 0, 0); OnPropertyChanged(nameof(minH)); TimeStampMin = timeStampMin; return; }
-                        if (value.Hour > 17) { minH = new DateTime(1, 1, 1, 16, 59, 0); OnPropertyChanged(nameof(minH)); TimeStampMin = timeStampMin; return; }
-                        
-                        minH = value;
-                        TimeStampMin = timeStampMin;
-                        OnPropertyChanged(nameof(minH));
-                    }
-                } catch(Exception) { }
-
-            
+                    Title = "Zmiana kursu akcji względem pierwszej wybranej daty [%]"
+                });
+            }
+            generateChart();
+        }
+        public async void generateChart()
+        {
+            chart.Series.Clear();
+            foreach((Spolka, SolidColorBrush) pair in listaWykresow)
+            {
+                ChartValues<ObservablePoint> points = await getChartValuesAsync(pair.Item1.Notowania);
+                await Application.Current.Dispatcher.InvokeAsync(() => { addAfterAsync(points, pair.Item1.Nazwa, pair.Item2); });
             }
         }
-
-        public DateTime MaxH
-        {
-            get => maxH; set
-            {
-                try
-                {
-                    if (value != null)
-                    {
-                        if (value.Hour < 9) { maxH = new DateTime(1, 1, 1, 9, 0, 0); OnPropertyChanged(nameof(maxH)); TimeStampMax = timeStampMax; return; }
-                        if (value.Hour > 17) { maxH = new DateTime(1, 1, 1, 16, 59, 0); OnPropertyChanged(nameof(maxH)); TimeStampMax = timeStampMax; return; }
-                        
-                        maxH = value;
-                        TimeStampMax = timeStampMax;
-                        OnPropertyChanged(nameof(maxH));
-                    }
-                }
-                catch (Exception) { }
-
-
-            }
-        }
-        
-        private DateTime minH = new DateTime(2023, 11, 11, 9, 0, 0);
-        private DateTime maxH = new DateTime(2023, 11, 13, 16, 59, 59);
-
-
-        public void AddSeries(String txt, SolidColorBrush brush)
-        {
-            if (IfExistMakeVisible(txt)) return;
-            DaneSpolek spolek = new DaneSpolek();
-            Spolka sp1 = spolek.ZnajdzSpolkePoNazwie(txt);
-            ChartValues<NDatePoint> wals = new ChartValues<NDatePoint>();
-            var mindate = new DateTime(TimeStampMin.Year, TimeStampMin.Month, TimeStampMin.Day);
-            var maxdate = new DateTime(TimeStampMax.Year, TimeStampMax.Month, TimeStampMax.Day, 23, 59, 59);
-            if (sp1 != null)
-            {
-                foreach (var item in sp1.Notowania)
-                {
-                    if(item.Key.Hour<17)
-                    wals.Add(new NDatePoint(item.Key, Math.Round(item.Value, 2)));
-
-                }
-                LineSeries s1 = new LineSeries();
-                s1.Values = wals;
-                s1.Title = txt;
-                s1.PointGeometry = null;
-                s1.Fill = Brushes.Transparent;
-                s1.LineSmoothness = 0;
-                s1.Stroke = brush;
-                Series.Add(s1);
-            }
-        }
-        public async Task<ChartValues<NDatePoint>> getSeriesAsync(string txt)
+        public async Task<ChartValues<ObservablePoint>> getChartValuesAsync(Dictionary<DateTime,double> Notowania)
         {
             return await Task.Run(() =>
             {
-                DaneSpolek spolek = new DaneSpolek();
-                Spolka sp1 = spolek.ZnajdzSpolkePoNazwie(txt);
-                ChartValues<NDatePoint> wals = new ChartValues<NDatePoint>();
-
-                foreach (var item in sp1.Notowania)
+                ChartValues<ObservablePoint> listapunktow = new ChartValues<ObservablePoint>();
+                DateTime pierwszaData = DateTime.ParseExact(wszystkieDaty[MinIndex], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                double dzielnik;
+                if (czyWykresProcentowy)
                 {
-                    wals.Add(new NDatePoint(item.Key, Math.Round(item.Value, 2)));
+                    dzielnik = 0.01 * Notowania[pierwszaData];
                 }
-
-                return wals;
+                else
+                {
+                    dzielnik = 1;
+                }
+                //Dla każdej daty sprawdź czy dla niej jest notowanie
+                for (int i = 0; i < wszystkieDaty.Count-1; i++)
+                {
+                    DateTime data = DateTime.ParseExact(wszystkieDaty[i], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                    if (Notowania.ContainsKey(data) && Notowania[data] != 0)
+                    {
+                        listapunktow.Add(new ObservablePoint(i, Math.Round(Notowania[data] / dzielnik, 2)));
+                    }
+                }
+                return listapunktow;
             });
         }
-        public void addafterasync(ChartValues<NDatePoint> wals, String txt, SolidColorBrush brush)
+        public void addAfterAsync(ChartValues<ObservablePoint> values, string nazwa, SolidColorBrush brush)
         {
-            LineSeries s1 = new LineSeries();
-            s1.Values = wals;
-            s1.Title = txt;
-            s1.PointGeometry = null;
-            s1.Fill = Brushes.Transparent;
-            s1.Stroke = brush;
-            s1.LineSmoothness = 0;
-            Series.Add(s1);
+            LineSeries series = new LineSeries();
+            series.Values = values;
+            series.Title = nazwa;
+            series.PointGeometry = null;
+            series.Fill = Brushes.Transparent;
+            series.Stroke = brush;
+            series.LineSmoothness = 0;
+            chart.Series.Add(series);
         }
-        public bool IfExistMakeVisible(String txt)
+        public void removeSeries(string nazwa)
         {
-            foreach (var item in Series)
+            (Spolka, SolidColorBrush) Spolka = default;
+            foreach ((Spolka,SolidColorBrush) pair in listaWykresow)
             {
-                if ((item as LineSeries).Name.Equals(txt))
+                if(pair.Item1.Nazwa==nazwa)
                 {
-                    (item as LineSeries).Visibility = Visibility.Visible;
-                    return true;
+                    Spolka = pair;
                 }
             }
-            return false;
-        }
-        public void removeSeries(String txt)
-        {
-            foreach (var item in Series)
+            if(Spolka != default)
+            listaWykresow.Remove(Spolka);
+            if(listaWykresow.Count<2)
             {
-                if ((item as LineSeries).Title.Equals(txt)) (item as LineSeries).Visibility = Visibility.Hidden;
+                czyWykresProcentowy = false;
+                chart.AxisY.Clear();
+                chart.AxisY.Add(new Axis
+                {
+                    Title = "Wartość akcji [zł]"
+                });
             }
-
+            generateChart();
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        public int FindIndexFromBeginning(DateTime givenDate)
+        {
+            MinIndex = 0;
+            DateTime date;
+            for (int i=0;i<wszystkieDaty.Count;i++)
+            {
+                date = DateTime.ParseExact(wszystkieDaty[MinIndex], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                if(DateTime.Compare(givenDate,date)>0)
+                {
+                    MinIndex++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return MinIndex;
+        }
+        public int FindIndexFromEnd(DateTime givenDate)
+        {
+            MaxIndex = wszystkieDaty.Count-1;
+            for (int i = wszystkieDaty.Count-1;i>0;i--)
+            {
+                DateTime date = DateTime.ParseExact(wszystkieDaty[MaxIndex], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                if (DateTime.Compare(givenDate, date) < 0)
+                {
+                    MaxIndex--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return MaxIndex;
+        }
     }
-
 }

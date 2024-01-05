@@ -1,28 +1,9 @@
-﻿
-using LiveCharts;
-using LiveCharts.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-using projektIOv2.Themes;
 using projektIOv2.Controls;
-using projektIOv2.wykres;
-using System.Windows.Threading;
 using System.Text.RegularExpressions;
-using System.DirectoryServices.ActiveDirectory;
 
 namespace projektIOv2.Pages
 {
@@ -31,87 +12,92 @@ namespace projektIOv2.Pages
     /// </summary>    
     public partial class Home : Page
     {
-
         ViewModel viewModel;
         public Home()
         {
             InitializeComponent();
-            viewModel = new ViewModel();
+            
+            viewModel = new ViewModel(stockChart);
+            DataContext = viewModel;
 
-            this.DataContext = viewModel;
-            stockChart.Series = viewModel.Series;
-
-            viewModel.AddSeries("ALIOR", (SolidColorBrush)new BrushConverter().ConvertFrom("#07f045"));
-
+            viewModel.AddSeriesToChart("ALIOR", (SolidColorBrush)new BrushConverter().ConvertFrom("#07f045"));
         }
-
-
-
-
-        private async void CheckNox_Checked(object sender, RoutedEventArgs e)
+        private void CheckNox_Checked(object sender, RoutedEventArgs e)
         {
             if (viewModel == null) return;
-            var t1 = (sender as CheckNox)?.Text;
-            var t2 = (sender as CheckNox).IndicatorBrush;
+            var text = (sender as CheckNox)?.Text;
+            var brush = (sender as CheckNox).IndicatorBrush;
 
-            if (t1 != null)
+            if (text != null)
             {
-                ChartValues<NDatePoint> series = await viewModel.getSeriesAsync(t1);
-               
-                await Application.Current.Dispatcher.InvokeAsync(() => { viewModel.addafterasync(series, t1,t2); });
+                viewModel.AddSeriesToChart(text, brush);
             }
         }
-
-
-
         private void CheckNox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (viewModel == null) return;
             var t1 = (sender as CheckNox).Text;
             viewModel.removeSeries(t1);
         }
-
+        private int test = 0; //Z jakiegoś powodu ten event jest uruchamiany 3 za każdym razem jak zmieniasz date
+        //Więc ta zmienna upewnia się że będzie wykonany tylko 1 raz
         private void StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(viewModel.TimeStampMax!= viewModel.TimeStampMin)
-            fmt.MinValue = new NDate(viewModel.TimeStampMin).Ticks;
-
+            if (viewModel.TimeStampMax != viewModel.TimeStampMin)
+            {
+                if (test == 0)
+                {
+                    if(viewModel.czyWykresProcentowy)
+                    {
+                        stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
+                        viewModel.generateChart();
+                    }
+                    else
+                    {
+                        stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
+                    }
+                }
+                test++;
+                if (test == 3)
+                    test = 0;
+            }
         }
-
         private void EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (viewModel.TimeStampMax != viewModel.TimeStampMin) { }
-                fmt.MaxValue = new NDate(viewModel.TimeStampMax).Ticks;
+            if (viewModel.TimeStampMax != viewModel.TimeStampMin)
+                stockChart.AxisX[0].MaxValue = viewModel.FindIndexFromEnd(viewModel.TimeStampMax);
         }
-
-        
-        
-
-
+        private int test2 = 0;//tutaj wydarzenie jest aktywowane 2 razy
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var ob = sender as TextBox;
+            TextBox textbox = sender as TextBox;
             string pattern = @"^\d{1,2}:\d{2}$";
             
-            if(Regex.IsMatch(ob.Text.Trim(), pattern) )
+            if(Regex.IsMatch(textbox.Text.Trim(), pattern) )
             {
-                  DateTime dt;
-                    DateTime.TryParseExact(ob.Text.Trim(), "HH:mm", null, System.Globalization.DateTimeStyles.None, out dt);
-                if (ob.Name=="nH")
+                DateTime dt;
+                DateTime.TryParseExact(textbox.Text.Trim(), "HH:mm", null, System.Globalization.DateTimeStyles.None, out dt);
+                if (textbox.Name=="nH")
                 {
+                    viewModel.TimeStampMinHour = new DateTime(viewModel.TimeStampMin.Year,viewModel.TimeStampMin.Month,viewModel.TimeStampMin.Day,dt.Hour,dt.Minute,0);
+                    if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
+                    {
+                        if(test2==0)
+                        {
+                            stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
+                            viewModel.generateChart();
+                        }
+                        test2++;
+                        if (test2 == 2)
+                            test2 = 0;
+                    }
 
-                    viewModel.MinH = dt;
-                    if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
-                fmt.MinValue = new NDate(viewModel.TimeStampMin).Ticks;
-                    
-                    
                 }
-                if (ob.Name == "xH")
+                if (textbox.Name == "xH")
                 {
-                    viewModel.MaxH = dt;
+                    viewModel.TimeStampMaxHour = new DateTime(viewModel.TimeStampMax.Year, viewModel.TimeStampMax.Month, viewModel.TimeStampMax.Day, dt.Hour, dt.Minute, 0);
                     if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
-                        fmt.MaxValue = new NDate(viewModel.TimeStampMax).Ticks;
-                    
+                        stockChart.AxisX[0].MaxValue = viewModel.FindIndexFromEnd(viewModel.TimeStampMax);
                 }
             }
         }
