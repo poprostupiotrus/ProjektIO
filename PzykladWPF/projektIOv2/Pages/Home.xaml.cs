@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using projektIOv2.Controls;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace projektIOv2.Pages
 {
@@ -19,8 +20,8 @@ namespace projektIOv2.Pages
             
             viewModel = new ViewModel(stockChart);
             DataContext = viewModel;
-
             viewModel.AddSeriesToChart("ALIOR", (SolidColorBrush)new BrushConverter().ConvertFrom("#07f045"));
+
         }
         private void CheckNox_Checked(object sender, RoutedEventArgs e)
         {
@@ -100,6 +101,11 @@ namespace projektIOv2.Pages
                         stockChart.AxisX[0].MaxValue = viewModel.FindIndexFromEnd(viewModel.TimeStampMax);
                 }
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //
         }
     }
 }

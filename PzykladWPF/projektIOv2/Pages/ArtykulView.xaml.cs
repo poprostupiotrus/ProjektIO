@@ -61,6 +61,7 @@ namespace projektIOv2.Pages
                 {
                     Tresc t = new Tresc(ob.Link);
                     DataContext = await t.get();
+                     
                 }
 
                 if ((ob.gpt == null || ob.gpt.Count() == 0) && ob.Tresc != null)
@@ -71,8 +72,7 @@ namespace projektIOv2.Pages
 
                     GptHandler gptHandler = new GptHandler();
                     DataContext = await gptHandler.ZapytajGpt(ob, query);
-
-
+                    Cache cache = new Cache();
                 }
             }
             catch (Exception)

@@ -3,63 +3,70 @@ using OpenAI.Chat;
 using OpenAI.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace projektIOv2.Skraper
 {
+    /// <summary>
+    /// Klasa obsługująca interakcję z GPT w celu uzyskania odpowiedzi na pytania.
+    /// </summary>
     class GptHandler
     {
-        private List<string> brakinfo = new List<string>
-    {
-        "Brak wpływu", "Nie jestem w stanie", "nie jest możliwe", "brakuje informacji",
-        "Brak informacji", "Brak konkretnej informacji", "Nie mogę odpowiedzieć", "nie zawiera",
-        "nie dotyczy", "Nie można przewidzieć", "Nie ma w podanym artykule informacji",
-        "brak powiązania", "Brak przewidywań", "ogólnikowy", "Nie można udzielić",
-        "nie pozwala", "nie można", "nie ma informacji"
-    };
 
-        public async Task<Artykul> ZapytajGpt(Artykul x,string art)
+        /// <summary>
+        /// Zapytuje GPT o informacje związane z artykułem.
+        /// </summary>
+        /// <param name="artykul">Obiekt reprezentujący artykuł.</param>
+        /// <param name="zapytanie">Treść zapytania do gpt</param>
+        /// <returns>Obiekt reprezentujący artykuł z dodatkowymi informacjami uzyskanymi od GPT.</returns>
+        public async Task<Artykul> ZapytajGpt(Artykul artykul,string zapytanie)
         {
-            Dictionary<String, double> lista = new Dictionary<String, double>();
+            Dictionary<String, double> gptForecast = new Dictionary<String, double>();
             using var api = new OpenAIClient("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");
             var messages = new List<Message>
 {
-    new Message(Role.System, art),
+    new Message(Role.System, zapytanie),
 
 };
             var chatRequest = new ChatRequest(messages, Model.GPT3_5_Turbo);
             var response = await api.ChatEndpoint.GetCompletionAsync(chatRequest);
             var choice = response.FirstChoice;
-            string[] wynik = choice.Message.ToString().Split('\n');
+            string[] results = choice.Message.ToString().Split('\n');
 
-            Console.WriteLine(string.Join("\n", wynik));
 
-            foreach (string line in wynik)
+            foreach (string line in results)
             {
-                double liczba2 = (double)ExtractNumber(line.Replace(',', '.'));
+                //wartosc liczbowa przewidywania
+                double forecast = extractNumber(line.Replace(',', '.'));
                 if (line.Contains("wzrost"))
                 {
-                    liczba2 = Math.Abs(liczba2);
+                    forecast = Math.Abs(forecast);
                 }
                 if (line.Contains("spadek"))
                 {
-                    liczba2 = -Math.Abs(liczba2);
+                    forecast = -Math.Abs(forecast);
                 }
-                var t = ExtractFirstThreeLetters(line.Trim());
-                if (tickernDictionary.ContainsKey(t) || tickernDictionary.ContainsValue(t))
-                    lista[t]= liczba2;
+                //tickern spolki
+                String tickern = extractFirstThreeLetters(line.Trim());
+                //wstaw przewidywanie do listy przewidywan gpt
+                if (tickernDictionary.ContainsKey(tickern) || tickernDictionary.ContainsValue(tickern))
+                    gptForecast[tickern] = forecast; 
                     
             }
             
-            return new Artykul() { Link=x.Link, Naglowek=x.Naglowek, Tresc=x.Tresc,bard=x.bard,gpt=lista, Data=x.Data};
+            var artykul2= new Artykul() { Link = artykul.Link, Naglowek = artykul.Naglowek, Tresc = artykul.Tresc, bard = artykul.bard, gpt = gptForecast, Data = artykul.Data };
+            artykul2.UpdateInCache();
+            return artykul2;
         }
 
-        public string ExtractFirstThreeLetters(string input)
+        /// <summary>
+        /// Wydobywa Tickern spółki z ciągu znaków.
+        /// </summary>
+        /// <param name="input">Wejściowy ciąg znaków.</param>
+        /// <returns>Tickern spółki.</returns>
+        private string extractFirstThreeLetters(string input)
         {
             Match match = Regex.Match(input, @"(?<![A-Z])[A-Z]{3}(?![A-Z])");
             if (match.Success && match.Value.Length == 3 && match.Value != "WIG")
@@ -72,7 +79,12 @@ namespace projektIOv2.Skraper
             }
         }
 
-        public float ExtractNumber(string input)
+        /// <summary>
+        /// Wydobywa Notowanie z ciągu znaków.
+        /// </summary>
+        /// <param name="input">Wejściowy ciąg znaków.</param>
+        /// <returns>Liczba wydobyta z ciągu znaków.</returns>
+        private double extractNumber(string input)
         {
             string pattern = @"[-+]?\d+\.?\d*";
             Match match = Regex.Match(input, pattern);
@@ -89,32 +101,9 @@ namespace projektIOv2.Skraper
 
         }
 
-        private async Task<String> GetGptResponse(string input)
-        {
-            using var api = new OpenAIClient("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");
-            var messages = new List<Message>
-{
-    new Message(Role.System, input),
-
-};
-            var chatRequest = new ChatRequest(messages, Model.GPT3_5_Turbo);
-            var response = await api.ChatEndpoint.GetCompletionAsync(chatRequest);
-            var choice = response.FirstChoice;
-            return choice.Message;
-        }
-
-        public bool NieistotnyArtykul(List<(string, float)> lista)
-        {
-            foreach ((string zmienna, _) in lista)
-            {
-                if (brakinfo.Any(wyraz => (wyraz.ToLower()).Contains(zmienna.ToLower())))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        /// <summary>
+        /// Słownik którego kluczem jest Tickern społki, a wartością nazwa spółki
+        /// </summary>
         private static readonly Dictionary<string, string> tickernDictionary = new Dictionary<string, string>
         {
             {"ALR","ALIOR" },

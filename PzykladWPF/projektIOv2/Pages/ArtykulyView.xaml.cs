@@ -26,7 +26,7 @@ namespace projektIOv2.Pages
         public ArtykulyView()
         {
             InitializeComponent();
-            l1 = new ListaArtykulow(MyListbox);
+            l1 = new ListaArtykulow();
             //MyListbox.ItemsSource = l1.listaArtykulow;
 
 
@@ -57,24 +57,25 @@ namespace projektIOv2.Pages
             try
             {
                 var b = await l1.Update(dt1);
-                if (b.Count == 0)
+                /*if (b.Count == 0)
                 {
                     errorBox.ErrorMessage = "NIE UDAŁO SIĘ ZAŁADOWAĆ ŻADNYCH ARTYKUŁÓW";
                     OdpowiedzNaError();
-                }
+                }*/
                 MyListbox.ItemsSource = b;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                errorBox.ErrorMessage = ex.Message;
+                OdpowiedzNaError();
 
             }
-            if (DateTime.Now < dt1)
+            /*if (DateTime.Now < dt1)
             {
                 errorBox.ErrorMessage = "NIE MOŻESZ WYBRAC DATY Z PRZYSZŁOŚCI";
                 OdpowiedzNaError();
                 return;
-            }
+            }*/
             // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
 
         }
@@ -89,7 +90,11 @@ namespace projektIOv2.Pages
             {
                 var b = await l1.Update(dt1);
                 MyListbox.ItemsSource = b;
-            } catch (Exception) { }
+            } catch (Exception ex) {
+
+                errorBox.ErrorMessage = ex.Message;
+                OdpowiedzNaError();
+            }
         }
         private void OdpowiedzNaError()
         {

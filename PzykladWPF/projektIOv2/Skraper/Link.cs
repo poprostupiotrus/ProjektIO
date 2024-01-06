@@ -1,22 +1,27 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace projektIOv2.Skraper
 {
+    /// <summary>
+    /// Klasa pobierająca linki z https://biznes.pap.pl/pl/news/listings/
+    /// </summary>
     public class Link
     {
+        /// <summary>
+        /// Właściwość zwracająca liste artykułów.
+        /// </summary>
         public List<Artykul> getLista
         {
             get
             {
+                if (lista == null || lista.Count() == 0) throw new Exception("NIE UDAŁO SIĘ ZAŁADOWAĆ ŻADNYCH ARTYKUŁÓW");
                 return lista;
             }
         }
@@ -28,56 +33,63 @@ namespace projektIOv2.Skraper
 
 
 
-
-        private void addUrlsForPage(HtmlDocument doc, DateTime dt)
+        /// <summary>
+        /// Dodaje adresy URL dla danej strony i daty.
+        /// </summary>
+        /// <param name="page">Analizowana strona.</param>
+        /// <param name="expectedDate">Oczekiwana data.</param>
+        private void addUrlsForPage(HtmlDocument page, DateTime expectedDate)
         {
             bool? isRun = null;
 
 
 
             ServicePointManager.Expect100Continue = false;
-
-            var espiTable = doc.DocumentNode.SelectSingleNode("//table[contains(@class, 'espi')]");
+            //pobiera tabele z linkami
+            var espiTable = page.DocumentNode.SelectSingleNode("//table[contains(@class, 'espi')]");
             if (espiTable != null)
             {
+                //przetwarza wiersze
                 var rows = espiTable.Descendants("tr");
 
                 foreach (var firstRow in rows)
                 {
                     if (firstRow != null)
-                    {
+                    {  
+                        //przetwarza komurki
                         var cells = firstRow.Descendants("td");
-                        DateTime godz = DateTime.Now;
-                        var txtd = "";
+                        DateTime dateAndTime = DateTime.Now;
+                        
                         foreach (var cell in cells)
                         {
-                            bool b1 = cell.HasClass("dni");
-
-                            if (b1 && DateTime.TryParseExact(cell.InnerText.Trim(), "yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime result))
+                            bool hasClassDni = cell.HasClass("dni");
+                            //sprawdza czy jest sens dalej szukać
+                            if (hasClassDni && DateTime.TryParseExact(cell.InnerText.Trim(), "yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime timeNow))
                             {
-                                txtd = cell.InnerText.Trim();
-                                if (isRun == true && result != dt) return;
-                                if (isRun == null || isRun == false) isRun = result == dt;
+                                if (isRun == true && timeNow != expectedDate) return;
+                                if (isRun == null || isRun == false) isRun = timeNow == expectedDate;
                                 continue;
                             }
+
+                            //przetwarza date
                             if (cell.HasClass("wdgodz"))
                             {
 
-                                var godzi = dt.Year + "." + formatnum(dt.Month) + "." + formatnum(dt.Day) + " " + cell.InnerText.Trim();
+                                var godzi = expectedDate.Year + "." + formatnum(expectedDate.Month) + "." + formatnum(expectedDate.Day) + " " + cell.InnerText.Trim();
 
-                                godz = DateTime.ParseExact(godzi, "yyyy.MM.dd HH:mm", CultureInfo.InvariantCulture);
+                                dateAndTime = DateTime.ParseExact(godzi, "yyyy.MM.dd HH:mm", CultureInfo.InvariantCulture);
 
 
                             }
+                            //przetwarza link do artykułu
                             var link = cell.Descendants("a").FirstOrDefault();
                             if (isRun == true && link != null)
                             {
                                 string linkText = link.GetAttributeValue("href", "");
-                                //MessageBox.Show(godz.ToLongDateString());
-                                lista.Add(new Artykul() { Naglowek = link.InnerText, Link = linkText, Data = godz });
+                                
+                                lista.Add(new Artykul() { Naglowek = link.InnerText, Link = linkText, Data = dateAndTime });
 
-                                //new Thread(() => { tresclist.Add(new Tresc(linkText)); }   ).Start();
-                            }
+                               }
 
 
                         }
@@ -90,21 +102,31 @@ namespace projektIOv2.Skraper
                 }
             }
 
-            //await Task.CompletedTask;
+            
         }
 
-        String formatnum(int num)
+        /// <summary>
+        /// Formatuje numer, dodając zerowanie przed liczbami jednocyfrowymi.
+        /// </summary>
+        /// <param name="num">Liczba do sformatowania.</param>
+        /// <returns>Sformatowana liczba jako ciąg znaków.</returns>
+        private String formatnum(int num)
         {
             if (num < 10) return "0" + num;
             return "" + num;
         }
 
 
-
-        public List<DateTime> getDni(int num, DateTime dt)
+        /// <summary>
+        /// Pobiera listę dat z danej witryny internetowej na podstawie numeru strony.
+        /// </summary>
+        /// <param name="pageNum">Numer strony.</param>
+        /// <param name="expectedDate">Docelowa data.</param>
+        /// <returns>Lista dat.</returns>
+        public List<DateTime> getDni(int pageNum, DateTime expectedDate)
         {
-            List<DateTime> lista = new List<DateTime>();
-            string url = "https://biznes.pap.pl/pl/news/listings/" + num + ",";
+            List<DateTime> dateList = new List<DateTime>();
+            string url = "https://biznes.pap.pl/pl/news/listings/" + pageNum + ",";
 
 
             ServicePointManager.Expect100Continue = false;
@@ -121,21 +143,23 @@ namespace projektIOv2.Skraper
                 {
                     if (responseStream != null)
                     {
-                        HtmlDocument doc = new HtmlDocument();
-                        doc.Load(responseStream);
+                        HtmlDocument document = new HtmlDocument();
+                        document.Load(responseStream);
 
-                        var espiTable = doc.DocumentNode.SelectNodes("//td[contains(@class, 'dni')]");
+                        //pobiera liste dni
+                        var espiTable = document.DocumentNode.SelectNodes("//td[contains(@class, 'dni')]");
                         if (espiTable != null)
                         {
                             foreach (var item in espiTable)
                             {
-                                if (DateTime.TryParseExact(item.InnerText.Trim(), "yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime result))
+                                if (DateTime.TryParseExact(item.InnerText.Trim(), "yyyy.MM.dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime date))
                                 {
-                                    lista.Add(result);
-                                    if (result.Equals(dt))
+                                    dateList.Add(date);
+                                    //jesli data spelnia oczekiwania to linki zostana dodane
+                                    if (date.Equals(expectedDate))
                                     {
-                                        Task.Run( () =>  addUrlsForPage(doc, dt));
-                                        return lista;
+                                        Task.Run( () =>  addUrlsForPage(document, expectedDate));
+                                        return dateList;
                                     }
                                 }
 
@@ -157,11 +181,15 @@ namespace projektIOv2.Skraper
 
             }
 
-            return lista;
+            return dateList;
         }
 
 
-
+        /// <summary>
+        /// Pobiera numer strony na której jest oczekiwana data.
+        /// </summary>
+        /// <param name="target">Docelowa data.</param>
+        /// <returns>Numer strony.</returns>
         private int getPageNum(DateTime target)
         {
             int left = 1;
@@ -188,29 +216,36 @@ namespace projektIOv2.Skraper
             return -1;
         }
 
+        /// <summary>
+        /// Pobiera numery stron na podstawie danej daty.
+        /// </summary>
+        /// <param name="target">Docelowa data.</param>
+        /// <returns>Lista numerów stron.</returns>
         public List<int> getPageNums(DateTime target)
         {
-            List<int> wyniki = new List<int>();
-            int key = getPageNum(target);
-            if (key == -1) return wyniki;
-            wyniki.Add(key);
+            List<int> dateList = new List<int>();
+            int pageNum = getPageNum(target);
+            if (pageNum == -1) return dateList;
+            dateList.Add(pageNum);
+
+            //sprawdz sasiedztwo na prawo
             Thread forwardThread = new Thread(() =>
             {
-                for (int i = key + 1; i < 342; i++)
+                for (int i = pageNum + 1; i < 342; i++)
                 {
                     List<DateTime> k = getDni(i, target);
-                    if (k.Contains(target)) wyniki.Add(i);
+                    if (k.Contains(target)) dateList.Add(i);
                     else break;
                 }
             });
 
-
+            //sprawdz sasiedztwo na lewo
             Thread backwardThread = new Thread(() =>
             {
-                for (int i = key - 1; i > 0; i--)
+                for (int i = pageNum - 1; i > 0; i--)
                 {
                     List<DateTime> k = getDni(i, target);
-                    if (k.Contains(target)) wyniki.Add(i);
+                    if (k.Contains(target)) dateList.Add(i);
                     else break;
                 }
             });
@@ -222,7 +257,7 @@ namespace projektIOv2.Skraper
 
             forwardThread.Join();
             backwardThread.Join();
-            return wyniki;
+            return dateList;
         }
 
 

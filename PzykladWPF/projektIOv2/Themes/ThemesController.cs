@@ -5,43 +5,77 @@ using System.Windows;
 
 namespace projektIOv2.Themes
 {
+    /// <summary>
+    /// Klasa kontrolująca motywy i czcionki aplikacji.
+    /// </summary>
     public static class ThemesController
     {
+        /// <summary>
+        /// Aktualnie wybrany motyw.
+        /// </summary>
         public static ThemeTypes CurrentTheme { get; set; }
+
+        /// <summary>
+        /// Aktualnie wybrana czcionka.
+        /// </summary>
         public static FontTypes CurrentFont { get; set; }
 
+        /// <summary>
+        /// Enumeracja reprezentująca dostępne motywy.
+        /// </summary>
         public enum ThemeTypes
         {
             Light = 0, Dark = 1,High=2
         }
 
+        /// <summary>
+        /// Enumeracja reprezentująca dostępne czcionki.
+        /// </summary>
         public enum FontTypes
         {
             Normal = 0, Small = 1,Large=2
         }
 
+        /// <summary>
+        /// Właściwość pozwalacjaca kontrolować aktualny motyw.
+        /// </summary>
         public static ResourceDictionary ThemeDictionary
         {
             get { return Application.Current.Resources.MergedDictionaries[0]; }
             set { Application.Current.Resources.MergedDictionaries[0] = value; }
         }
 
+        /// <summary>
+        /// Właściwość pozwalacjaca kontrolować aktualną czcionke.
+        /// </summary>
         public static ResourceDictionary FontDictionary
         {
             get { return Application.Current.Resources.MergedDictionaries[1]; }
             set { Application.Current.Resources.MergedDictionaries[1] = value; }
         }
 
+        /// <summary>
+        /// Metoda zmieniająca motyw aplikacji na podstawie podanej ścieżki URI.
+        /// </summary>
+        /// <param name="uri">uri motywu</param>
         private static void ChangeTheme(Uri uri)
         {
             ThemeDictionary = new ResourceDictionary() { Source = uri };
         }
 
+        /// <summary>
+        /// Metoda zmieniająca czcionkę aplikacji na podstawie podanej ścieżki URI.
+        /// </summary>
+        /// <param name="uri">uri czcionki</param>
         private static void ChangeFont(Uri uri)
         {
             FontDictionary = new ResourceDictionary() { Source = uri };
         }
 
+        /// <summary>
+        /// Ustawia motyw aplikacji na podstawie podanego typu motywu.
+        /// </summary>
+        /// <param name="theme">Typ motywu.</param>
         public static void SetTheme(ThemeTypes theme)
         {
             string themeName = null;
@@ -67,6 +101,10 @@ namespace projektIOv2.Themes
             }
         }
 
+        /// <summary>
+        /// Ustawia czcionkę aplikacji na podstawie podanego typu czcionki.
+        /// </summary>
+        /// <param name="font">Typ czcionki.</param>
         public static void SetFont(FontTypes font)
         {
             string fontName = null;
@@ -92,6 +130,9 @@ namespace projektIOv2.Themes
             }
         }
 
+        /// <summary>
+        /// Zapisuje bieżące ustawienia motywu i czcionki do pliku JSON.
+        /// </summary>
         public static void SaveSettings()
         {
             try
@@ -106,6 +147,13 @@ namespace projektIOv2.Themes
             }
         }
 
+        /// <summary>
+        /// Pobiera bieżące ustawienia motywu i czcionki z pliku JSON.
+        /// </summary>
+        /// <returns>
+        /// Zwraca obiekt zawierający ustawienia motywu i czcionki.
+        /// Jeśli plik "Settings.json" nie istnieje lub wystąpił błąd podczas wczytywania ustawień, zwraca domyślne ustawienia.
+        /// </returns>
         public static Settings GetCurrentSettings()
         {
             try
@@ -124,21 +172,38 @@ namespace projektIOv2.Themes
             return new Settings { ThemeType = ThemeTypes.Dark, FontType = FontTypes.Normal }; // Domyślne ustawienia
         }
 
+        /// <summary>
+        /// Pobiera bieżący typ motywu z ustawień.
+        /// </summary>
+        /// <returns>wraca typ motywu.</returns>
         public static ThemeTypes GetTheme()
         {
             return GetCurrentSettings().ThemeType;
         }
 
+        /// <summary>
+        /// Pobiera bieżący typ czcionki z ustawień.
+        /// </summary>
+        /// <returns>Zwraca typ czcionki.</returns>
         public static FontTypes GetFont()
         {
             return GetCurrentSettings().FontType;
         }
 
-
+        /// <summary>
+        /// Klasa reprezentująca ustawienia motywu i czcionki.
+        /// </summary>
         public class Settings
     {
-        public ThemesController.ThemeTypes ThemeType { get; set; }
-        public ThemesController.FontTypes FontType { get; set; }
+            /// <summary>
+            /// Typ motywu.
+            /// </summary>
+            public ThemesController.ThemeTypes ThemeType { get; set; }
+
+            /// <summary>
+            /// Typ czcionki.
+            /// </summary>
+            public ThemesController.FontTypes FontType { get; set; }
     }
     }
 
