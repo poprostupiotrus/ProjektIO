@@ -6,12 +6,17 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-
+                
+                <!--Motyw-->
                 <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
-                <ResourceDictionary Source="Themes/FontNormal.xaml"/> 
-
+                
+                <!--Czcionka-->
+                <ResourceDictionary Source="Themes/FontNormal.xaml"/>
+                
+                <!--ikony-->
                 <ResourceDictionary Source="Assets/Icons.xaml"/>
-
+                
+                <!--Style kontrolek-->
                 <ResourceDictionary Source="Styles/GroupBox.xaml"/>
                 <ResourceDictionary Source="Styles/Calendar.xaml"/>
                 <ResourceDictionary Source="Styles/ScrollBar.xaml"/>

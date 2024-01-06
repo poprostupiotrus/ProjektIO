@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +7,14 @@ using System.Linq;
 
 namespace projektIOv2.Skraper
 {
+    /// <summary>
+    /// Klasa odpowiedzialna za cachowanie artykułów.
+    /// </summary>
     public class Cache
     {
-
+        /// <summary>
+        /// Inicjalizuje nową instancję klasy Cache.
+        /// </summary>
         public Cache()
         {
 
@@ -21,6 +25,11 @@ namespace projektIOv2.Skraper
             }
         }
 
+        /// <summary>
+        /// Sprawdza, czy istnieje plik w cache o określonej dacie.
+        /// </summary>
+        /// <param name="expectedDate">Oczekiwana data pliku w formacie yyyy.MM.dd.</param>
+        /// <returns>True, jeśli plik istnieje; w przeciwnym razie false.</returns>
         public bool HasDate(DateTime expectedDate)
         {
             String file = expectedDate.ToString("yyyy.MM.dd");
@@ -36,6 +45,11 @@ namespace projektIOv2.Skraper
             }
         }
 
+        /// <summary>
+        /// Pobiera listę artykułów z pliku cache o określonej dacie.
+        /// </summary>
+        /// <param name="expectedDate">Oczekiwana data pliku w formacie yyyy.MM.dd.</param>
+        /// <returns>Lista artykułów z pliku cache.</returns>
         public List<Artykul> GetListFromDate(DateTime expectedDate) {
             string file = expectedDate.ToString("yyyy.MM.dd");
             string filePath = Path.Combine("cache", file);
@@ -44,6 +58,10 @@ namespace projektIOv2.Skraper
 
         }
 
+        /// <summary>
+        /// Zapisuje listę artykułów do pliku cache.
+        /// </summary>
+        /// <param name="listToSave">Lista artykułów do zapisania.</param>
         public void SaveList(List<Artykul> listToSave) {
             string file = listToSave.First(x => x.Data != null).Data.ToString("yyyy.MM.dd");
             string filePath = Path.Combine("cache", file);
@@ -61,6 +79,10 @@ namespace projektIOv2.Skraper
             }
         }
 
+        /// <summary>
+        /// Aktualizuje informacje o artykule w pliku cache.
+        /// </summary>
+        /// <param name="artykul">Artykuł do zaktualizowania.</param>
         public void UpdateArtykul(Artykul artykul)
         {
             string file = artykul.Data.ToString("yyyy.MM.dd");

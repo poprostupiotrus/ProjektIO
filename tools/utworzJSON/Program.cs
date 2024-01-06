@@ -5,15 +5,22 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Globalization;
 using System.Management;
+using System.Text.Json.Serialization;
+using System.Xml;
 
 class Program
 {
+    /// <summary>
+    /// Formatuje datę z jednego formatu na drugi.
+    /// </summary>
+    /// <param name="dataString">Data w formie ciągu znaków.</param>
+    /// <returns>Sformatowana data w formie ciągu znaków w nowym formacie lub informacja o błędzie parsowania daty.</returns>
     static string SformatujDate(string dataString)
     {
-        
+
         string formatWejsciowy = "dd.MM.yyyy HH:mm:ss";
 
-        
+
         string nowyFormat = "yyyy-MM-dd HH:mm:ss";
 
         if (DateTime.TryParseExact(dataString, formatWejsciowy, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
@@ -26,7 +33,13 @@ class Program
         }
     }
 
-    static Dictionary<String, Double> getLista(string tabela,long id)
+    /// <summary>
+    /// Pobiera listę z danymi z określonej tabeli i id.
+    /// </summary>
+    /// <param name="tabela">Nazwa tabeli w bazie danych.</param>
+    /// <param name="id">Identyfikator rekordu w tabeli.</param>
+    /// <returns>Słownik z danymi z bazy danych.</returns>
+    static Dictionary<String, Double> getLista(string tabela, long id)
     {
         string selectQuery2 = $"SELECT Tickern,notowanie FROM {tabela} WHERE IDt1={id} and notowanie not like 0";
         Dictionary<String, Double> lista = new Dictionary<String, Double>();
@@ -46,15 +59,15 @@ class Program
             }
         }
         return lista;
-        }
+    }
 
     private static string connectionString = "Server=localhost;Database=wiadomosci;User ID=test4;Password=123;";
 
     static void Main()
     {
-        
+
         List<Wpis> wpisy = new List<Wpis>();
-        
+
 
         using (MySqlConnection connection = new MySqlConnection(connectionString))
         {
@@ -69,17 +82,18 @@ class Program
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
-                        {   long id = reader.GetInt64("id");
+                        {
+                            long id = reader.GetInt64("id");
                             string h1 = reader.GetString("h1");
                             string p = reader.GetString("p");
                             string link = "https://biznes.pap.pl" + reader.GetString("link");
                             string czas = SformatujDate(reader.GetString("czas"));
                             Dictionary<String, Double> listagpt = getLista("gpt", id);
-                            Dictionary<String,Double> listabard = getLista("bard", id);
-                            
-                            wpisy.Add(new Wpis { Data = czas, Naglowek = h1, Tresc = p.Replace("\n", "").Replace("\r", ""),Link=link, GPT = listagpt,BARD=listabard });
-                            
-                            
+                            Dictionary<String, Double> listabard = getLista("bard", id);
+
+                            wpisy.Add(new Wpis { Data = czas, Naglowek = h1, Tresc = p.Replace("\n", "").Replace("\r", ""), Link = link, GPT = listagpt, BARD = listabard });
+
+
                         }
                     }
                 }
@@ -100,12 +114,39 @@ class Program
         Console.ReadKey();
     }
 }
+
+/// <summary>
+/// Reprezentuje pojedynczy wpis z bazy danych.
+/// </summary>
 class Wpis
 {
+    /// <summary>
+    /// Data artykółu.
+    /// </summary>
     public string Data { get; set; }
+
+    /// <summary>
+    /// Nagłówek artykułu.
+    /// </summary>
     public string Naglowek { get; set; }
+
+    /// <summary>
+    /// Treść artykułu.
+    /// </summary>
     public string Tresc { get; set; }
+
+    /// <summary>
+    /// Link do artykułu
+    /// </summary>
     public string Link { get; set; }
+
+    /// <summary>
+    /// Przewidywania gpt w formie słownika tickern-przewidywanie
+    /// </summary>
     public Dictionary<String, Double> GPT { get; set; }
+
+    /// <summary>
+    /// Przewidywania google bard w formie słownika tickern-przewidywanie
+    /// </summary>
     public Dictionary<String, Double> BARD { get; set; }
 }

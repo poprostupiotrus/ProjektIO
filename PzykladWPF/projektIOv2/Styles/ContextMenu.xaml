@@ -5,7 +5,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ContextMenu}">
 					<Border Background="{DynamicResource ContextMenu.Background}" BorderBrush="{DynamicResource ContextMenu.BorderBrush}" BorderThickness="1" CornerRadius="5" Padding="3">
-						<StackPanel Orientation="Vertical">
+						<StackPanel Orientation="Horizontal">
 							<ItemsPresenter />
 						</StackPanel>
 					</Border>

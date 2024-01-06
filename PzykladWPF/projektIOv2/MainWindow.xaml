@@ -6,6 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projektIOv2" xmlns:ctls1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
         mc:Ignorable="d" Name="home"
+        MinHeight="650"
+        MinWidth="1000"
         Title="MainWindow" Height="650" Width="1000"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"

@@ -53,12 +53,14 @@
 
 
 
+                                <Viewbox VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Width="50" Height="50" Stretch="Uniform">
+                                    <!--Icon -->
+                                    <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource DefaultIcon}, TargetNullValue={StaticResource DefaultIcon}}" StrokeThickness="2"
+                                      Stretch="Uniform"  Width="{Binding IconWidth, ElementName=this, FallbackValue=20,TargetNullValue=20}" Style="{StaticResource MenuIconStyle}" />
 
-                                <!--Icon -->
-                                <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource DefaultIcon}, TargetNullValue={StaticResource DefaultIcon}}" StrokeThickness="2"  StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
-                                      Stretch="Uniform" Width="{Binding IconWidth, ElementName=this, FallbackValue=20,TargetNullValue=20}" Style="{StaticResource MenuIconStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"/>
 
-
+                                </Viewbox>
+                                
 
 
                             </Grid>

@@ -16,5 +16,5 @@ C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\App.xaml
 200682149778
 Assets\Icons.xaml;Controls\ArtykulButton.xaml;Controls\CheckNox.xaml;Controls\ErrorBox.xaml;Controls\MenuItem.xaml;Controls\NotowanieControl.xaml;Controls\UserPopup.xaml;MainWindow.xaml;Pages\ArtykulView.xaml;Pages\ArtykulyView.xaml;Pages\Home.xaml;Pages\Settings.xaml;Styles\Calendar.xaml;Styles\CleanListBox.xaml;Styles\ComboBox.xaml;Styles\ContextMenu.xaml;Styles\DatePicker.xaml;Styles\GroupBox.xaml;Styles\MainStyle.xaml;Styles\ScrollBar.xaml;Themes\DarkTheme.xaml;Themes\FontLarge.xaml;Themes\FontNormal.xaml;Themes\FontSmall.xaml;Themes\HighTheme.xaml;Themes\LightTheme.xaml;
 
-False
+True
 

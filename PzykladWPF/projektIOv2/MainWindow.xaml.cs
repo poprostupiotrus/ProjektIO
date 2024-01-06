@@ -1,34 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Resources;
-using System.Reflection;
 using projektIOv2.Themes;
 using projektIOv2.Pages;
 
 namespace projektIOv2
 {
 
-
+    /// <summary>
+    /// Główne okno aplikacji.
+    /// </summary>
     public partial class MainWindow : Window
     {
         private DragAndDrop dragAndDropWindow;
         ArtykulyView art;
         Home home1;
         Settings settings;
+
+        /// <summary>
+        /// Inicjalizuje nową instancję klasy <see cref="MainWindow"/>.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();

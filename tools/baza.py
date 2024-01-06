@@ -1,3 +1,5 @@
+"""@package docstring
+"""
 import pymysql
 from funkcje import *
 class Baza:

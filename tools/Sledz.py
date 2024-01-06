@@ -1,3 +1,5 @@
+"""@package docstring
+"""
 import selenium
 from time import *
 from selenium import webdriver

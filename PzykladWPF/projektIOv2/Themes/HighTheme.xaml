@@ -43,7 +43,7 @@
 
 
     <!--- GroupBox -->
-    <SolidColorBrush x:Key="GroupBox.BorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="GroupBox.BorderBrush" Color="DeepPink"/>
     <SolidColorBrush x:Key="GroupBox.Background" Color="#E5E5E5"/>
 
     <!-- DatePicker -->
@@ -68,15 +68,15 @@
 
     <!-- Listbox -->
     <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#FFF75A5A"/>
-    <SolidColorBrush x:Key="Item.MouseOver.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Item.MouseOver.Border" Color="DeepPink"/>
     <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="DeepPink"/>
     <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="DeepPink"/>
 
     <!--ContextMenu-->
     <SolidColorBrush x:Key="ContextMenu.Background" Color="Black"/>
-    <SolidColorBrush x:Key="ContextMenu.BorderBrush" Color="Gray"/>
+    <SolidColorBrush x:Key="ContextMenu.BorderBrush" Color="DeepPink"/>
     <SolidColorBrush x:Key="MenuItem.Foreground" Color="white"/>
     <SolidColorBrush x:Key="MenuItem.IsMouseOver.Background" Color="red"/>
     <SolidColorBrush x:Key="MenuItem.IsHighlighted.Background" Color="red"/>
@@ -95,17 +95,17 @@
     <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#1d2335"/>
     <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FF606060"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="DeepPink"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="DeepPink"/>
     <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FFF75A5A" Offset="0.0"/>
         <GradientStop Color="#FFF75A5A" Offset="1.0"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="DeepPink"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#FF000000"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF7EB4EA"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="DeepPink"/>
     <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FFEBF4FC" Offset="0.0"/>
         <GradientStop Color="#FFDCECFC" Offset="1.0"/>
@@ -125,12 +125,12 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="#FF569DE5"/>
     <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="#FFF0F0F0"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="#FFD9D9D9"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="DeepPink"/>
     <SolidColorBrush x:Key="ComboBox.Disabled.Glyph" Color="#FFBFBFBF"/>
     <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="#FFBFBFBF"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="DeepPink"/>
     <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="DeepPink"/>
 
     <!--NotowanieControl-->
     <SolidColorBrush x:Key="NotowanieControl.h1.Foreground" Color="#000000"/>

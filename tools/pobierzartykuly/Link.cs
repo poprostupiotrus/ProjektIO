@@ -6,80 +6,91 @@ using System.Linq;
 using System.Net;
 
 
-
-    internal class Link
+/// <summary>
+/// Klasa skrapująca linki do artykułow.
+/// </summary>
+internal class Link
+{
+    /// <summary>
+    /// Lista linków.
+    /// </summary>
+    public List<String> getLista
     {
-        public List<String> getLista { 
-            get {
-            return lista;
-            }
-}
-        private List<String> lista = new List<string> ();
-
-        public void addApage(int num=1)
+        get
         {
-            string url = "https://biznes.pap.pl/pl/news/listings/"+num+",";
+            return lista;
+        }
+    }
+    private List<String> lista = new List<string>();
 
-            
-            ServicePointManager.Expect100Continue = false;
+    /// <summary>
+    /// Dodaje linki z określonej strony do listy.
+    /// </summary>
+    /// <param name="num">Numer strony do pobrania (domyślnie 1).</param>
+    public void addApage(int num = 1)
+    {
+        string url = "https://biznes.pap.pl/pl/news/listings/" + num + ",";
 
-            try
+
+        ServicePointManager.Expect100Continue = false;
+
+        try
+        {
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            using (var responseStream = response.GetResponseStream())
             {
-                
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "GET";
-
-               
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                using (var responseStream = response.GetResponseStream())
+                if (responseStream != null)
                 {
-                    if (responseStream != null)
+                    HtmlDocument doc = new HtmlDocument();
+                    doc.Load(responseStream);
+
+                    var espiTable = doc.DocumentNode.SelectSingleNode("//table[contains(@class, 'espi')]");
+                    if (espiTable != null)
                     {
-                        HtmlDocument doc = new HtmlDocument();
-                        doc.Load(responseStream);
+                        var rows = espiTable.Descendants("tr");
 
-                        var espiTable = doc.DocumentNode.SelectSingleNode("//table[contains(@class, 'espi')]");
-                        if (espiTable != null)
+                        foreach (var firstRow in rows)
                         {
-                            var rows = espiTable.Descendants("tr");
-
-                            foreach (var firstRow in rows)
+                            if (firstRow != null)
                             {
-                                if (firstRow != null)
-                                {
-                                    var cells = firstRow.Descendants("td"); 
+                                var cells = firstRow.Descendants("td");
 
-                                    foreach (var cell in cells)
+                                foreach (var cell in cells)
+                                {
+                                    var link = cell.Descendants("a").FirstOrDefault();
+                                    if (link != null)
                                     {
-                                        var link = cell.Descendants("a").FirstOrDefault();
-                                        if (link != null)
-                                        {
-                                            string linkText = link.GetAttributeValue("href", "");
-                                            lista.Add(linkText);
-                                        }
+                                        string linkText = link.GetAttributeValue("href", "");
+                                        lista.Add(linkText);
                                     }
                                 }
-                                else
-                                {
-                                    Console.WriteLine("Brak wierszy w pierwszej tabeli.");
-                                }
-                                
                             }
+                            else
+                            {
+                                Console.WriteLine("Brak wierszy w pierwszej tabeli.");
+                            }
+
                         }
-                        else
-                        {
-                            Console.WriteLine("Brak tabeli o klasie 'espi' w dokumencie HTML.");
-                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Brak tabeli o klasie 'espi' w dokumencie HTML.");
                     }
                 }
             }
-            catch (WebException ex)
-            {
-                Console.WriteLine("Błąd podczas wysyłania zapytania GET: " + ex.Message);
-            }
-
-            
         }
+        catch (WebException ex)
+        {
+            Console.WriteLine("Błąd podczas wysyłania zapytania GET: " + ex.Message);
+        }
+
+
     }
+}
 
 

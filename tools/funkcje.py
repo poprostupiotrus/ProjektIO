@@ -1,3 +1,5 @@
+"""@package docstring
+"""
 import re
 def extract_first_three_letters(string):
     """

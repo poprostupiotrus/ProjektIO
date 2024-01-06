@@ -1,27 +1,31 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
 
 namespace projektIOv2
 {
+    /// <summary>
+    /// Klasa przechowująca dane dotyczące spółek.
+    /// </summary>
     internal class DaneSpolek
     {
         List<Spolka> listaSpolek;
 
+        /// <summary>
+        /// Lista spółek.
+        /// </summary>
         public List<Spolka> ListaSpolek { get => listaSpolek; }
 
+        /// <summary>
+        /// Inicjalizuje nową instancję klasy <see cref="DaneSpolek"/>.
+        /// </summary>
         public DaneSpolek()
         {
-            Trace.WriteLine("Poczatek");
+            //Trace.WriteLine("Poczatek");
             string filePath = "danespolekWIG20.json";
             string jsonString = File.ReadAllText(filePath);
-            Trace.WriteLine("po wczytaniu");
+            ///Trace.WriteLine("po wczytaniu");
 
 
             listaSpolek = JsonConvert.DeserializeObject<List<Spolka>>(jsonString);
@@ -29,6 +33,11 @@ namespace projektIOv2
             Trace.WriteLine("po deserializacji");
         }
 
+        /// <summary>
+        /// Znajduje spółkę po nazwie.
+        /// </summary>
+        /// <param name="nazwa">Nazwa spółki.</param>
+        /// <returns>Obiekt reprezentujący spółkę.</returns>
         public Spolka ZnajdzSpolkePoNazwie(string nazwa)
         {
             return listaSpolek?.Find(x => x.Nazwa == nazwa);

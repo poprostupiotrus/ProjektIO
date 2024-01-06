@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 
 namespace projektIOv2
 {
+    /// <summary>
+    /// Konwerter przyporządkowujący nazwę spółki do tickera.
+    /// </summary>
     public class NameConverter : IValueConverter
     {
         private static readonly Dictionary<string, string> tickernDictionary = new Dictionary<string, string>
@@ -35,13 +35,23 @@ namespace projektIOv2
             {"SPL","SANPL" }
         };
 
+        /// <summary>
+        /// Konwertuje ticker na nazwę spółki.
+        /// </summary>
+        /// <param name="value">Ticker spółki.</param>
+        /// <param name="targetType">Typ docelowy.</param>
+        /// <param name="parameter">Parametr konwertera.</param>
+        /// <param name="culture">Informacje o kulturze.</param>
+        /// <returns>Nazwa spółki przypisana do tickera.</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return tickernDictionary[value.ToString()];
         }
 
 
-
+        /// <summary>
+        /// Nie jest używane w tym konwerterze.
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
