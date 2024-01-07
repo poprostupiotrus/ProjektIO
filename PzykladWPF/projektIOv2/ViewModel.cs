@@ -132,7 +132,7 @@ namespace projektIOv2
                     dzielnik = 1;
                 }
                 //Dla każdej daty sprawdź czy dla niej jest notowanie
-                for (int i = 0; i < wszystkieDaty.Count-1; i++)
+                for (int i = MinIndex; i <= MaxIndex; i++)
                 {
                     DateTime data = DateTime.ParseExact(wszystkieDaty[i], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
                     if (Notowania.ContainsKey(data) && Notowania[data] != 0)

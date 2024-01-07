@@ -22,7 +22,6 @@ namespace projektIOv2.Pages
             
             viewModel = new ViewModel(stockChart);
             DataContext = viewModel;
-            Button_alior.IsSelected = true;
         }
         /// <summary>
         /// Wydarzenie wciśniecia przycisku
@@ -76,20 +75,14 @@ namespace projektIOv2.Pages
             }
             if (test == 0)
             {
-                if(viewModel.czyWykresProcentowy)
-                {
-                    stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
-                    viewModel.UpdateChart();
-                }
-                else
-                {
-                    stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
-                }
+                stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
+                viewModel.UpdateChart();
             }
             test++;
             if (test == 3)
                 test = 0;
         }
+        int test3 = 0;
         /// <summary>
         /// Wydarzenie zmiany daty końcowej
         /// </summary>
@@ -111,7 +104,14 @@ namespace projektIOv2.Pages
                 EndDate.SelectedDate = viewModel.TimeStampMax;
                 EndHour.Text = viewModel.TimeStampMaxHour.ToString("HH:mm");
             }
-            stockChart.AxisX[0].MaxValue = viewModel.FindIndexFromEnd(viewModel.TimeStampMax);
+            if(test3==0)
+            {
+                stockChart.AxisX[0].MaxValue = viewModel.FindIndexFromEnd(viewModel.TimeStampMax);
+                viewModel.UpdateChart();
+            }
+            test3++;
+            if (test3 == 3)
+                test3 = 0;
         }
         private int test2 = 0;//tutaj wydarzenie jest aktywowane 2 razy
         /// <summary>
@@ -152,10 +152,14 @@ namespace projektIOv2.Pages
                 }
             }
         }
-
+        /// <summary>
+        /// Wydarzenie które aktywuję się jak wczyta się cała strona
+        /// </summary>
+        /// <param name="sender">obiekt Home</param>
+        /// <param name="e">Argumenty wydarzenia</param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //
+            Button_alior.IsSelected = true;
         }
     }
 }
