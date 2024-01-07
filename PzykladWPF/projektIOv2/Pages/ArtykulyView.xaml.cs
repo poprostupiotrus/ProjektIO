@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Effects;
+using projektIOv2.Controls;
 namespace projektIOv2.Pages
 {
     /// <summary>
@@ -23,32 +24,27 @@ namespace projektIOv2.Pages
     {
         NavigationService ns;
         ListaArtykulow l1;
+
+        public event EventHandler ClickPassHandler;
         public ArtykulyView()
         {
             InitializeComponent();
             l1 = new ListaArtykulow();
             //MyListbox.ItemsSource = l1.listaArtykulow;
-
-
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-
         }
-
         private void ArtykulButton_Click(object sender, RoutedEventArgs e)
         {
-            ns = NavigationService.GetNavigationService(this);
+            /*ns = NavigationService.GetNavigationService(this);
             Artykul art = (sender as ArtykulButton).MyData as Artykul;
             if (art == null) return;
             ArtykulView av = new ArtykulView();
-            av.DataContext = art;
-            ns.Navigate(av);
-
+            av.DataContext = art;*/
+            ClickPassHandler?.Invoke(sender, e);
         }
-
         private async void czas_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (l1 == null) return;
@@ -77,9 +73,7 @@ namespace projektIOv2.Pages
                 return;
             }*/
             // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
-
         }
-
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (l1 == null) return;
@@ -90,7 +84,9 @@ namespace projektIOv2.Pages
             {
                 var b = await l1.Update(dt1);
                 MyListbox.ItemsSource = b;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
 
                 errorBox.ErrorMessage = ex.Message;
                 OdpowiedzNaError();
@@ -102,6 +98,14 @@ namespace projektIOv2.Pages
             WylaczInneKontrolki();
             BlurEffect blurEffect = new BlurEffect { Radius = 5 };
             grid.Effect = blurEffect;
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == "Wyszukaj...")
+            {
+                textBox.Text = string.Empty;
+            }
         }
         private void WylaczInneKontrolki()
         {

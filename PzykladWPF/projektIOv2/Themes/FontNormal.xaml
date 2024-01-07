@@ -63,7 +63,13 @@
     <Style x:Key="ArtykulButton.naglowekartykulu" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="13"/>
-        <Setter Property="Height" Value="23"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextTrimming" Value="WordEllipsis"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="MaxHeight" Value="43"/>
+        <Setter Property="MaxWidth" Value="350"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
     </Style>

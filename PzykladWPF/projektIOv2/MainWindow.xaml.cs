@@ -13,7 +13,7 @@ namespace projektIOv2
     public partial class MainWindow : Window
     {
         private DragAndDrop dragAndDropWindow;
-        ArtykulyView art;
+        CombinedArtykulyView art;
         Home home1;
         Settings settings;
 
@@ -117,7 +117,7 @@ namespace projektIOv2
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            if (art == null) art = new ArtykulyView();
+            if (art == null) art = new CombinedArtykulyView();
             fContainer.Navigate(art);
         }
 

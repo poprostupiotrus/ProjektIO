@@ -123,6 +123,7 @@ namespace projektIOv2
             return wynik;
         }
 
+
         /// <summary>
         /// Sprawdza, czy istnieje połączenie z internetem
         /// </summary>
