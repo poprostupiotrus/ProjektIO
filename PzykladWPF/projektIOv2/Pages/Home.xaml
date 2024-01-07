@@ -30,7 +30,7 @@
             <Border BorderBrush="{DynamicResource DatePicker.BorderBrush}" BorderThickness="0,1,1,1"  CornerRadius="15">
                 <StackPanel Orientation="Horizontal">
                     <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}" SelectedDateChanged="StartDate_SelectedDateChanged" />
-                    <TextBox BorderThickness="0" x:Name="nH" TextChanged="TextBox_TextChanged"   Text="{Binding TimeStampMin,Mode=TwoWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
+                    <TextBox BorderThickness="0" x:Name="StartHour" TextChanged="TextBox_TextChanged"   Text="{Binding TimeStampMin,Mode=TwoWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
                 </StackPanel>
             </Border>
             <TextBlock Text="      "/>
@@ -38,7 +38,7 @@
             <Border BorderBrush="{DynamicResource DatePicker.BorderBrush}" BorderThickness="0,1,1,1"  CornerRadius="15">
                 <StackPanel Orientation="Horizontal">
                     <DatePicker   Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}" SelectedDateChanged="EndDate_SelectedDateChanged" />
-                    <TextBox BorderThickness="0" x:Name="xH"  TextChanged="TextBox_TextChanged" Text="{Binding TimeStampMax,Mode=TwoWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
+                    <TextBox BorderThickness="0" x:Name="EndHour"  TextChanged="TextBox_TextChanged" Text="{Binding TimeStampMax,Mode=TwoWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -67,7 +67,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ctls:CheckNox Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="#07f045" Icon="{DynamicResource alior}" IconWidth="16" Text="ALIOR"  Height="71" Grid.Column="0" IsSelected="True" />
+            <ctls:CheckNox x:Name="Button_alior" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked" Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="#07f045" Icon="{DynamicResource alior}" IconWidth="16" Text="ALIOR"  Height="71" Grid.Column="0" />
             <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="#03A1E2" Icon="{DynamicResource asecpol}" IconWidth="16" Text="ASSECOPOL" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked"  Height="71" Grid.Column="1"/>
             <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="#DB0C14" Icon="{DynamicResource cdprojekt}" IconWidth="16" Text="CDPROJEKT" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked"  Height="71" Grid.Column="2"/>
             <ctls:CheckNox Margin="0,0,10,0" BorderRadius="10" IndicatorBrush="#F39508" Icon="{DynamicResource polsat}" IconWidth="16" Text="CYFRPOLSAT" Checked="CheckNox_Checked" Unchecked="CheckNox_Unchecked"  Height="71" Grid.Column="3"/>

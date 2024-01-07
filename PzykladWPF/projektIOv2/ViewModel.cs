@@ -4,9 +4,6 @@ using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using LiveCharts.Events;
-using CommunityToolkit.Mvvm.Input;
-using System.ComponentModel;
 using System.Collections.Generic;
 using LiveCharts.Defaults;
 using System.Globalization;
@@ -14,7 +11,10 @@ using System.Linq;
 
 namespace projektIOv2
 {
-    public class ViewModel : INotifyPropertyChanged
+    /// <summary>
+    /// Logika Wykresu
+    /// </summary>
+    public class ViewModel
     {
         private DaneSpolek daneSpolek;
         public List<string> wszystkieDaty;
@@ -23,11 +23,10 @@ namespace projektIOv2
         private List<(Spolka, SolidColorBrush)> listaWykresow;
         public int MinIndex;
         public int MaxIndex;
-        public RelayCommand<PreviewRangeChangedEventArgs> XRangeChangedCommand
-        {
-            get;
-            private set;
-        }
+        /// <summary>
+        /// Konstruktor ViewModel, który inicjuje dane potrzebne do wyświetlenia wykresu
+        /// </summary>
+        /// <param name="cartesianChart">Wykres</param>
         public ViewModel(CartesianChart cartesianChart)
         {
             chart = cartesianChart;
@@ -62,13 +61,20 @@ namespace projektIOv2
             });
         }
         public DateTime TimeStampMin { get => timeStampMin; set {                   
-                    timeStampMin = new DateTime(value.Year,value.Month,value.Day,timeStampMin.Hour,timeStampMin.Minute,0); OnPropertyChanged(nameof(TimeStampMin)); } } 
+                    timeStampMin = new DateTime(value.Year,value.Month,value.Day,timeStampMin.Hour,timeStampMin.Minute,0); } } 
         public DateTime TimeStampMax { get => timeStampMax; set { 
-                timeStampMax = new DateTime(value.Year, value.Month, value.Day, timeStampMax.Hour, timeStampMax.Minute, 0); OnPropertyChanged(nameof(TimeStampMax)); } }
-        public DateTime TimeStampMinHour { set {timeStampMin = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); OnPropertyChanged(nameof(TimeStampMin)); } }
-        public DateTime TimeStampMaxHour { set {timeStampMax = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); OnPropertyChanged(nameof(TimeStampMax)); } }
+                timeStampMax = new DateTime(value.Year, value.Month, value.Day, timeStampMax.Hour, timeStampMax.Minute, 0); } }
+        public DateTime TimeStampMinHour { get => timeStampMin;
+            set {timeStampMin = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); } }
+        public DateTime TimeStampMaxHour { get => timeStampMax;
+            set {timeStampMax = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); } }
         private DateTime timeStampMax;
         private DateTime timeStampMin;
+        /// <summary>
+        /// Dodaje społke do wykresu
+        /// </summary>
+        /// <param name="nazwa">Nazwa spółki</param>
+        /// <param name="brush">Kolor linii na wykresie</param>
         public void AddSeriesToChart(string nazwa, SolidColorBrush brush)
         {
             Spolka spolka = daneSpolek.ZnajdzSpolkePoNazwie(nazwa);
@@ -82,18 +88,35 @@ namespace projektIOv2
                     Title = "Zmiana kursu akcji względem pierwszej wybranej daty [%]"
                 });
             }
-            generateChart();
+            UpdateChart();
         }
-        public async void generateChart()
+        /// <summary>
+        /// Aktualizuje wykres
+        /// </summary>
+        public void UpdateChart()
         {
             chart.Series.Clear();
-            foreach((Spolka, SolidColorBrush) pair in listaWykresow)
+            foreach ((Spolka, SolidColorBrush) pair in listaWykresow)
             {
-                ChartValues<ObservablePoint> points = await getChartValuesAsync(pair.Item1.Notowania);
-                await Application.Current.Dispatcher.InvokeAsync(() => { addAfterAsync(points, pair.Item1.Nazwa, pair.Item2); });
+                GenerateChart(pair.Item1,pair.Item2);
             }
         }
-        public async Task<ChartValues<ObservablePoint>> getChartValuesAsync(Dictionary<DateTime,double> Notowania)
+        /// <summary>
+        /// Metoda asynchroniczna, która generuje wykres
+        /// </summary>
+        /// <param name="spolka">Społka dla, której generuje wykres</param>
+        /// <param name="brush">Kolor linii na wykresie</param>
+        private async void GenerateChart(Spolka spolka, SolidColorBrush brush)
+        {
+            ChartValues<ObservablePoint> points = await getChartValuesAsync(spolka.Notowania);
+            await Application.Current.Dispatcher.InvokeAsync(() => { addAfterAsync(points, spolka.Nazwa, brush); });
+        }
+        /// <summary>
+        /// Metoda asynchroniczna, która generuje punkty na wykres konkretnej spółki
+        /// </summary>
+        /// <param name="Notowania">Notowania spółki dla której generuje punkty</param>
+        /// <returns>Zwraca Task, który zawiera ChartValues zrobiony z ObservablePoint</returns>
+        private async Task<ChartValues<ObservablePoint>> getChartValuesAsync(Dictionary<DateTime,double> Notowania)
         {
             return await Task.Run(() =>
             {
@@ -120,7 +143,13 @@ namespace projektIOv2
                 return listapunktow;
             });
         }
-        public void addAfterAsync(ChartValues<ObservablePoint> values, string nazwa, SolidColorBrush brush)
+        /// <summary>
+        /// Dodaje punkty na wykres
+        /// </summary>
+        /// <param name="values">Punkty wykresu</param>
+        /// <param name="nazwa">Nazwa danej linii na wykresie</param>
+        /// <param name="brush">kolor linni na wykresie</param>
+        private void addAfterAsync(ChartValues<ObservablePoint> values, string nazwa, SolidColorBrush brush)
         {
             LineSeries series = new LineSeries();
             series.Values = values;
@@ -131,6 +160,10 @@ namespace projektIOv2
             series.LineSmoothness = 0;
             chart.Series.Add(series);
         }
+        /// <summary>
+        /// Usuwa spółke z wykresu
+        /// </summary>
+        /// <param name="nazwa">Nazwa spółki</param>
         public void removeSeries(string nazwa)
         {
             (Spolka, SolidColorBrush) Spolka = default;
@@ -152,14 +185,13 @@ namespace projektIOv2
                     Title = "Wartość akcji [zł]"
                 });
             }
-            generateChart();
+            UpdateChart();
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        /// <summary>
+        /// Znajduję indeks równy lub późniejszy dla danej daty
+        /// </summary>
+        /// <param name="givenDate">Data dla, której szuka indeksu</param>
+        /// <returns>zwraca indeks listy wszystkieDaty</returns>
         public int FindIndexFromBeginning(DateTime givenDate)
         {
             MinIndex = 0;
@@ -173,11 +205,16 @@ namespace projektIOv2
                 }
                 else
                 {
-                    break;
+                    return MinIndex;
                 }
             }
             return MinIndex;
         }
+        /// <summary>
+        /// Znajduję indeks równy lub wczęśniejszy dla danej daty
+        /// </summary>
+        /// <param name="givenDate">Data dla, której szuka indeksu</param>
+        /// <returns>zwraca indeks listy wszystkieDaty</returns>
         public int FindIndexFromEnd(DateTime givenDate)
         {
             MaxIndex = wszystkieDaty.Count-1;
@@ -190,7 +227,7 @@ namespace projektIOv2
                 }
                 else
                 {
-                    break;
+                    return MaxIndex;
                 }
             }
             return MaxIndex;

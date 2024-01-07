@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\
+C:\Users\kuba\Desktop\projektio\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\
 projektIOv2
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\App.xaml
+C:\Users\kuba\Desktop\projektio\ProjektIO\PzykladWPF\projektIOv2\App.xaml
 26323121164
 
 29-1037945801
-200682149778
+200-1097944648
 Assets\Icons.xaml;Controls\ArtykulButton.xaml;Controls\CheckNox.xaml;Controls\ErrorBox.xaml;Controls\MenuItem.xaml;Controls\NotowanieControl.xaml;Controls\UserPopup.xaml;MainWindow.xaml;Pages\ArtykulView.xaml;Pages\ArtykulyView.xaml;Pages\Home.xaml;Pages\Settings.xaml;Styles\Calendar.xaml;Styles\CleanListBox.xaml;Styles\ComboBox.xaml;Styles\ContextMenu.xaml;Styles\DatePicker.xaml;Styles\GroupBox.xaml;Styles\MainStyle.xaml;Styles\ScrollBar.xaml;Themes\DarkTheme.xaml;Themes\FontLarge.xaml;Themes\FontNormal.xaml;Themes\FontSmall.xaml;Themes\HighTheme.xaml;Themes\LightTheme.xaml;
 
-True
+False
 
