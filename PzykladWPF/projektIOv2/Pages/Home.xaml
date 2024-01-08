@@ -29,16 +29,24 @@
             
             <Border BorderBrush="{DynamicResource DatePicker.BorderBrush}" BorderThickness="0,1,1,1"  CornerRadius="15">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}" SelectedDateChanged="StartDate_SelectedDateChanged" />
-                    <TextBox BorderThickness="0" x:Name="StartHour" TextChanged="TextBox_TextChanged"   Text="{Binding TimeStampMinHour,Mode=OneWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
+                    <DatePicker   Name="StartDate" SelectedDate="{Binding TimeStampMin, Mode=TwoWay}" SelectedDateChanged="StartDate_SelectedDateChanged" >
+                        <DatePicker.BlackoutDates>
+                            <CalendarDateRange End="2023-09-30" Start="1970-01-01"/>
+                        </DatePicker.BlackoutDates>
+                    </DatePicker>
+                    <TextBox BorderThickness="0" x:Name="StartHour" TextChanged="TextBox_TextChanged"   Text="{Binding TimeStampMinHour,Mode=OneTime, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
                 </StackPanel>
             </Border>
             <TextBlock Text="      "/>
 
             <Border BorderBrush="{DynamicResource DatePicker.BorderBrush}" BorderThickness="0,1,1,1"  CornerRadius="15">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker   Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}" SelectedDateChanged="EndDate_SelectedDateChanged" />
-                    <TextBox BorderThickness="0" x:Name="EndHour"  TextChanged="TextBox_TextChanged" Text="{Binding TimeStampMaxHour,Mode=OneWay, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
+                    <DatePicker   Name="EndDate" SelectedDate="{Binding TimeStampMax, Mode=TwoWay}" SelectedDateChanged="EndDate_SelectedDateChanged" >
+                        <DatePicker.BlackoutDates>
+                            <CalendarDateRange End="2023-09-30" Start="1970-01-01"/>
+                        </DatePicker.BlackoutDates>
+                    </DatePicker>
+                    <TextBox BorderThickness="0" x:Name="EndHour"  TextChanged="TextBox_TextChanged" Text="{Binding TimeStampMaxHour,Mode=OneTime, StringFormat=HH:mm}" Width="50" Background="Transparent" BorderBrush="Transparent" Padding="4"  Foreground="{DynamicResource DatePicker.Text}" FontSize="13.5"/>
                 </StackPanel>
             </Border>
         </StackPanel>

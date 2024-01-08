@@ -135,6 +135,7 @@ namespace projektIOv2
             {
                 artykulView = new ArtykulView();
             }
+            artykulView.naw1.Visibility = Visibility.Visible;
             artykulView.DataContext = artykul;
             fContainer.Navigate(artykulView);
         }

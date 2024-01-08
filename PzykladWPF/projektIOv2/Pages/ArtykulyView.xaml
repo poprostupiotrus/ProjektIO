@@ -51,7 +51,11 @@
 
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <DatePicker x:Name="czas" HorizontalAlignment="Center" SelectedDate="11.07.2023" SelectedDateChanged="czas_SelectedDateChanged" />
+            <DatePicker x:Name="czas" HorizontalAlignment="Center" SelectedDate="11.07.2023" SelectedDateChanged="czas_SelectedDateChanged" >
+                <DatePicker.BlackoutDates>
+                    <CalendarDateRange End="2023-09-30" Start="1970-01-01"/>
+                </DatePicker.BlackoutDates>
+            </DatePicker>
         </StackPanel>
         <ListBox x:Name="MyListbox" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling">
 

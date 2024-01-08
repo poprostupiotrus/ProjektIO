@@ -1,8 +1,13 @@
-﻿using projektIOv2.Controls;
+﻿using Newtonsoft.Json;
+using OpenAI.Threads;
+using projektIOv2.Controls;
 using projektIOv2.Skraper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,8 +34,8 @@ namespace projektIOv2.Pages
             (bardmenu.Items[0] as System.Windows.Controls.MenuItem).Click += Bard_Click;
 
         }
-
-
+        public List<Artykul> lista;
+        public Artykul pom;
         
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -109,6 +114,55 @@ namespace projektIOv2.Pages
             catch (Exception)
             {
 
+            }
+        }
+
+        private void nastepnyArtykul_Click(object sender, RoutedEventArgs e)
+        {
+            if(lista==null)
+            {
+            string filePath = "artykulyV2.json";
+            string jsonString = File.ReadAllText(filePath);
+            lista = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
+            }
+              
+            Artykul art = lista.Find(x => x.Link == ((Artykul)DataContext).Link);
+            int index = lista.IndexOf(art);
+            if (index != lista.Count - 1)
+            {
+                DataContext = lista[index + 1];
+            }
+        }
+
+        private void poprzedniArtykul_Click(object sender, RoutedEventArgs e)
+        {
+            if (lista == null)
+            {
+                string filePath = "artykulyV2.json";
+                string jsonString = File.ReadAllText(filePath);
+                lista = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
+            }
+
+            Artykul art = lista.Find(x => x.Link == ((Artykul)DataContext).Link);
+            int index = lista.IndexOf(art);
+            if (index != 0)
+            {
+                DataContext = lista[index - 1];
+            }
+        }
+
+        private void search_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+            try
+            {
+                Process.Start(new ProcessStartInfo(((Artykul)DataContext).Link) { UseShellExecute = true });
+            }
+            catch (Exception)
+            {
+
+                
             }
         }
     }
