@@ -44,10 +44,7 @@
 
     </Page.Resources>
     <Grid>
-        <Controls:ErrorBox x:Name ="errorBox" VerticalAlignment="Center" Visibility="Hidden" Panel.ZIndex="1" ButtonClicked="ErrorBoxButtonClicked">
-        </Controls:ErrorBox>
-        <Grid x:Name="grid">
-            <Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
             <!--<RowDefinition Height="auto"/>-->
@@ -65,8 +62,7 @@
 
             </ListBox.Resources>
 
-            </ListBox>
-        </Grid>
+        </ListBox>
 
     </Grid>
 </Page>

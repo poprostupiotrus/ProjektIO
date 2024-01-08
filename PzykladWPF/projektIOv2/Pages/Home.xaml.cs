@@ -12,7 +12,7 @@ namespace projektIOv2.Pages
     /// </summary>    
     public partial class Home : Page
     {
-        ViewModel viewModel;
+        public ViewModel viewModel;
         /// <summary>
         /// Konstruktor inicjalizujący strone Home i obiekt ViewModel
         /// </summary>

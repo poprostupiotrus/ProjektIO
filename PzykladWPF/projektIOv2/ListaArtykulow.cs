@@ -21,7 +21,7 @@ namespace projektIOv2
     {
         public List<Artykul> listaArtykulow;
         private List<Artykul> listaArtykulowp;
-        
+
         /// <summary>
         /// konstruktor bezparametrowy.
         /// </summary>
@@ -110,6 +110,22 @@ namespace projektIOv2
         {
             Artykul wynik = listaArtykulow[0];
             foreach (Artykul artykul in listaArtykulow)
+            {
+                if (DateTime.Compare(artykul.Data, time) < 0)
+                {
+                    wynik = artykul;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return wynik;
+        }
+        public Artykul WyszukajArtykulDlaWykresu(DateTime time)
+        {
+            Artykul wynik = listaArtykulowp[0];
+            foreach (Artykul artykul in listaArtykulowp)
             {
                 if (DateTime.Compare(artykul.Data, time) < 0)
                 {

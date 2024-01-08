@@ -528,3 +528,5 @@ C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6
 C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2.pdb
 C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2.genruntimeconfig.cache
 C:\Users\patryk\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\ref\projektIOv2.dll
+C:\Users\komputerrozy\Desktop\repozytorium\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Pages\CombinedArtykulView.g.cs
+C:\Users\komputerrozy\Desktop\repozytorium\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\Pages\CombinedArtykulView.baml

@@ -45,7 +45,7 @@
         <Grid Grid.Row="1">
             <GroupBox Style="{DynamicResource GroupBoxStyle1}">
 
-                <lvc:CartesianChart Name="stockChart" DisableAnimations="True" >
+                <lvc:CartesianChart Name="stockChart" DisableAnimations="True">
                 </lvc:CartesianChart>
             </GroupBox>
         </Grid>

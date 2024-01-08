@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using LiveCharts.Defaults;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace projektIOv2
 {
@@ -160,6 +162,7 @@ namespace projektIOv2
             series.LineSmoothness = 0;
             chart.Series.Add(series);
         }
+
         /// <summary>
         /// Usuwa spółke z wykresu
         /// </summary>

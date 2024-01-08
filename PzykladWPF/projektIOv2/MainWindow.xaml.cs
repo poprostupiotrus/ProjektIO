@@ -3,6 +3,9 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using projektIOv2.Themes;
 using projektIOv2.Pages;
+using LiveCharts;
+using System;
+using System.Globalization;
 
 namespace projektIOv2
 {
@@ -13,6 +16,8 @@ namespace projektIOv2
     public partial class MainWindow : Window
     {
         private DragAndDrop dragAndDropWindow;
+        ListaArtykulow listaArtykulow;
+        ArtykulView artykulView;
         CombinedArtykulyView art;
         Home home1;
         Settings settings;
@@ -111,8 +116,27 @@ namespace projektIOv2
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            if (home1 == null) home1 = new Home();
+            if(home == null)
+            {
+                home1 = new Home();
+            }
             fContainer.Navigate(home1);
+        }
+
+        private void OnDataClick(object sender, ChartPoint chartPoint)
+        {
+            DateTime date = DateTime.ParseExact(home1.viewModel.wszystkieDaty[(int)chartPoint.X], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+            if(listaArtykulow == null)
+            {
+                listaArtykulow = new ListaArtykulow();
+            }
+            Artykul artykul = listaArtykulow.WyszukajArtykulDlaWykresu(date);
+            if(artykulView == null)
+            {
+                artykulView = new ArtykulView();
+            }
+            artykulView.DataContext = artykul;
+            fContainer.Navigate(artykulView);
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
@@ -157,6 +181,7 @@ namespace projektIOv2
             ThemesController.SetTheme(contlorer.ThemeType);
             ThemesController.SetFont(contlorer.FontType);
             home1 = new Home();
+            home1.stockChart.DataClick += OnDataClick;
             fContainer.Navigate(home1);
         }
     }

@@ -24,13 +24,19 @@ namespace projektIOv2.Pages
     {
         NavigationService ns;
         ListaArtykulow l1;
-
+        public delegate void CustomDelegate(string name);
         public event EventHandler ClickPassHandler;
+        public event CustomDelegate ErrorBoxShow;
         public ArtykulyView()
         {
             InitializeComponent();
             l1 = new ListaArtykulow();
             //MyListbox.ItemsSource = l1.listaArtykulow;
+        }
+
+        public Artykul ZwrocNajblzszyArtykul(DateTime czas)
+        {
+            return l1.WyszukajArtykul(czas);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -62,9 +68,7 @@ namespace projektIOv2.Pages
             }
             catch (Exception ex)
             {
-                errorBox.ErrorMessage = ex.Message;
-                OdpowiedzNaError();
-
+                ErrorBoxShow?.Invoke(ex.Message);
             }
             /*if (DateTime.Now < dt1)
             {
@@ -87,17 +91,8 @@ namespace projektIOv2.Pages
             }
             catch (Exception ex)
             {
-
-                errorBox.ErrorMessage = ex.Message;
-                OdpowiedzNaError();
+                ErrorBoxShow?.Invoke(ex.Message);
             }
-        }
-        private void OdpowiedzNaError()
-        {
-            errorBox.Visibility = Visibility.Visible;
-            WylaczInneKontrolki();
-            BlurEffect blurEffect = new BlurEffect { Radius = 5 };
-            grid.Effect = blurEffect;
         }
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -106,30 +101,6 @@ namespace projektIOv2.Pages
             {
                 textBox.Text = string.Empty;
             }
-        }
-        private void WylaczInneKontrolki()
-        {
-            {
-                foreach (var child in grid.Children)
-                {
-                    if (child is UIElement uiElement)
-                    {
-                        uiElement.IsHitTestVisible = false;
-                    }
-                }
-            }
-        }
-        private void ErrorBoxButtonClicked(object sender, EventArgs e)
-        {
-            foreach (var child in grid.Children)
-            {
-                if (child is UIElement uiElement)
-                {
-                    uiElement.IsHitTestVisible = true;
-                }
-            }
-            BlurEffect blurEffect = new BlurEffect { Radius = 0 };
-            grid.Effect = blurEffect;
         }
     }
 }
