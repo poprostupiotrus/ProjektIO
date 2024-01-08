@@ -113,7 +113,6 @@ namespace projektIOv2.Pages
             if (test3 == 3)
                 test3 = 0;
         }
-        private int test2 = 0;//tutaj wydarzenie jest aktywowane 2 razy
         /// <summary>
         /// Wydarzenie zmiany godziny
         /// </summary>
@@ -122,29 +121,22 @@ namespace projektIOv2.Pages
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textbox = sender as TextBox;
-            string pattern = @"^\d{1,2}:\d{2}$";
+            string pattern = @"^\d{2}:\d{2}$";
             
             if(Regex.IsMatch(textbox.Text.Trim(), pattern) )
             {
                 DateTime dt;
-                DateTime.TryParseExact(textbox.Text.Trim(), "HH:mm", null, System.Globalization.DateTimeStyles.None, out dt);
-                if (textbox.Name=="nH")
+                DateTime.TryParseExact(textbox.Text.Trim(), "HH:mm", null, DateTimeStyles.None, out dt);
+                if (textbox.Name == "StartHour")
                 {
                     viewModel.TimeStampMinHour = new DateTime(viewModel.TimeStampMin.Year,viewModel.TimeStampMin.Month,viewModel.TimeStampMin.Day,dt.Hour,dt.Minute,0);
                     if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
                     {
-                        if(test2==0)
-                        {
-                            stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
-                            viewModel.UpdateChart();
-                        }
-                        test2++;
-                        if (test2 == 2)
-                            test2 = 0;
+                        stockChart.AxisX[0].MinValue = viewModel.FindIndexFromBeginning(viewModel.TimeStampMin);
+                        viewModel.UpdateChart();
                     }
-
                 }
-                if (textbox.Name == "xH")
+                if (textbox.Name == "EndHour")
                 {
                     viewModel.TimeStampMaxHour = new DateTime(viewModel.TimeStampMax.Year, viewModel.TimeStampMax.Month, viewModel.TimeStampMax.Day, dt.Hour, dt.Minute, 0);
                     if ((viewModel.TimeStampMax != viewModel.TimeStampMin))
