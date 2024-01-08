@@ -69,7 +69,7 @@
         <Setter Property="MinHeight" Value="23"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="MaxHeight" Value="43"/>
-        <Setter Property="MaxWidth" Value="350"/>
+        <Setter Property="MaxWidth" Value="270"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
     </Style>

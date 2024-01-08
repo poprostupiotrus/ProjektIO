@@ -53,7 +53,7 @@
 
     <Style x:Key="ArtykulButton.kreska" TargetType="Rectangle">
         <Setter Property="Width" Value="5"/>
-        <Setter Property="Height" Value="60"/>
+        <Setter Property="Height" Value="80"/>
         <Setter Property="Fill" Value="{DynamicResource PrimaryBlueColor}"/>
         <Setter Property="RadiusX" Value="2"/>
         <Setter Property="RadiusY" Value="2"/>
@@ -66,10 +66,10 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="MinHeight" Value="50"/>
         <Setter Property="Height" Value="Auto"/>
-        <Setter Property="MaxHeight" Value="43"/>
-        <Setter Property="MaxWidth" Value="350"/>
+        <Setter Property="MaxHeight" Value="60"/>
+        <Setter Property="MaxWidth" Value="290"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="Foreground" Value="{DynamicResource NotowanieControl.h1.Foreground}"/>
     </Style>
