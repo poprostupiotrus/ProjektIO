@@ -57,7 +57,7 @@
     <SolidColorBrush x:Key="Calendar.Background" Color="#666"/>
     <SolidColorBrush x:Key="Calendar.SelectedBackground" Color="#FF3BF3B9"/>
     <SolidColorBrush x:Key="Calendar.HoverBackground" Color="#FF3BF3B9"/>
-    <SolidColorBrush x:Key="Calendar.NormalText" Color="#000"/>
+    <SolidColorBrush x:Key="Calendar.NormalText" Color="white"/>
     <SolidColorBrush x:Key="Calendar.CalendarButtonFocusVisual" Color="#FF3BF3B9"/>
     <SolidColorBrush x:Key="Calendar.TodayBackground" Color="#FFF75A5A"/>
     <SolidColorBrush x:Key="Calendar.Blackout" Color="#666"/>

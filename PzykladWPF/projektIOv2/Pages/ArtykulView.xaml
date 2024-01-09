@@ -71,7 +71,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="210"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Grid.Column="0" Style="{DynamicResource GroupBoxStyle1}" Margin="10,5,10,10">
+        <GroupBox Grid.Column="0" Style="{DynamicResource GroupBoxStyle1}" Margin="10,5,10,0">
             <GroupBox.ContextMenu>
                 <ContextMenu>
 
@@ -179,7 +179,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <GroupBox  Grid.Row="0" Style="{DynamicResource GroupBoxStyle1}" Margin="0,0,5,10" Grid.RowSpan="{Binding Path=bard, Converter={StaticResource SpanConverter} }">
+            <GroupBox  Grid.Row="0" Style="{DynamicResource GroupBoxStyle1}" Margin="0,5,0,0" Grid.RowSpan="{Binding Path=bard, Converter={StaticResource SpanConverter} }">
                 <GroupBox.ContextMenu>
                     <ContextMenu>
 
@@ -242,7 +242,7 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox  Grid.Row="1" Style="{DynamicResource GroupBoxStyle1}" Margin="0,0,0,10" Visibility="{Binding Path=bard, Converter={StaticResource VisibilityConverter} }">
+            <GroupBox  Grid.Row="1" Style="{DynamicResource GroupBoxStyle1}" Margin="0,0,0,0" Visibility="{Binding Path=bard, Converter={StaticResource VisibilityConverter} }">
                 <GroupBox.ContextMenu>
                     <ContextMenu x:Name="bardmenu">
 

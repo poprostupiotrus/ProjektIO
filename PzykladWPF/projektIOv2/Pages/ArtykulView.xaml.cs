@@ -153,11 +153,13 @@ namespace projektIOv2.Pages
 
         private void search_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+            String prefix = "https://biznes.pap.pl";
+            String artlink= ((Artykul)DataContext).Link;
             try
             {
-                Process.Start(new ProcessStartInfo(((Artykul)DataContext).Link) { UseShellExecute = true });
+                if (!artlink.Contains(prefix)) artlink = prefix + artlink;
+                Process.Start(new ProcessStartInfo(artlink) { UseShellExecute = true });
             }
             catch (Exception)
             {
