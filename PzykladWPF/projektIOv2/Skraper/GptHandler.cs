@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using projektIOv2;
 namespace projektIOv2.Skraper
 {
     /// <summary>
@@ -23,6 +23,7 @@ namespace projektIOv2.Skraper
         /// <returns>Obiekt reprezentujący artykuł z dodatkowymi informacjami uzyskanymi od GPT.</returns>
         public async Task<Artykul> ZapytajGpt(Artykul artykul,string zapytanie)
         {
+            if (!ListaArtykulow.isInternetConnected()) throw new Exception("BRAK POŁĄCZENIA Z INTERNETEM");
             Dictionary<String, double> gptForecast = new Dictionary<String, double>();
             using var api = new OpenAIClient("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");
             var messages = new List<Message>

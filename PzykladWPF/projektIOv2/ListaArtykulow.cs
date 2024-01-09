@@ -147,7 +147,7 @@ namespace projektIOv2
         /// Zwraca true, jeśli połączenie z internetem istnieje, a ping do serwera www.google.com jest udany.
         /// Zwraca false, jeśli połączenie z internetem nie istnieje lub wystąpił błąd podczas pingowania.
         /// </returns>
-        private bool isInternetConnected()
+        public static bool isInternetConnected()
         {
             try
             {

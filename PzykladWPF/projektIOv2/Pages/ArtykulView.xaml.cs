@@ -7,18 +7,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Effects;
+
 
 namespace projektIOv2.Pages
 {
@@ -60,13 +52,14 @@ namespace projektIOv2.Pages
         {
             
             var ob = DataContext as Artykul;
+
             try
             {
                 if (ob.Tresc == null)
                 {
                     Tresc t = new Tresc(ob.Link);
                     DataContext = await t.get();
-                     
+
                 }
 
                 if ((ob.gpt == null || ob.gpt.Count() == 0) && ob.Tresc != null)
@@ -80,11 +73,13 @@ namespace projektIOv2.Pages
                     Cache cache = new Cache();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorResponse(ex.Message);
 
-                
+
             }
+            
 
             
         }
@@ -111,44 +106,61 @@ namespace projektIOv2.Pages
                 GptHandler gptHandler = new GptHandler();
                 DataContext = await gptHandler.ZapytajGpt(ob, query);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ErrorResponse(ex.Message);
             }
         }
 
         private void nastepnyArtykul_Click(object sender, RoutedEventArgs e)
         {
-            if(lista==null)
+            try
             {
-            string filePath = "artykulyV2.json";
-            string jsonString = File.ReadAllText(filePath);
-            lista = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
+                if (lista == null)
+                {
+                    string filePath = "artykulyV2.json";
+                    string jsonString = File.ReadAllText(filePath);
+                    lista = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
+                }
+
+                Artykul art = lista.Find(x => x.Link == ((Artykul)DataContext).Link);
+                int index = lista.IndexOf(art);
+                if (index != lista.Count - 1)
+                {
+                    DataContext = lista[index + 1];
+                }
             }
-              
-            Artykul art = lista.Find(x => x.Link == ((Artykul)DataContext).Link);
-            int index = lista.IndexOf(art);
-            if (index != lista.Count - 1)
+            catch (Exception)
             {
-                DataContext = lista[index + 1];
+                ErrorResponse("BRAK PLIKU artykulyV2.json");
             }
+            
         }
 
         private void poprzedniArtykul_Click(object sender, RoutedEventArgs e)
         {
-            if (lista == null)
+            try
             {
-                string filePath = "artykulyV2.json";
-                string jsonString = File.ReadAllText(filePath);
-                lista = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
-            }
+                if (lista == null)
+                {
+                    string filePath = "artykulyV2.json";
+                    string jsonString = File.ReadAllText(filePath);
+                    lista = JsonConvert.DeserializeObject<List<Artykul>>(jsonString);
+                }
 
-            Artykul art = lista.Find(x => x.Link == ((Artykul)DataContext).Link);
-            int index = lista.IndexOf(art);
-            if (index != 0)
-            {
-                DataContext = lista[index - 1];
+                Artykul art = lista.Find(x => x.Link == ((Artykul)DataContext).Link);
+                int index = lista.IndexOf(art);
+                if (index != 0)
+                {
+                    DataContext = lista[index - 1];
+                }
             }
+            catch (Exception)
+            {
+
+                ErrorResponse("BRAK PLIKU artykulyV2.json");
+            }
+            
         }
 
         private void search_Click(object sender, RoutedEventArgs e)
@@ -163,9 +175,24 @@ namespace projektIOv2.Pages
             }
             catch (Exception)
             {
+                ErrorResponse("NIEUDANA PRÓBA ZAŁADOWANIA STRONY WEB");
 
-                
             }
+        }
+
+        private void ErrorResponse(string name)
+        {
+            errorBox.ErrorMessage = name;
+            errorBox.Visibility = Visibility.Visible;
+            grid.IsHitTestVisible = false;
+            BlurEffect blurEffect = new BlurEffect { Radius = 10 };
+            grid.Effect = blurEffect;
+        }
+        private void CloseButtonClicked(object sender, EventArgs e)
+        {
+            grid.IsHitTestVisible = true;
+            BlurEffect blurEffect = new BlurEffect { Radius = 0 };
+            grid.Effect = blurEffect;
         }
     }
 }

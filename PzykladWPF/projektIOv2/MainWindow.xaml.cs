@@ -125,19 +125,27 @@ namespace projektIOv2
 
         private void OnDataClick(object sender, ChartPoint chartPoint)
         {
-            DateTime date = DateTime.ParseExact(home1.viewModel.wszystkieDaty[(int)chartPoint.X], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-            if(listaArtykulow == null)
+            try
             {
-                listaArtykulow = new ListaArtykulow();
+                DateTime date = DateTime.ParseExact(home1.viewModel.wszystkieDaty[(int)chartPoint.X], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                if (listaArtykulow == null)
+                {
+                    listaArtykulow = new ListaArtykulow();
+                }
+                Artykul artykul = listaArtykulow.WyszukajArtykulDlaWykresu(date);
+                if (artykulView == null)
+                {
+                    artykulView = new ArtykulView();
+                }
+                artykulView.naw1.Visibility = Visibility.Visible;
+                artykulView.DataContext = artykul;
+                fContainer.Navigate(artykulView);
             }
-            Artykul artykul = listaArtykulow.WyszukajArtykulDlaWykresu(date);
-            if(artykulView == null)
+            catch (Exception)
             {
-                artykulView = new ArtykulView();
+
+                
             }
-            artykulView.naw1.Visibility = Visibility.Visible;
-            artykulView.DataContext = artykul;
-            fContainer.Navigate(artykulView);
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)

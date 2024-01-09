@@ -66,7 +66,10 @@
         </Style>
 
     </Page.Resources>
-    <Grid>
+    <Grid> 
+    <Controls:ErrorBox x:Name ="errorBox" VerticalAlignment="Center" Visibility="Hidden" Panel.ZIndex="1" ButtonClicked="CloseButtonClicked"/>
+        
+    <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="210"/>
@@ -121,35 +124,46 @@
                 </ContextMenu>
 
             </GroupBox.ContextMenu>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="sg1">
-                <StackPanel>
-                    <TextBlock Text="{Binding Naglowek}" Style="{DynamicResource Artykul.Naglowek}"/>
-                    <TextBlock Text="{Binding Data, StringFormat='yyyy.MM.dd HH:mm'}" Style="{DynamicResource Artykul.akapit}"/>
-                    <TextBlock Text="{Binding Tresc}" Style="{DynamicResource Artykul.akapit}"/>
-                    <Grid Margin="10" Visibility="Hidden" x:Name="naw1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="sg1" Grid.Row="0">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Naglowek}" Style="{DynamicResource Artykul.Naglowek}"/>
+                                    <TextBlock Text="{Binding Data, StringFormat='yyyy.MM.dd HH:mm'}" Style="{DynamicResource Artykul.akapit}"/>
+                                    <TextBlock Text="{Binding Tresc}" Style="{DynamicResource Artykul.akapit}"/>
+                                    
+                                </StackPanel >
+
+                            </ScrollViewer>
+
+                    <Grid  Visibility="Collapsed" x:Name="naw1" Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Button Style="{DynamicResource przycisk}" Grid.Column="0"  x:Name="poprzedniArtykul" Click="poprzedniArtykul_Click">
-                            
-                                <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  >
-                                    <Canvas  Width="24" Height="24">
-                                        <Canvas.RenderTransform>
-                                            <TranslateTransform X="0" Y="0"/>
-                                        </Canvas.RenderTransform>
-                                        <Canvas.Resources/>
 
-                                        <Canvas>
+                            <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  >
+                                <Canvas  Width="24" Height="24">
+                                    <Canvas.RenderTransform>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </Canvas.RenderTransform>
+                                    <Canvas.Resources/>
+
+                                    <Canvas>
                                         <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  StrokeThickness="2" Stroke="{DynamicResource NotowanieControl.h1.Foreground}" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
                                             <Path.Data>
                                                 <PathGeometry Figures="M19 12H5M5 12L11 18M5 12L11 6" FillRule="NonZero"/>
                                             </Path.Data>
                                         </Path>
                                     </Canvas>
-                                    </Canvas>
-                                </Viewbox>
-                            
+                                </Canvas>
+                            </Viewbox>
+
                         </Button>
                         <Button Style="{DynamicResource przycisk}" Grid.Column="1"  x:Name="nastepnyArtykul" Click="nastepnyArtykul_Click">
                             <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  >
@@ -170,9 +184,8 @@
                             </Viewbox>
                         </Button>
                     </Grid>
-                </StackPanel >
-
-            </ScrollViewer>
+                </Grid>
+            
         </GroupBox>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -287,5 +300,6 @@
             </GroupBox>
 
         </Grid>
+    </Grid>
     </Grid>
 </Page>

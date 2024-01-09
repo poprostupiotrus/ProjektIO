@@ -30,7 +30,15 @@ namespace projektIOv2.Pages
         public ArtykulyView()
         {
             InitializeComponent();
-            l1 = new ListaArtykulow();
+            try
+            {
+                l1 = new ListaArtykulow();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("APLIKACJA NIE BĘDZIE DZIAŁAĆ Z POWODU BRAKU PLIKU Z ARTYKÓŁAMI.");
+
+            }
             //MyListbox.ItemsSource = l1.listaArtykulow;
         }
 

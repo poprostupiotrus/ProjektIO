@@ -40,7 +40,7 @@ namespace projektIOv2.Skraper
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Wystąpił błąd podczas sprawdzania istnienia pliku: {ex.Message}");
+                //throw new Exception("BRAK UPRAWNIEN DO ODCZYTU CACHE");
                 return false;
             }
         }
@@ -51,6 +51,7 @@ namespace projektIOv2.Skraper
         /// <param name="expectedDate">Oczekiwana data pliku w formacie yyyy.MM.dd.</param>
         /// <returns>Lista artykułów z pliku cache.</returns>
         public List<Artykul> GetListFromDate(DateTime expectedDate) {
+            if (!HasDate(expectedDate)) return new List<Artykul>();
             string file = expectedDate.ToString("yyyy.MM.dd");
             string filePath = Path.Combine("cache", file);
             string jsonString = File.ReadAllText(filePath);
@@ -75,6 +76,7 @@ namespace projektIOv2.Skraper
             }
             catch (Exception ex)
             {
+                //throw new Exception("BRAK UPRAWNIEN DO PLIKU CACHE");
                 Console.WriteLine($"Wystąpił błąd podczas zapisywania do pliku JSON: {ex.Message}");
             }
         }
@@ -102,6 +104,7 @@ namespace projektIOv2.Skraper
             }
             catch (Exception ex)
             {
+                //throw new Exception("BRAK UPRAWNIEN DO PLIKU CACHE");
                 Console.WriteLine($"Wystąpił błąd podczas zapisywania do pliku JSON: {ex.Message}");
             }
         }

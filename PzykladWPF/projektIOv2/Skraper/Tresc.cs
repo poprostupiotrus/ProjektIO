@@ -62,7 +62,7 @@ namespace projektIOv2.Skraper
         {
             string url = "https://biznes.pap.pl" + Link;
 
-
+            if (!ListaArtykulow.isInternetConnected()) throw new Exception("BRAK POŁĄCZENIA Z INTERNETEM");
             ServicePointManager.Expect100Continue = false;
 
             try

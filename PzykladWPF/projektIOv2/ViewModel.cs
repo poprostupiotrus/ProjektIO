@@ -31,36 +31,45 @@ namespace projektIOv2
         /// <param name="cartesianChart">Wykres</param>
         public ViewModel(CartesianChart cartesianChart)
         {
-            chart = cartesianChart;
-            listaWykresow = new List<(Spolka, SolidColorBrush)>();
-            daneSpolek = new DaneSpolek();
-
-            wszystkieDaty = new List<string>();
-            foreach (Spolka spolka in daneSpolek.ListaSpolek)
+            try
             {
-                foreach (KeyValuePair<DateTime, double> pair in spolka.Notowania)
+                chart = cartesianChart;
+                listaWykresow = new List<(Spolka, SolidColorBrush)>();
+                daneSpolek = new DaneSpolek();
+
+                wszystkieDaty = new List<string>();
+                foreach (Spolka spolka in daneSpolek.ListaSpolek)
                 {
-                    wszystkieDaty.Add(pair.Key.ToString("dd.MM.yyyy HH.mm"));
+                    foreach (KeyValuePair<DateTime, double> pair in spolka.Notowania)
+                    {
+                        wszystkieDaty.Add(pair.Key.ToString("dd.MM.yyyy HH.mm"));
+                    }
                 }
+                wszystkieDaty = wszystkieDaty.Distinct().ToList();
+                wszystkieDaty.Sort();
+                chart.AxisX.Clear();
+                chart.AxisX.Add(new Axis
+                {
+                    Title = "Data",
+                    Labels = wszystkieDaty
+                });
+                TimeStampMinHour = DateTime.ParseExact(wszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+                TimeStampMaxHour = DateTime.ParseExact(wszystkieDaty[wszystkieDaty.Count - 1], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+
+                MinIndex = 0;
+                MaxIndex = wszystkieDaty.Count - 1;
+
+                chart.AxisY.Add(new Axis
+                {
+                    Title = "Wartość akcji [zł]"
+                });
             }
-            wszystkieDaty = wszystkieDaty.Distinct().ToList();
-            wszystkieDaty.Sort();
-            chart.AxisX.Clear();
-            chart.AxisX.Add(new Axis
+            catch (Exception)
             {
-                Title = "Data",
-                Labels = wszystkieDaty
-            });
-            TimeStampMinHour = DateTime.ParseExact(wszystkieDaty[0], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-            TimeStampMaxHour = DateTime.ParseExact(wszystkieDaty[wszystkieDaty.Count-1], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
 
-            MinIndex = 0;
-            MaxIndex = wszystkieDaty.Count - 1;
-
-            chart.AxisY.Add(new Axis
-            {
-                Title = "Wartość akcji [zł]"
-            });
+                MessageBox.Show("APLIKACJA NIE BEDZIE DZIALAC Z POWODU BRAKU DANYCH SPÓŁEK.");
+            }
+            
         }
         public DateTime TimeStampMin { get => timeStampMin; set {                   
                     timeStampMin = new DateTime(value.Year,value.Month,value.Day,timeStampMin.Hour,timeStampMin.Minute,0); } } 
