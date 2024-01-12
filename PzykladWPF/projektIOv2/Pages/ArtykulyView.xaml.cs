@@ -18,15 +18,34 @@ using projektIOv2.Controls;
 namespace projektIOv2.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy Dashboard.xaml
+    /// Logika interakcji dla klasy ArtykulyView
     /// </summary>
     public partial class ArtykulyView : Page
     {
+        /// <summary>
+        /// Przechowuje obiekt nawigacji aplikacji
+        /// </summary>
         NavigationService ns;
+        /// <summary>
+        /// Przechowuje liste artykułów
+        /// </summary>
         ListaArtykulow l1;
+        /// <summary>
+        /// Delegat do obsługi błędu
+        /// </summary>
+        /// <param name="name">Przechowuje tresc bledu</param>
         public delegate void CustomDelegate(string name);
+        /// <summary>
+        /// Zdarzenie wywołujące załadowanie artykułu
+        /// </summary>
         public event EventHandler ClickPassHandler;
+        /// <summary>
+        /// Zdarzenie wywołujące obsługe błędu
+        /// </summary>
         public event CustomDelegate ErrorBoxShow;
+        /// <summary>
+        /// Konstruktor inicjalizujący komponenty oraz wszystkie pola składowe klasy
+        /// </summary>
         public ArtykulyView()
         {
             InitializeComponent();
@@ -36,20 +55,25 @@ namespace projektIOv2.Pages
             }
             catch (Exception)
             {
-                MessageBox.Show("APLIKACJA NIE BĘDZIE DZIAŁAĆ Z POWODU BRAKU PLIKU Z ARTYKÓŁAMI.");
+                MessageBox.Show("APLIKACJA NIE BĘDZIE DZIAŁAĆ Z POWODU BRAKU PLIKU Z ARTYKUŁAMI.");
 
             }
             //MyListbox.ItemsSource = l1.listaArtykulow;
         }
-
+        /// <summary>
+        /// Ta metoda wyszukuje najbliższy artykuł w czasie
+        /// </summary>
+        /// <param name="czas">Przechowuje czas</param>
+        /// <returns>Obiekt klasy artykul, poprzez podanie referencji do obiektu</returns>
         public Artykul ZwrocNajblzszyArtykul(DateTime czas)
         {
             return l1.WyszukajArtykul(czas);
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        /// <summary>
+        /// Ta metoda wyświetla artykuł na stronie po kliknięciu przycisku z tytułem artykułu
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void ArtykulButton_Click(object sender, RoutedEventArgs e)
         {
             /*ns = NavigationService.GetNavigationService(this);
@@ -59,6 +83,11 @@ namespace projektIOv2.Pages
             av.DataContext = art;*/
             ClickPassHandler?.Invoke(sender, e);
         }
+        /// <summary>
+        /// Metoda wyświetla wszystkie artykuly który zostałe opublikowane w danym dniu
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private async void czas_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (l1 == null) return;
@@ -86,6 +115,11 @@ namespace projektIOv2.Pages
             }*/
             // Możesz dodać kod, który zostanie wykonany po zakończeniu zadania.
         }
+        /// <summary>
+        /// Metoda wyświetla wszystkie artykuly który zostałe opublikowane w dniu 07.11.2023, po załadowaniu strony
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (l1 == null) return;
@@ -102,6 +136,7 @@ namespace projektIOv2.Pages
                 ErrorBoxShow?.Invoke(ex.Message);
             }
         }
+        /*
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -110,5 +145,6 @@ namespace projektIOv2.Pages
                 textBox.Text = string.Empty;
             }
         }
+        */
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Media;
 namespace projektIOv2.Controls
 {
     /// <summary>
-    /// Kontrolka reprezentująca niestandardowy CheckBox z ikoną.
+    /// Logika interakcji dla klasy CheckNox
     /// </summary>
     public partial class CheckNox : UserControl
     {

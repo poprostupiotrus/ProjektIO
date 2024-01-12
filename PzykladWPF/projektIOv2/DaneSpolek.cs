@@ -10,10 +10,13 @@ namespace projektIOv2
     /// </summary>
     internal class DaneSpolek
     {
+        /// <summary>
+        /// Przechowuje liste spółek
+        /// </summary>
         List<Spolka> listaSpolek;
 
         /// <summary>
-        /// Lista spółek.
+        /// Właściwość, która odczytuje pole listaSpolek.
         /// </summary>
         public List<Spolka> ListaSpolek { get => listaSpolek; }
 

@@ -11,7 +11,7 @@ namespace projektIOv2.Controls
     public partial class MenuItem : UserControl
     {
         /// <summary>
-        /// Inicjalizuje nową instancję klasy MenuItem.
+        /// Konstruktor inicjalizuje nową instancję klasy MenuItem.
         /// </summary>
         public MenuItem()
         {

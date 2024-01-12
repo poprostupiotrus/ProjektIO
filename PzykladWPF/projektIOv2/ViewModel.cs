@@ -102,7 +102,7 @@ namespace projektIOv2
             UpdateChart();
         }
         /// <summary>
-        /// Aktualizuje wykres
+        /// Metoda, która aktualizuje wykres
         /// </summary>
         public void UpdateChart()
         {

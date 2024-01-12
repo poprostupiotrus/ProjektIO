@@ -15,10 +15,13 @@ using System.Windows.Media.Effects;
 namespace projektIOv2.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy ArtykulView.xaml
+    /// Logika interakcji dla klasy ArtykulView
     /// </summary>
     public partial class ArtykulView : Page
     {
+        /// <summary>
+        /// Konstrukor inicajlizujący wszystkie komponenty
+        /// </summary>
         public ArtykulView()
         {
             InitializeComponent();
@@ -26,9 +29,21 @@ namespace projektIOv2.Pages
             (bardmenu.Items[0] as System.Windows.Controls.MenuItem).Click += Bard_Click;
 
         }
+        /// <summary>
+        /// Lista artykułów
+        /// </summary>
         public List<Artykul> lista;
+        /// <summary>
+        /// Pomocnicza lista artykułów
+        /// </summary>
         public Artykul pom;
-        
+
+
+        /// <summary>
+        /// Ta metoda przekopiowuje treść artykułu do schowka
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -37,6 +52,11 @@ namespace projektIOv2.Pages
             String outt = a1.Naglowek + "\n" + a1.Data + "\n" + a1.Tresc;
             Clipboard.SetText(outt);
         }
+        /// <summary>
+        /// Ta metoda przekopiowuje przewidywania Barda do schowka
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void Bard_Click(object sender, RoutedEventArgs e)
         {
             
@@ -48,6 +68,11 @@ namespace projektIOv2.Pages
             }
             Clipboard.SetText(outt);
         }
+        /// <summary>
+        /// Ta metoda załadowuje treść artykułu na strone.
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             
@@ -77,13 +102,16 @@ namespace projektIOv2.Pages
             {
                 ErrorResponse(ex.Message);
 
-
             }
             
 
             
         }
-
+        /// <summary>
+        /// Ta metoda przekopiowuje prognozy ChatGPT do schowka
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void gpt_Click(object sender, RoutedEventArgs e)
         {
             var a1 = (DataContext as Artykul).gpt;
@@ -94,7 +122,11 @@ namespace projektIOv2.Pages
             }
             Clipboard.SetText(outt);
         }
-
+        /// <summary>
+        /// Ta metoda przeladowuje prognozy ChatGPT, wysyłając jeszcze raz zapytanie do chatbota
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private async void reloadgpt_Click(object sender, RoutedEventArgs e)
         {
             var ob = DataContext as Artykul;
@@ -111,7 +143,11 @@ namespace projektIOv2.Pages
                 ErrorResponse(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Ta metoda załadowuje treść następnego artykułu na strone
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void nastepnyArtykul_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -136,7 +172,11 @@ namespace projektIOv2.Pages
             }
             
         }
-
+        /// <summary>
+        /// Ta metoda załadowuje treść poprzedniego artykułu na strone
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void poprzedniArtykul_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -162,7 +202,11 @@ namespace projektIOv2.Pages
             }
             
         }
-
+        /// <summary>
+        /// Ta metoda przenosi nas do strony, gdzie artykuł został opublikowany
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym zostało wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void search_Click(object sender, RoutedEventArgs e)
         {
 
@@ -179,7 +223,10 @@ namespace projektIOv2.Pages
 
             }
         }
-
+        /// <summary>
+        /// Ta metoda blokuje działanie strony, kiedy wystąpi błąd
+        /// </summary>
+        /// <param name="name">Przechowuje treść błędu</param>
         private void ErrorResponse(string name)
         {
             errorBox.ErrorMessage = name;
@@ -188,6 +235,11 @@ namespace projektIOv2.Pages
             BlurEffect blurEffect = new BlurEffect { Radius = 10 };
             grid.Effect = blurEffect;
         }
+        /// <summary>
+        /// Ta metoda przywraca funkcjonalność strony, kiedy błąd zostanie zamknięty
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywoływane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void CloseButtonClicked(object sender, EventArgs e)
         {
             grid.IsHitTestVisible = true;

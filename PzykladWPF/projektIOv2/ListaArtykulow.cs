@@ -19,7 +19,13 @@ namespace projektIOv2
     /// </summary>
     internal class ListaArtykulow
     {
+        /// <summary>
+        /// Przechowuje liste artykulow dla danego dnia
+        /// </summary>
         public List<Artykul> listaArtykulow;
+        /// <summary>
+        /// Przechowuje całą liste z pliku JSON
+        /// </summary>
         private List<Artykul> listaArtykulowp;
 
         /// <summary>

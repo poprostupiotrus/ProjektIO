@@ -1,0 +1,101 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Converters.\+Name\+Converter}
+\hypertarget{classprojekt_i_ov2_1_1_converters_1_1_name_converter}{}\label{classprojekt_i_ov2_1_1_converters_1_1_name_converter}\index{projektIOv2.Converters.NameConverter@{projektIOv2.Converters.NameConverter}}
+
+
+Konwerter przyporządkowujący nazwę spółki do tickera.  
+
+
+Diagram dziedziczenia dla projekt\+IOv2.\+Converters.\+Name\+Converter\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classprojekt_i_ov2_1_1_converters_1_1_name_converter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+object \mbox{\hyperlink{classprojekt_i_ov2_1_1_converters_1_1_name_converter_a1410c3968f6343d7a585f7f0ebef0559}{Convert}} (object value, Type target\+Type, object parameter, Culture\+Info culture)
+\begin{DoxyCompactList}\small\item\em Konwertuje ticker na nazwę spółki. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_converters_1_1_name_converter_af2a49e20572f3cde749865ef6e7a24bc}\label{classprojekt_i_ov2_1_1_converters_1_1_name_converter_af2a49e20572f3cde749865ef6e7a24bc} 
+object {\bfseries Convert\+Back} (object value, Type target\+Type, object parameter, Culture\+Info culture)
+\begin{DoxyCompactList}\small\item\em Nie jest używane w tym konwerterze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static readonly Dictionary$<$ string, string $>$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_converters_1_1_name_converter_ab8c58c4fa55a645e0ccf3b87578a2686}{tickern\+Dictionary}}
+\begin{DoxyCompactList}\small\item\em Słownik który przechowuje jako klucz ticker a wartość jako pełną nazwe spółki. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Konwerter przyporządkowujący nazwę spółki do tickera. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_converters_1_1_name_converter_a1410c3968f6343d7a585f7f0ebef0559}\label{classprojekt_i_ov2_1_1_converters_1_1_name_converter_a1410c3968f6343d7a585f7f0ebef0559} 
+\index{projektIOv2.Converters.NameConverter@{projektIOv2.Converters.NameConverter}!Convert@{Convert}}
+\index{Convert@{Convert}!projektIOv2.Converters.NameConverter@{projektIOv2.Converters.NameConverter}}
+\doxysubsubsection{\texorpdfstring{Convert()}{Convert()}}
+{\footnotesize\ttfamily object projekt\+IOv2.\+Converters.\+Name\+Converter.\+Convert (\begin{DoxyParamCaption}\item[{object}]{value,  }\item[{Type}]{target\+Type,  }\item[{object}]{parameter,  }\item[{Culture\+Info}]{culture }\end{DoxyParamCaption})}
+
+
+
+Konwertuje ticker na nazwę spółki. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em value} & Ticker spółki.\\
+\hline
+{\em target\+Type} & Typ docelowy.\\
+\hline
+{\em parameter} & Parametr konwertera.\\
+\hline
+{\em culture} & Informacje o kulturze.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Nazwa spółki przypisana do tickera.
+\end{DoxyReturn}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_converters_1_1_name_converter_ab8c58c4fa55a645e0ccf3b87578a2686}\label{classprojekt_i_ov2_1_1_converters_1_1_name_converter_ab8c58c4fa55a645e0ccf3b87578a2686} 
+\index{projektIOv2.Converters.NameConverter@{projektIOv2.Converters.NameConverter}!tickernDictionary@{tickernDictionary}}
+\index{tickernDictionary@{tickernDictionary}!projektIOv2.Converters.NameConverter@{projektIOv2.Converters.NameConverter}}
+\doxysubsubsection{\texorpdfstring{tickernDictionary}{tickernDictionary}}
+{\footnotesize\ttfamily readonly Dictionary$<$string, string$>$ projekt\+IOv2.\+Converters.\+Name\+Converter.\+tickern\+Dictionary\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Wartość początkowa\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ Dictionary<string,\ string>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}ALR"{}},\textcolor{stringliteral}{"{}ALIOR"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}ALE"{}},\textcolor{stringliteral}{"{}ALLEGRO"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}ACP"{}},\textcolor{stringliteral}{"{}ASSECOPOL"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}CDR"{}},\textcolor{stringliteral}{"{}CDPROJEKT"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}CPS"{}},\textcolor{stringliteral}{"{}CYFRPLSAT"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}DNP"{}},\textcolor{stringliteral}{"{}DINOPL"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}JSW"{}},\textcolor{stringliteral}{"{}JSW"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}KTY"{}},\textcolor{stringliteral}{"{}KETY"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}KGH"{}},\textcolor{stringliteral}{"{}KGHM"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}KRU"{}},\textcolor{stringliteral}{"{}KRUK"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}LPP"{}},\textcolor{stringliteral}{"{}LPP"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}MBK"{}},\textcolor{stringliteral}{"{}MBANK"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}OPL"{}},\textcolor{stringliteral}{"{}ORANGEPL"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PEO"{}},\textcolor{stringliteral}{"{}PEKAO"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PCO"{}},\textcolor{stringliteral}{"{}PEPCO"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PGE"{}},\textcolor{stringliteral}{"{}PGE"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PKN"{}},\textcolor{stringliteral}{"{}PKNORLEN"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PKO"{}},\textcolor{stringliteral}{"{}PKOBP"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}PZU"{}},\textcolor{stringliteral}{"{}PZU"{}}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}SPL"{}},\textcolor{stringliteral}{"{}SANPL"{}}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Słownik który przechowuje jako klucz ticker a wartość jako pełną nazwe spółki. 
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+projekt\+IOv2/\+Converters/Name\+Converter.\+cs\end{DoxyCompactItemize}

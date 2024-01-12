@@ -8,9 +8,7 @@ using System.Windows.Data;
 namespace projektIOv2
 {
     /// <summary>
-    /// Kontrolka reprezentująca przycisk artykułu w interfejsie użytkownika.
-    /// odpowiada za wyswietlanie daty, godziny i linku
-    /// wykorzystywana w elemencie listbox
+    /// Logika interakcji dla klasy ArtykulButton
     /// </summary>
     public partial class ArtykulButton : UserControl
     {
@@ -20,7 +18,7 @@ namespace projektIOv2
         public event EventHandler<RoutedEventArgs> Click;
 
         /// <summary>
-        /// Inicjalizuje nową kontrolkę klasy ArtykulButton.
+        /// Konstruktor inicjalizujący nową instancje klasy
         /// </summary>
         public ArtykulButton()
         {
@@ -55,7 +53,7 @@ namespace projektIOv2
         /// <summary>
         /// Obsługuje zdarzenie Click linku artykułu.
         /// </summary>
-        /// <param name="sender">Źródło zdarzenia.</param>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywoływane zdarzenie</param>
         /// <param name="e">Argumenty zdarzenia.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {

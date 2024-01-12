@@ -11,6 +11,9 @@ namespace projektIOv2.Converters
     [ValueConversion(typeof(String), typeof(String))]
     public class NameConverter : IValueConverter
     {
+        /// <summary>
+        /// Słownik który przechowuje jako klucz ticker a wartość jako pełną nazwe spółki
+        /// </summary>
         private static readonly Dictionary<string, string> tickernDictionary = new Dictionary<string, string>
         {
             {"ALR","ALIOR" },

@@ -11,6 +11,9 @@ namespace projektIOv2
     /// </summary>
     public class NameConverter : IValueConverter
     {
+        /// <summary>
+        /// Przechowuje klucze jako ticker, a wartosc to pelne nazwy spółek
+        /// </summary>
         private static readonly Dictionary<string, string> tickernDictionary = new Dictionary<string, string>
         {
             {"ALR","ALIOR" },

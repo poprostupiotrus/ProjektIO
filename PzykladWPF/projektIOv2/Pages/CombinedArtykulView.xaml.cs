@@ -22,14 +22,22 @@ namespace projektIOv2.Pages
     /// </summary>
     public partial class CombinedArtykulyView : Page
     {
+        /// <summary>
+        /// Przechowuje strone, ktora wyswietla liste artykułów
+        /// </summary>
         ArtykulyView artList;
+        /// <summary>
+        /// Konstruktor inicjalizujący wszystkie komponenty oraz pola składowe klasy
+        /// </summary>
         public CombinedArtykulyView()
         {
             InitializeComponent();
             InitArtList();
             artList.ClickPassHandler += Button_Click;
         }
-
+        /// <summary>
+        /// Metoda służąca do zaincjalizowania listy artykułow na stronie
+        /// </summary>
         private void InitArtList()
         {
             Frame frameArtList = (Frame)FindName("articleList");
@@ -37,7 +45,10 @@ namespace projektIOv2.Pages
             artList.ErrorBoxShow += ErrorResponse;
             frameArtList.Content = artList;
         }
-
+        /// <summary>
+        /// Metoda blokująca działanie strony, po wystąpieniu błędu
+        /// </summary>
+        /// <param name="name">Przechowuje treść błędu</param>
         private void ErrorResponse(string name)
         {
             errorBox.ErrorMessage = name;
@@ -46,13 +57,22 @@ namespace projektIOv2.Pages
             BlurEffect blurEffect = new BlurEffect { Radius = 10 };
             grid.Effect = blurEffect;
         }
+        /// <summary>
+        /// Metoda przywracająca działanie strony
+        /// </summary>
+        /// <param name="sender">Przechowuje bbiekt na którym jest wywołane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void CloseButtonClicked(object sender, EventArgs e)
         {
             grid.IsHitTestVisible = true;
             BlurEffect blurEffect = new BlurEffect { Radius = 0 };
             grid.Effect = blurEffect;
         }
-
+        /// <summary>
+        /// Metoda wyświetlająca artykuł na stronie, po kliknięciu przycisku z tytułem artykułu
+        /// </summary>
+        /// <param name="sender">Przechowuje obiekt na którym jest wywoływane zdarzenie</param>
+        /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void Button_Click(object? sender, EventArgs e)
         {
             ArtykulButton artykulButton = sender as ArtykulButton;
