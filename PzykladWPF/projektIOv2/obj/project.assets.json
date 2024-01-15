@@ -44,6 +44,19 @@
           }
         }
       },
+      "LiveCharts.Geared/1.2.9": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.9.7",
+          "LiveCharts.Wpf": "0.9.7"
+        },
+        "compile": {
+          "lib/net45/LiveCharts.Geared.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.Geared.dll": {}
+        }
+      },
       "LiveCharts.Wpf/0.9.7": {
         "type": "package",
         "dependencies": {
@@ -185,6 +198,21 @@
         "readme.txt"
       ]
     },
+    "LiveCharts.Geared/1.2.9": {
+      "sha512": "rChzrOJkjJLRdnVYzR9KKYD7TC7TJCmrmVB4jQY3mKajpYQ41qe7xU1g4kufcgx5PBAu90oCcHJ2/Sff23ODNQ==",
+      "type": "package",
+      "path": "livecharts.geared/1.2.9",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.Geared.dll",
+        "lib/net45/LiveCharts.Geared.dll",
+        "livecharts.geared.1.2.9.nupkg.sha512",
+        "livecharts.geared.nuspec",
+        "tools/install.ps1"
+      ]
+    },
     "LiveCharts.Wpf/0.9.7": {
       "sha512": "lv6YZoK0B4yWykMq5b9grZXtIbTj+OWu4sVN9GDpdgV6zffu64m4d5CW8KSjfSl9rB8VU649x1NZvhoU67hCDg==",
       "type": "package",
@@ -253,25 +281,31 @@
     "net6.0-windows7.0": [
       "CommunityToolkit.Mvvm >= 8.2.2",
       "HtmlAgilityPack >= 1.11.54",
+      "LiveCharts.Geared >= 1.2.9",
       "LiveCharts.Wpf >= 0.9.7",
       "Newtonsoft.Json >= 13.0.3",
       "OpenAI-DotNet >= 7.5.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\komputerrozy\\.nuget\\packages\\": {}
+    "C:\\Users\\patryk\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
+      "projectUniqueName": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
       "projectName": "projektIOv2",
-      "projectPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
-      "packagesPath": "C:\\Users\\komputerrozy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\obj\\",
+      "projectPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
+      "packagesPath": "C:\\Users\\patryk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\komputerrozy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\patryk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -279,6 +313,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -304,6 +339,10 @@
           "HtmlAgilityPack": {
             "target": "Package",
             "version": "[1.11.54, )"
+          },
+          "LiveCharts.Geared": {
+            "target": "Package",
+            "version": "[1.2.9, )"
           },
           "LiveCharts.Wpf": {
             "target": "Package",
@@ -337,7 +376,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -348,6 +387,16 @@
       "warningLevel": 1,
       "message": "Pakiet „LiveCharts 0.9.7” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1” zamiast platformy docelowej projektu „net6.0-windows7.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "LiveCharts",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Pakiet „LiveCharts.Geared 1.2.9” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1” zamiast platformy docelowej projektu „net6.0-windows7.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
+      "libraryId": "LiveCharts.Geared",
       "targetGraphs": [
         "net6.0-windows7.0"
       ]

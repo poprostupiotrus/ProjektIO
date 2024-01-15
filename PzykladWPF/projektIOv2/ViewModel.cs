@@ -10,7 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
 using System.Windows.Shapes;
-
+using LiveCharts.Geared;
 namespace projektIOv2
 {
     /// <summary>
@@ -69,16 +69,32 @@ namespace projektIOv2
 
                 MessageBox.Show("APLIKACJA NIE BEDZIE DZIALAC Z POWODU BRAKU DANYCH SPÓŁEK.");
             }
-            
+
         }
-        public DateTime TimeStampMin { get => timeStampMin; set {                   
-                    timeStampMin = new DateTime(value.Year,value.Month,value.Day,timeStampMin.Hour,timeStampMin.Minute,0); } } 
-        public DateTime TimeStampMax { get => timeStampMax; set { 
-                timeStampMax = new DateTime(value.Year, value.Month, value.Day, timeStampMax.Hour, timeStampMax.Minute, 0); } }
-        public DateTime TimeStampMinHour { get => timeStampMin;
-            set {timeStampMin = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); } }
-        public DateTime TimeStampMaxHour { get => timeStampMax;
-            set {timeStampMax = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); } }
+        public DateTime TimeStampMin
+        {
+            get => timeStampMin; set
+            {
+                timeStampMin = new DateTime(value.Year, value.Month, value.Day, timeStampMin.Hour, timeStampMin.Minute, 0);
+            }
+        }
+        public DateTime TimeStampMax
+        {
+            get => timeStampMax; set
+            {
+                timeStampMax = new DateTime(value.Year, value.Month, value.Day, timeStampMax.Hour, timeStampMax.Minute, 0);
+            }
+        }
+        public DateTime TimeStampMinHour
+        {
+            get => timeStampMin;
+            set { timeStampMin = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); }
+        }
+        public DateTime TimeStampMaxHour
+        {
+            get => timeStampMax;
+            set { timeStampMax = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, 0); }
+        }
         private DateTime timeStampMax;
         private DateTime timeStampMin;
         /// <summary>
@@ -89,8 +105,8 @@ namespace projektIOv2
         public void AddSeriesToChart(string nazwa, SolidColorBrush brush)
         {
             Spolka spolka = daneSpolek.ZnajdzSpolkePoNazwie(nazwa);
-            listaWykresow.Add((spolka,brush));
-            if(listaWykresow.Count>1)
+            listaWykresow.Add((spolka, brush));
+            if (listaWykresow.Count > 1)
             {
                 czyWykresProcentowy = true;
                 chart.AxisY.Clear();
@@ -109,7 +125,7 @@ namespace projektIOv2
             chart.Series.Clear();
             foreach ((Spolka, SolidColorBrush) pair in listaWykresow)
             {
-                GenerateChart(pair.Item1,pair.Item2);
+                GenerateChart(pair.Item1, pair.Item2);
             }
         }
         /// <summary>
@@ -119,7 +135,8 @@ namespace projektIOv2
         /// <param name="brush">Kolor linii na wykresie</param>
         private async void GenerateChart(Spolka spolka, SolidColorBrush brush)
         {
-            ChartValues<ObservablePoint> points = await getChartValuesAsync(spolka.Notowania);
+            GearedValues<ObservablePoint> points = await getChartValuesAsync(spolka.Notowania);
+            points.WithQuality(Quality.Low);
             await Application.Current.Dispatcher.InvokeAsync(() => { addAfterAsync(points, spolka.Nazwa, brush); });
         }
         /// <summary>
@@ -127,11 +144,11 @@ namespace projektIOv2
         /// </summary>
         /// <param name="Notowania">Notowania spółki dla której generuje punkty</param>
         /// <returns>Zwraca Task, który zawiera ChartValues zrobiony z ObservablePoint</returns>
-        private async Task<ChartValues<ObservablePoint>> getChartValuesAsync(Dictionary<DateTime,double> Notowania)
+        private async Task<GearedValues<ObservablePoint>> getChartValuesAsync(Dictionary<DateTime, double> Notowania)
         {
             return await Task.Run(() =>
             {
-                ChartValues<ObservablePoint> listapunktow = new ChartValues<ObservablePoint>();
+                GearedValues<ObservablePoint> listapunktow = new GearedValues<ObservablePoint>();
                 DateTime pierwszaData = DateTime.ParseExact(wszystkieDaty[MinIndex], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
                 double dzielnik;
                 if (czyWykresProcentowy)
@@ -160,9 +177,9 @@ namespace projektIOv2
         /// <param name="values">Punkty wykresu</param>
         /// <param name="nazwa">Nazwa danej linii na wykresie</param>
         /// <param name="brush">kolor linni na wykresie</param>
-        private void addAfterAsync(ChartValues<ObservablePoint> values, string nazwa, SolidColorBrush brush)
+        private void addAfterAsync(GearedValues<ObservablePoint> values, string nazwa, SolidColorBrush brush)
         {
-            LineSeries series = new LineSeries();
+            GLineSeries series = new GLineSeries();
             series.Values = values;
             series.Title = nazwa;
             series.PointGeometry = null;
@@ -179,16 +196,16 @@ namespace projektIOv2
         public void removeSeries(string nazwa)
         {
             (Spolka, SolidColorBrush) Spolka = default;
-            foreach ((Spolka,SolidColorBrush) pair in listaWykresow)
+            foreach ((Spolka, SolidColorBrush) pair in listaWykresow)
             {
-                if(pair.Item1.Nazwa==nazwa)
+                if (pair.Item1.Nazwa == nazwa)
                 {
                     Spolka = pair;
                 }
             }
-            if(Spolka != default)
-            listaWykresow.Remove(Spolka);
-            if(listaWykresow.Count<2)
+            if (Spolka != default)
+                listaWykresow.Remove(Spolka);
+            if (listaWykresow.Count < 2)
             {
                 czyWykresProcentowy = false;
                 chart.AxisY.Clear();
@@ -208,10 +225,10 @@ namespace projektIOv2
         {
             MinIndex = 0;
             DateTime date;
-            for (int i=0;i<wszystkieDaty.Count;i++)
+            for (int i = 0; i < wszystkieDaty.Count; i++)
             {
                 date = DateTime.ParseExact(wszystkieDaty[MinIndex], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
-                if(DateTime.Compare(givenDate,date)>0)
+                if (DateTime.Compare(givenDate, date) > 0)
                 {
                     MinIndex++;
                 }
@@ -229,8 +246,8 @@ namespace projektIOv2
         /// <returns>zwraca indeks listy wszystkieDaty</returns>
         public int FindIndexFromEnd(DateTime givenDate)
         {
-            MaxIndex = wszystkieDaty.Count-1;
-            for (int i = wszystkieDaty.Count-1;i>0;i--)
+            MaxIndex = wszystkieDaty.Count - 1;
+            for (int i = wszystkieDaty.Count - 1; i > 0; i--)
             {
                 DateTime date = DateTime.ParseExact(wszystkieDaty[MaxIndex], "dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
                 if (DateTime.Compare(givenDate, date) < 0)
