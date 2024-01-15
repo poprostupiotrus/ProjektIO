@@ -18,7 +18,7 @@ using System.Xml.Linq;
 namespace projektIOv2.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy CombinedArtykulyView.xaml
+    /// Logika interakcji dla klasy CombinedArtykulyView
     /// </summary>
     public partial class CombinedArtykulyView : Page
     {

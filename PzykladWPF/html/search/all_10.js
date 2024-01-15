@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['text_0',['Text',['../classprojekt_i_ov2_1_1_controls_1_1_check_nox.html#ad5e1bee5c2162be9ebe0fe64be276bcf',1,'projektIOv2.Controls.CheckNox.Text'],['../classprojekt_i_ov2_1_1_controls_1_1_menu_item.html#af0139046d0400fc9d273b5d69df3a10f',1,'projektIOv2.Controls.MenuItem.Text']]],
-  ['textbox_5ftextchanged_1',['TextBox_TextChanged',['../classprojekt_i_ov2_1_1_pages_1_1_home.html#a8356795ed39de77cf67c72973d75e6c7',1,'projektIOv2::Pages::Home']]],
-  ['textproperty_2',['TextProperty',['../classprojekt_i_ov2_1_1_controls_1_1_check_nox.html#a1939e01d0cf4d2089039ae214814de9a',1,'projektIOv2.Controls.CheckNox.TextProperty'],['../classprojekt_i_ov2_1_1_controls_1_1_menu_item.html#a800bc524f9ded9a328d0d178888b2e93',1,'projektIOv2.Controls.MenuItem.TextProperty']]],
-  ['themetype_3',['ThemeType',['../classprojekt_i_ov2_1_1_themes_1_1_themes_controller_1_1_settings.html#a27ac020f2721cfefd931a291dd1582c9',1,'projektIOv2::Themes::ThemesController::Settings']]],
-  ['tickerndictionary_4',['tickernDictionary',['../classprojekt_i_ov2_1_1_converters_1_1_name_converter.html#ab8c58c4fa55a645e0ccf3b87578a2686',1,'projektIOv2.Converters.NameConverter.tickernDictionary'],['../classprojekt_i_ov2_1_1_name_converter.html#a34df537a964c6b8cdf141f54da95ebf3',1,'projektIOv2.NameConverter.tickernDictionary'],['../classprojekt_i_ov2_1_1_skraper_1_1_gpt_handler.html#a534643055ff5e0a34d2e03d2c9c4e473',1,'projektIOv2.Skraper.GptHandler.tickernDictionary']]],
-  ['tresc_5',['Tresc',['../classprojekt_i_ov2_1_1_skraper_1_1_tresc.html',1,'projektIOv2.Skraper.Tresc'],['../classprojekt_i_ov2_1_1_artykul.html#ab31f93612d62329ee9700753f75559ef',1,'projektIOv2.Artykul.Tresc'],['../classprojekt_i_ov2_1_1_skraper_1_1_tresc.html#abae8907ec7f38d5eba19ff08c025011e',1,'projektIOv2.Skraper.Tresc.Tresc(string path)'],['../classprojekt_i_ov2_1_1_skraper_1_1_tresc.html#aec214bb0e39a38edb3a301b777fd8ea1',1,'projektIOv2.Skraper.Tresc.Tresc(Artykul artykul)']]]
-];

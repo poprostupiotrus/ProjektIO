@@ -8,7 +8,7 @@ using System.Globalization;
 namespace projektIOv2.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy Home.xaml
+    /// Logika interakcji dla klasy Home
     /// </summary>    
     public partial class Home : Page
     {

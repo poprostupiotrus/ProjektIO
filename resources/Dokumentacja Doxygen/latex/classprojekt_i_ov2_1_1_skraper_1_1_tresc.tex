@@ -1,0 +1,134 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Skraper.\+Tresc}
+\hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_tresc}{}\label{classprojekt_i_ov2_1_1_skraper_1_1_tresc}\index{projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}}
+
+
+Klasa pobierajaca tresć artykułu.  
+
+
+Diagram dziedziczenia dla projekt\+IOv2.\+Skraper.\+Tresc\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classprojekt_i_ov2_1_1_skraper_1_1_tresc}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_tresc_abae8907ec7f38d5eba19ff08c025011e}{Tresc}} (string path)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy Tresc przyjmujący ścieżkę do artykułu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_tresc_aec214bb0e39a38edb3a301b777fd8ea1}{Tresc}} (\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} artykul)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy Tresc przyjmujący obiekt klasy Artykul. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_tresc_aa9a8d2a07d335008f35182d54184a36c}{get}} ()
+\begin{DoxyCompactList}\small\item\em Asynchroniczna metoda pobierająca informacje o artykule i przeprowadzająca analizę przy użyciu GPT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody publiczne dziedziczone z \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{projekt\+IOv2.\+Artykul}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul_a9493050fc2af7078f55a9668cb0335fc}{Compare\+To}} (\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} other)
+\begin{DoxyCompactList}\small\item\em Porównuje obecny artykuł z innym artykułem na podstawie daty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul_ade0252b7114e874079ed4123941f6fd4}{is\+Positive}} (List$<$ String $>$ spolki)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy artykuł jest pozytywny dla podanych spółek. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul_a0997343577b7f4bb09d2ba58ea98ef98}{is\+Negative}} (List$<$ String $>$ spolki)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy artykuł jest negatywny dla podanych spółek. \end{DoxyCompactList}\item 
+void {\bfseries Update\+In\+Cache} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje artykuł w pamięci podręcznej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_tresc_af819be5d98b75a82fa9bb09f92994454}{init}} ()
+\begin{DoxyCompactList}\small\item\em Metoda inicjalizująca obiekt klasy Artykul na podstawie pobranej treści artykułu z witryny internetowej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_tresc_ab9c0ef6125e836a342da6e49793c40a6}\label{classprojekt_i_ov2_1_1_skraper_1_1_tresc_ab9c0ef6125e836a342da6e49793c40a6} 
+string {\bfseries path}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Dodatkowe Dziedziczone Składowe}
+\doxysubsection*{Właściwości dziedziczone z \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{projekt\+IOv2.\+Artykul}}}
+\begin{DoxyCompactItemize}
+\item 
+Date\+Time {\bfseries Data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia datę artykułu. \end{DoxyCompactList}\item 
+string? {\bfseries Naglowek}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia nagłówek artykułu. \end{DoxyCompactList}\item 
+string? {\bfseries YEAR}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia date dla listy artykułów. \end{DoxyCompactList}\item 
+string? {\bfseries HOUR}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia godzine dla listy artykułów. \end{DoxyCompactList}\item 
+string? {\bfseries Tresc}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia treść artykułu. \end{DoxyCompactList}\item 
+string? {\bfseries Link}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia link do artykułu. \end{DoxyCompactList}\item 
+Dictionary$<$ String, double $>$ {\bfseries gpt}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia słownik GPT artykułu. \end{DoxyCompactList}\item 
+Dictionary$<$ String, double $>$ {\bfseries bard}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia słownik BARD artykułu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa pobierajaca tresć artykułu. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_tresc_abae8907ec7f38d5eba19ff08c025011e}\label{classprojekt_i_ov2_1_1_skraper_1_1_tresc_abae8907ec7f38d5eba19ff08c025011e} 
+\index{projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}!Tresc@{Tresc}}
+\index{Tresc@{Tresc}!projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}}
+\doxysubsubsection{\texorpdfstring{Tresc()}{Tresc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily projekt\+IOv2.\+Skraper.\+Tresc.\+Tresc (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Konstruktor klasy Tresc przyjmujący ścieżkę do artykułu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em path} & Ścieżka do artykułu\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_tresc_aec214bb0e39a38edb3a301b777fd8ea1}\label{classprojekt_i_ov2_1_1_skraper_1_1_tresc_aec214bb0e39a38edb3a301b777fd8ea1} 
+\index{projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}!Tresc@{Tresc}}
+\index{Tresc@{Tresc}!projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}}
+\doxysubsubsection{\texorpdfstring{Tresc()}{Tresc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily projekt\+IOv2.\+Skraper.\+Tresc.\+Tresc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}}}]{artykul }\end{DoxyParamCaption})}
+
+
+
+Konstruktor klasy Tresc przyjmujący obiekt klasy Artykul. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em artykul} & Obiekt klasy Artykul.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_tresc_aa9a8d2a07d335008f35182d54184a36c}\label{classprojekt_i_ov2_1_1_skraper_1_1_tresc_aa9a8d2a07d335008f35182d54184a36c} 
+\index{projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}!get@{get}}
+\index{get@{get}!projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily async Task$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ projekt\+IOv2.\+Skraper.\+Tresc.\+get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Asynchroniczna metoda pobierająca informacje o artykule i przeprowadzająca analizę przy użyciu GPT. 
+
+\begin{DoxyReturn}{Zwraca}
+Obiekt klasy Artykul z dodatkowymi informacjami uzyskanymi od GPT.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_tresc_af819be5d98b75a82fa9bb09f92994454}\label{classprojekt_i_ov2_1_1_skraper_1_1_tresc_af819be5d98b75a82fa9bb09f92994454} 
+\index{projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}!init@{init}}
+\index{init@{init}!projektIOv2.Skraper.Tresc@{projektIOv2.Skraper.Tresc}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} projekt\+IOv2.\+Skraper.\+Tresc.\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metoda inicjalizująca obiekt klasy Artykul na podstawie pobranej treści artykułu z witryny internetowej. 
+
+\begin{DoxyReturn}{Zwraca}
+Obiekt klasy Artykul z zainicjalizowanymi danymi.
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Skraper/Tresc.\+cs\end{DoxyCompactItemize}

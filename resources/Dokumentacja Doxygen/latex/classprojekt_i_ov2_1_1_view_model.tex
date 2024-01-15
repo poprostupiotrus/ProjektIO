@@ -1,0 +1,231 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+View\+Model}
+\hypertarget{classprojekt_i_ov2_1_1_view_model}{}\label{classprojekt_i_ov2_1_1_view_model}\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+
+
+Logika Wykresu.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_a73a8243003e84fecd398cd2da0da9089}{View\+Model}} (Cartesian\+Chart cartesian\+Chart)
+\begin{DoxyCompactList}\small\item\em Konstruktor View\+Model, który inicjuje dane potrzebne do wyświetlenia wykresu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_a4406f5c816a92c69bf35e887019df4bb}{Add\+Series\+To\+Chart}} (string nazwa, Solid\+Color\+Brush brush)
+\begin{DoxyCompactList}\small\item\em Dodaje społke do wykresu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a9fa2d42ebd694bf8c6df55e3003a05da}\label{classprojekt_i_ov2_1_1_view_model_a9fa2d42ebd694bf8c6df55e3003a05da} 
+void {\bfseries Update\+Chart} ()
+\begin{DoxyCompactList}\small\item\em Metoda, która aktualizuje wykres. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_ae112ac7f86521f31f6d3a5c56f43d973}{remove\+Series}} (string nazwa)
+\begin{DoxyCompactList}\small\item\em Usuwa spółke z wykresu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_ad951545f21bfad95bdd6c355d86865ee}{Find\+Index\+From\+Beginning}} (Date\+Time given\+Date)
+\begin{DoxyCompactList}\small\item\em Znajduję indeks równy lub późniejszy dla danej daty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_a832638ee91a2bc9ae4c1587208a8a355}{Find\+Index\+From\+End}} (Date\+Time given\+Date)
+\begin{DoxyCompactList}\small\item\em Znajduję indeks równy lub wczęśniejszy dla danej daty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_ae2f6d9b0746cbf885bfc1b41ded49ed0}\label{classprojekt_i_ov2_1_1_view_model_ae2f6d9b0746cbf885bfc1b41ded49ed0} 
+List$<$ string $>$ {\bfseries wszystkie\+Daty}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a1fd62533b37045772318420308f7ed0f}\label{classprojekt_i_ov2_1_1_view_model_a1fd62533b37045772318420308f7ed0f} 
+bool {\bfseries czy\+Wykres\+Procentowy} = false
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a60fb7ac958e33826d644a120f55eb3b5}\label{classprojekt_i_ov2_1_1_view_model_a60fb7ac958e33826d644a120f55eb3b5} 
+int {\bfseries Min\+Index}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_ae49429d4e6ab309b6590faba4f36aba3}\label{classprojekt_i_ov2_1_1_view_model_ae49429d4e6ab309b6590faba4f36aba3} 
+int {\bfseries Max\+Index}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a52908e97da0db7c154564194e8f0762e}\label{classprojekt_i_ov2_1_1_view_model_a52908e97da0db7c154564194e8f0762e} 
+Date\+Time {\bfseries Time\+Stamp\+Min}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_aace064e51baf3eadf08ea7c9f3d49a36}\label{classprojekt_i_ov2_1_1_view_model_aace064e51baf3eadf08ea7c9f3d49a36} 
+Date\+Time {\bfseries Time\+Stamp\+Max}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_afb6a3f93cb97f7661e864d80fda9da54}\label{classprojekt_i_ov2_1_1_view_model_afb6a3f93cb97f7661e864d80fda9da54} 
+Date\+Time {\bfseries Time\+Stamp\+Min\+Hour}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_aac033163ebf72b9e51a99c1c3228b822}\label{classprojekt_i_ov2_1_1_view_model_aac033163ebf72b9e51a99c1c3228b822} 
+Date\+Time {\bfseries Time\+Stamp\+Max\+Hour}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+async void \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_a67b918dac8f53ea8d74a38e45686024b}{Generate\+Chart}} (Spolka spolka, Solid\+Color\+Brush brush)
+\begin{DoxyCompactList}\small\item\em Metoda asynchroniczna, która generuje wykres. \end{DoxyCompactList}\item 
+async Task$<$ Chart\+Values$<$ Observable\+Point $>$ $>$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_a3cf9667414ebcc3504dac3a67a5719e6}{get\+Chart\+Values\+Async}} (Dictionary$<$ Date\+Time, double $>$ Notowania)
+\begin{DoxyCompactList}\small\item\em Metoda asynchroniczna, która generuje punkty na wykres konkretnej spółki. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_view_model_a63f117ff779744bca9f3542b3e83683e}{add\+After\+Async}} (Chart\+Values$<$ Observable\+Point $>$ values, string nazwa, Solid\+Color\+Brush brush)
+\begin{DoxyCompactList}\small\item\em Dodaje punkty na wykres. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a9471e8d5309356ca82bdddda245c4e83}\label{classprojekt_i_ov2_1_1_view_model_a9471e8d5309356ca82bdddda245c4e83} 
+Dane\+Spolek {\bfseries dane\+Spolek}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a52b79217fd9734dd1621dbc7f1c8508a}\label{classprojekt_i_ov2_1_1_view_model_a52b79217fd9734dd1621dbc7f1c8508a} 
+Cartesian\+Chart {\bfseries chart}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a52ee054f6c999602eb00ea9a9e1f7ab4}\label{classprojekt_i_ov2_1_1_view_model_a52ee054f6c999602eb00ea9a9e1f7ab4} 
+List$<$(Spolka, Solid\+Color\+Brush)$>$ {\bfseries lista\+Wykresow}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_aedf52b1ac2cc020f076fd43464324368}\label{classprojekt_i_ov2_1_1_view_model_aedf52b1ac2cc020f076fd43464324368} 
+Date\+Time {\bfseries time\+Stamp\+Max}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a77276629675d187dfa67f5e2d4ba4ee4}\label{classprojekt_i_ov2_1_1_view_model_a77276629675d187dfa67f5e2d4ba4ee4} 
+Date\+Time {\bfseries time\+Stamp\+Min}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Logika Wykresu. 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a73a8243003e84fecd398cd2da0da9089}\label{classprojekt_i_ov2_1_1_view_model_a73a8243003e84fecd398cd2da0da9089} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!ViewModel@{ViewModel}}
+\index{ViewModel@{ViewModel}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{ViewModel()}{ViewModel()}}
+{\footnotesize\ttfamily projekt\+IOv2.\+View\+Model.\+View\+Model (\begin{DoxyParamCaption}\item[{Cartesian\+Chart}]{cartesian\+Chart }\end{DoxyParamCaption})}
+
+
+
+Konstruktor View\+Model, który inicjuje dane potrzebne do wyświetlenia wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em cartesian\+Chart} & Wykres\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a63f117ff779744bca9f3542b3e83683e}\label{classprojekt_i_ov2_1_1_view_model_a63f117ff779744bca9f3542b3e83683e} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!addAfterAsync@{addAfterAsync}}
+\index{addAfterAsync@{addAfterAsync}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{addAfterAsync()}{addAfterAsync()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+View\+Model.\+add\+After\+Async (\begin{DoxyParamCaption}\item[{Chart\+Values$<$ Observable\+Point $>$}]{values,  }\item[{string}]{nazwa,  }\item[{Solid\+Color\+Brush}]{brush }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dodaje punkty na wykres. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em values} & Punkty wykresu\\
+\hline
+{\em nazwa} & Nazwa danej linii na wykresie\\
+\hline
+{\em brush} & kolor linni na wykresie\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a4406f5c816a92c69bf35e887019df4bb}\label{classprojekt_i_ov2_1_1_view_model_a4406f5c816a92c69bf35e887019df4bb} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!AddSeriesToChart@{AddSeriesToChart}}
+\index{AddSeriesToChart@{AddSeriesToChart}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{AddSeriesToChart()}{AddSeriesToChart()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+View\+Model.\+Add\+Series\+To\+Chart (\begin{DoxyParamCaption}\item[{string}]{nazwa,  }\item[{Solid\+Color\+Brush}]{brush }\end{DoxyParamCaption})}
+
+
+
+Dodaje społke do wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em nazwa} & Nazwa spółki\\
+\hline
+{\em brush} & Kolor linii na wykresie\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_ad951545f21bfad95bdd6c355d86865ee}\label{classprojekt_i_ov2_1_1_view_model_ad951545f21bfad95bdd6c355d86865ee} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!FindIndexFromBeginning@{FindIndexFromBeginning}}
+\index{FindIndexFromBeginning@{FindIndexFromBeginning}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{FindIndexFromBeginning()}{FindIndexFromBeginning()}}
+{\footnotesize\ttfamily int projekt\+IOv2.\+View\+Model.\+Find\+Index\+From\+Beginning (\begin{DoxyParamCaption}\item[{Date\+Time}]{given\+Date }\end{DoxyParamCaption})}
+
+
+
+Znajduję indeks równy lub późniejszy dla danej daty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em given\+Date} & Data dla, której szuka indeksu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+zwraca indeks listy wszystkie\+Daty
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a832638ee91a2bc9ae4c1587208a8a355}\label{classprojekt_i_ov2_1_1_view_model_a832638ee91a2bc9ae4c1587208a8a355} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!FindIndexFromEnd@{FindIndexFromEnd}}
+\index{FindIndexFromEnd@{FindIndexFromEnd}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{FindIndexFromEnd()}{FindIndexFromEnd()}}
+{\footnotesize\ttfamily int projekt\+IOv2.\+View\+Model.\+Find\+Index\+From\+End (\begin{DoxyParamCaption}\item[{Date\+Time}]{given\+Date }\end{DoxyParamCaption})}
+
+
+
+Znajduję indeks równy lub wczęśniejszy dla danej daty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em given\+Date} & Data dla, której szuka indeksu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+zwraca indeks listy wszystkie\+Daty
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a67b918dac8f53ea8d74a38e45686024b}\label{classprojekt_i_ov2_1_1_view_model_a67b918dac8f53ea8d74a38e45686024b} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!GenerateChart@{GenerateChart}}
+\index{GenerateChart@{GenerateChart}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{GenerateChart()}{GenerateChart()}}
+{\footnotesize\ttfamily async void projekt\+IOv2.\+View\+Model.\+Generate\+Chart (\begin{DoxyParamCaption}\item[{Spolka}]{spolka,  }\item[{Solid\+Color\+Brush}]{brush }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metoda asynchroniczna, która generuje wykres. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em spolka} & Społka dla, której generuje wykres\\
+\hline
+{\em brush} & Kolor linii na wykresie\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_a3cf9667414ebcc3504dac3a67a5719e6}\label{classprojekt_i_ov2_1_1_view_model_a3cf9667414ebcc3504dac3a67a5719e6} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!getChartValuesAsync@{getChartValuesAsync}}
+\index{getChartValuesAsync@{getChartValuesAsync}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{getChartValuesAsync()}{getChartValuesAsync()}}
+{\footnotesize\ttfamily async Task$<$ Chart\+Values$<$ Observable\+Point $>$ $>$ projekt\+IOv2.\+View\+Model.\+get\+Chart\+Values\+Async (\begin{DoxyParamCaption}\item[{Dictionary$<$ Date\+Time, double $>$}]{Notowania }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metoda asynchroniczna, która generuje punkty na wykres konkretnej spółki. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em Notowania} & Notowania spółki dla której generuje punkty\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Zwraca Task, który zawiera Chart\+Values zrobiony z Observable\+Point
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_view_model_ae112ac7f86521f31f6d3a5c56f43d973}\label{classprojekt_i_ov2_1_1_view_model_ae112ac7f86521f31f6d3a5c56f43d973} 
+\index{projektIOv2.ViewModel@{projektIOv2.ViewModel}!removeSeries@{removeSeries}}
+\index{removeSeries@{removeSeries}!projektIOv2.ViewModel@{projektIOv2.ViewModel}}
+\doxysubsubsection{\texorpdfstring{removeSeries()}{removeSeries()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+View\+Model.\+remove\+Series (\begin{DoxyParamCaption}\item[{string}]{nazwa }\end{DoxyParamCaption})}
+
+
+
+Usuwa spółke z wykresu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em nazwa} & Nazwa spółki\\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+View\+Model.\+cs\end{DoxyCompactItemize}

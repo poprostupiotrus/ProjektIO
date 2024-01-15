@@ -1,0 +1,145 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Pages.\+Artykuly\+View}
+\hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view}{}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view}\index{projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}}
+
+
+Logika interakcji dla klasy Artykuly\+View.  
+
+
+Diagram dziedziczenia dla projekt\+IOv2.\+Pages.\+Artykuly\+View\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a039e06604cb5d1bd33340291ad9b2f0d}{Custom\+Delegate}} (string name)
+\begin{DoxyCompactList}\small\item\em Delegat do obsługi błędu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_aaf89e4f35344a04ef6cb557c8389b213}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_aaf89e4f35344a04ef6cb557c8389b213} 
+{\bfseries Artykuly\+View} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor inicjalizujący komponenty oraz wszystkie pola składowe klasy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} \mbox{\hyperlink{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_af9721cdbaf112a91aedcd0c77f394e91}{Zwroc\+Najblzszy\+Artykul}} (Date\+Time czas)
+\begin{DoxyCompactList}\small\item\em Ta metoda wyszukuje najbliższy artykuł w czasie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Zdarzenia}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a935f789e395990704b59bef57a5ee4cb}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a935f789e395990704b59bef57a5ee4cb} 
+Event\+Handler {\bfseries Click\+Pass\+Handler}
+\begin{DoxyCompactList}\small\item\em Zdarzenie wywołujące załadowanie artykułu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_ad6a9af8b7326dc60f9e7b123843f12e7}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_ad6a9af8b7326dc60f9e7b123843f12e7} 
+\mbox{\hyperlink{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a039e06604cb5d1bd33340291ad9b2f0d}{Custom\+Delegate}} {\bfseries Error\+Box\+Show}
+\begin{DoxyCompactList}\small\item\em Zdarzenie wywołujące obsługe błędu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_acedaa3fcb21d733474cff49b225530d0}{Artykul\+Button\+\_\+\+Click}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Ta metoda wyświetla artykuł na stronie po kliknięciu przycisku z tytułem artykułu. \end{DoxyCompactList}\item 
+async void \mbox{\hyperlink{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_ae7985e9b26f212253465a5e70a35c47d}{czas\+\_\+\+Selected\+Date\+Changed}} (object sender, Selection\+Changed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Metoda wyświetla wszystkie artykuly który zostałe opublikowane w danym dniu. \end{DoxyCompactList}\item 
+async void \mbox{\hyperlink{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a89e2d43682a0435b5d806bb75389411a}{Page\+\_\+\+Loaded}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Metoda wyświetla wszystkie artykuly który zostałe opublikowane w dniu 07.\+11.\+2023, po załadowaniu strony. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_acec3749c138d56add56d4415df217971}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_acec3749c138d56add56d4415df217971} 
+Navigation\+Service {\bfseries ns}
+\begin{DoxyCompactList}\small\item\em Przechowuje obiekt nawigacji aplikacji. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a376d425da0fbb416364e6d6583a29a11}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a376d425da0fbb416364e6d6583a29a11} 
+Lista\+Artykulow {\bfseries l1}
+\begin{DoxyCompactList}\small\item\em Przechowuje liste artykułów. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Logika interakcji dla klasy Artykuly\+View. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_acedaa3fcb21d733474cff49b225530d0}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_acedaa3fcb21d733474cff49b225530d0} 
+\index{projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}!ArtykulButton\_Click@{ArtykulButton\_Click}}
+\index{ArtykulButton\_Click@{ArtykulButton\_Click}!projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}}
+\doxysubsubsection{\texorpdfstring{ArtykulButton\_Click()}{ArtykulButton\_Click()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+Pages.\+Artykuly\+View.\+Artykul\+Button\+\_\+\+Click (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Routed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ta metoda wyświetla artykuł na stronie po kliknięciu przycisku z tytułem artykułu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sender} & Przechowuje obiekt na którym jest wywołane zdarzenie\\
+\hline
+{\em e} & Przechowuje argumenty zdarzenia\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a039e06604cb5d1bd33340291ad9b2f0d}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a039e06604cb5d1bd33340291ad9b2f0d} 
+\index{projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}!CustomDelegate@{CustomDelegate}}
+\index{CustomDelegate@{CustomDelegate}!projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}}
+\doxysubsubsection{\texorpdfstring{CustomDelegate()}{CustomDelegate()}}
+{\footnotesize\ttfamily delegate void projekt\+IOv2.\+Pages.\+Artykuly\+View.\+Custom\+Delegate (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Delegat do obsługi błędu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em name} & Przechowuje tresc bledu\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_ae7985e9b26f212253465a5e70a35c47d}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_ae7985e9b26f212253465a5e70a35c47d} 
+\index{projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}!czas\_SelectedDateChanged@{czas\_SelectedDateChanged}}
+\index{czas\_SelectedDateChanged@{czas\_SelectedDateChanged}!projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}}
+\doxysubsubsection{\texorpdfstring{czas\_SelectedDateChanged()}{czas\_SelectedDateChanged()}}
+{\footnotesize\ttfamily async void projekt\+IOv2.\+Pages.\+Artykuly\+View.\+czas\+\_\+\+Selected\+Date\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Selection\+Changed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metoda wyświetla wszystkie artykuly który zostałe opublikowane w danym dniu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sender} & Przechowuje obiekt na którym jest wywołane zdarzenie\\
+\hline
+{\em e} & Przechowuje argumenty zdarzenia\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a89e2d43682a0435b5d806bb75389411a}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_a89e2d43682a0435b5d806bb75389411a} 
+\index{projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}!Page\_Loaded@{Page\_Loaded}}
+\index{Page\_Loaded@{Page\_Loaded}!projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}}
+\doxysubsubsection{\texorpdfstring{Page\_Loaded()}{Page\_Loaded()}}
+{\footnotesize\ttfamily async void projekt\+IOv2.\+Pages.\+Artykuly\+View.\+Page\+\_\+\+Loaded (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Routed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metoda wyświetla wszystkie artykuly który zostałe opublikowane w dniu 07.\+11.\+2023, po załadowaniu strony. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em sender} & Przechowuje obiekt na którym jest wywołane zdarzenie\\
+\hline
+{\em e} & Przechowuje argumenty zdarzenia\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_af9721cdbaf112a91aedcd0c77f394e91}\label{classprojekt_i_ov2_1_1_pages_1_1_artykuly_view_af9721cdbaf112a91aedcd0c77f394e91} 
+\index{projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}!ZwrocNajblzszyArtykul@{ZwrocNajblzszyArtykul}}
+\index{ZwrocNajblzszyArtykul@{ZwrocNajblzszyArtykul}!projektIOv2.Pages.ArtykulyView@{projektIOv2.Pages.ArtykulyView}}
+\doxysubsubsection{\texorpdfstring{ZwrocNajblzszyArtykul()}{ZwrocNajblzszyArtykul()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} projekt\+IOv2.\+Pages.\+Artykuly\+View.\+Zwroc\+Najblzszy\+Artykul (\begin{DoxyParamCaption}\item[{Date\+Time}]{czas }\end{DoxyParamCaption})}
+
+
+
+Ta metoda wyszukuje najbliższy artykuł w czasie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em czas} & Przechowuje czas\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Obiekt klasy artykul, poprzez podanie referencji do obiektu
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Pages/Artykuly\+View.\+xaml.\+cs\end{DoxyCompactItemize}

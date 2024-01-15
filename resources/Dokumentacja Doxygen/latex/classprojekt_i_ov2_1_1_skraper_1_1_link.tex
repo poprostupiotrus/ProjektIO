@@ -1,0 +1,137 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Skraper.\+Link}
+\hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link}{}\label{classprojekt_i_ov2_1_1_skraper_1_1_link}\index{projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}}
+
+
+Klasa pobierająca linki z \href{https://biznes.pap.pl/pl/news/listings/}{\texttt{ https\+://biznes.\+pap.\+pl/pl/news/listings/}}.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ Date\+Time $>$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_link_ad547c8546e26fc3e413b33dcac9174cb}{get\+Dni}} (int page\+Num, Date\+Time expected\+Date)
+\begin{DoxyCompactList}\small\item\em Pobiera listę dat z danej witryny internetowej na podstawie numeru strony. \end{DoxyCompactList}\item 
+List$<$ int $>$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_link_a8eb72ca2246fbc92a8578917eaa36c89}{get\+Page\+Nums}} (Date\+Time target)
+\begin{DoxyCompactList}\small\item\em Pobiera numery stron na podstawie danej daty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_a707c4063fcd078ab9e46f31315153f4a}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_a707c4063fcd078ab9e46f31315153f4a} 
+List$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ {\bfseries get\+Lista}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość zwracająca liste artykułów. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_link_aa5dcdecb5505cba82dd1fd648a2cfc8b}{add\+Urls\+For\+Page}} (Html\+Document page, Date\+Time expected\+Date)
+\begin{DoxyCompactList}\small\item\em Dodaje adresy URL dla danej strony i daty. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_link_acd326210d91ad9d0be4878c9bab443a3}{formatnum}} (int num)
+\begin{DoxyCompactList}\small\item\em Formatuje numer, dodając zerowanie przed liczbami jednocyfrowymi. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_link_ab61cd9b30f1eadf51fcd00da1f697b90}{get\+Page\+Num}} (Date\+Time target)
+\begin{DoxyCompactList}\small\item\em Pobiera numer strony na której jest oczekiwana data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_a0c999af444681d10c198a13687d85251}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_a0c999af444681d10c198a13687d85251} 
+List$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ {\bfseries lista} = new List$<$\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}}$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa pobierająca linki z \href{https://biznes.pap.pl/pl/news/listings/}{\texttt{ https\+://biznes.\+pap.\+pl/pl/news/listings/}}. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_aa5dcdecb5505cba82dd1fd648a2cfc8b}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_aa5dcdecb5505cba82dd1fd648a2cfc8b} 
+\index{projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}!addUrlsForPage@{addUrlsForPage}}
+\index{addUrlsForPage@{addUrlsForPage}!projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}}
+\doxysubsubsection{\texorpdfstring{addUrlsForPage()}{addUrlsForPage()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+Skraper.\+Link.\+add\+Urls\+For\+Page (\begin{DoxyParamCaption}\item[{Html\+Document}]{page,  }\item[{Date\+Time}]{expected\+Date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dodaje adresy URL dla danej strony i daty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em page} & Analizowana strona.\\
+\hline
+{\em expected\+Date} & Oczekiwana data.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_acd326210d91ad9d0be4878c9bab443a3}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_acd326210d91ad9d0be4878c9bab443a3} 
+\index{projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}!formatnum@{formatnum}}
+\index{formatnum@{formatnum}!projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}}
+\doxysubsubsection{\texorpdfstring{formatnum()}{formatnum()}}
+{\footnotesize\ttfamily String projekt\+IOv2.\+Skraper.\+Link.\+formatnum (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Formatuje numer, dodając zerowanie przed liczbami jednocyfrowymi. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em num} & Liczba do sformatowania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Sformatowana liczba jako ciąg znaków.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_ad547c8546e26fc3e413b33dcac9174cb}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_ad547c8546e26fc3e413b33dcac9174cb} 
+\index{projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}!getDni@{getDni}}
+\index{getDni@{getDni}!projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}}
+\doxysubsubsection{\texorpdfstring{getDni()}{getDni()}}
+{\footnotesize\ttfamily List$<$ Date\+Time $>$ projekt\+IOv2.\+Skraper.\+Link.\+get\+Dni (\begin{DoxyParamCaption}\item[{int}]{page\+Num,  }\item[{Date\+Time}]{expected\+Date }\end{DoxyParamCaption})}
+
+
+
+Pobiera listę dat z danej witryny internetowej na podstawie numeru strony. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em page\+Num} & Numer strony.\\
+\hline
+{\em expected\+Date} & Docelowa data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Lista dat.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_ab61cd9b30f1eadf51fcd00da1f697b90}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_ab61cd9b30f1eadf51fcd00da1f697b90} 
+\index{projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}!getPageNum@{getPageNum}}
+\index{getPageNum@{getPageNum}!projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}}
+\doxysubsubsection{\texorpdfstring{getPageNum()}{getPageNum()}}
+{\footnotesize\ttfamily int projekt\+IOv2.\+Skraper.\+Link.\+get\+Page\+Num (\begin{DoxyParamCaption}\item[{Date\+Time}]{target }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pobiera numer strony na której jest oczekiwana data. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em target} & Docelowa data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Numer strony.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_link_a8eb72ca2246fbc92a8578917eaa36c89}\label{classprojekt_i_ov2_1_1_skraper_1_1_link_a8eb72ca2246fbc92a8578917eaa36c89} 
+\index{projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}!getPageNums@{getPageNums}}
+\index{getPageNums@{getPageNums}!projektIOv2.Skraper.Link@{projektIOv2.Skraper.Link}}
+\doxysubsubsection{\texorpdfstring{getPageNums()}{getPageNums()}}
+{\footnotesize\ttfamily List$<$ int $>$ projekt\+IOv2.\+Skraper.\+Link.\+get\+Page\+Nums (\begin{DoxyParamCaption}\item[{Date\+Time}]{target }\end{DoxyParamCaption})}
+
+
+
+Pobiera numery stron na podstawie danej daty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em target} & Docelowa data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Lista numerów stron.
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Skraper/Link.\+cs\end{DoxyCompactItemize}

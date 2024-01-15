@@ -1,0 +1,175 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Themes.\+Themes\+Controller}
+\hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller}{}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller}\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+
+
+Klasa kontrolująca motywy i czcionki aplikacji.  
+
+
+\doxysubsubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_1_1_settings}{Settings}}
+\begin{DoxyCompactList}\small\item\em Klasa reprezentująca ustawienia motywu i czcionki. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typy publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b} 
+enum \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}{Theme\+Types}} \{ {\bfseries Light} = 0
+, {\bfseries Dark} = 1
+, {\bfseries High} =2
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeracja reprezentująca dostępne motywy. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4} 
+enum \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}{Font\+Types}} \{ {\bfseries Normal} = 0
+, {\bfseries Small} = 1
+, {\bfseries Large} =2
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeracja reprezentująca dostępne czcionki. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a7af458d07363c4d112e64c5e187271b3}{Set\+Theme}} (\mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}{Theme\+Types}} theme)
+\begin{DoxyCompactList}\small\item\em Ustawia motyw aplikacji na podstawie podanego typu motywu. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8d6f429fdce587562733da57a8ab497b}{Set\+Font}} (\mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}{Font\+Types}} font)
+\begin{DoxyCompactList}\small\item\em Ustawia czcionkę aplikacji na podstawie podanego typu czcionki. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aaa2127f5c570b68a548f77dd97df3a74}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aaa2127f5c570b68a548f77dd97df3a74} 
+static void {\bfseries Save\+Settings} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje bieżące ustawienia motywu i czcionki do pliku JSON. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_1_1_settings}{Settings}} \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8445f09e8f0bb13b3df8a282bdfe804a}{Get\+Current\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera bieżące ustawienia motywu i czcionki z pliku JSON. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}{Theme\+Types}} \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8fe774b506ee2b650e4f49eae60284a5}{Get\+Theme}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera bieżący typ motywu z ustawień. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}{Font\+Types}} \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a777fcc3bf421c415c60f2de8ac428269}{Get\+Font}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera bieżący typ czcionki z ustawień. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_ab127fc9bbff3f91a7d225cd93d6370db}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_ab127fc9bbff3f91a7d225cd93d6370db} 
+static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}{Theme\+Types}} {\bfseries Current\+Theme}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualnie wybrany motyw. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_ac4c3c17a8a78ba7f8fcc5bf49ac9b36a}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_ac4c3c17a8a78ba7f8fcc5bf49ac9b36a} 
+static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}{Font\+Types}} {\bfseries Current\+Font}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Aktualnie wybrana czcionka. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_ae2d1c9c686c1a2fca0e769bbc4be6eb3}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_ae2d1c9c686c1a2fca0e769bbc4be6eb3} 
+static Resource\+Dictionary {\bfseries Theme\+Dictionary}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość pozwalacjaca kontrolować aktualny motyw. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa55173a40bc6c168e06fb9560bd38d47}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa55173a40bc6c168e06fb9560bd38d47} 
+static Resource\+Dictionary {\bfseries Font\+Dictionary}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Właściwość pozwalacjaca kontrolować aktualną czcionke. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Statyczne metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_adfaacfca1b82493df7473cb3be3f27a1}{Change\+Theme}} (Uri uri)
+\begin{DoxyCompactList}\small\item\em Metoda zmieniająca motyw aplikacji na podstawie podanej ścieżki URI. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a054b54ff731a93343581b5c72ce63491}{Change\+Font}} (Uri uri)
+\begin{DoxyCompactList}\small\item\em Metoda zmieniająca czcionkę aplikacji na podstawie podanej ścieżki URI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa kontrolująca motywy i czcionki aplikacji. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a054b54ff731a93343581b5c72ce63491}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a054b54ff731a93343581b5c72ce63491} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!ChangeFont@{ChangeFont}}
+\index{ChangeFont@{ChangeFont}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{ChangeFont()}{ChangeFont()}}
+{\footnotesize\ttfamily static void projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Change\+Font (\begin{DoxyParamCaption}\item[{Uri}]{uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Metoda zmieniająca czcionkę aplikacji na podstawie podanej ścieżki URI. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em uri} & uri czcionki\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_adfaacfca1b82493df7473cb3be3f27a1}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_adfaacfca1b82493df7473cb3be3f27a1} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!ChangeTheme@{ChangeTheme}}
+\index{ChangeTheme@{ChangeTheme}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{ChangeTheme()}{ChangeTheme()}}
+{\footnotesize\ttfamily static void projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Change\+Theme (\begin{DoxyParamCaption}\item[{Uri}]{uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Metoda zmieniająca motyw aplikacji na podstawie podanej ścieżki URI. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em uri} & uri motywu\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8445f09e8f0bb13b3df8a282bdfe804a}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8445f09e8f0bb13b3df8a282bdfe804a} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!GetCurrentSettings@{GetCurrentSettings}}
+\index{GetCurrentSettings@{GetCurrentSettings}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{GetCurrentSettings()}{GetCurrentSettings()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_1_1_settings}{Settings}} projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Get\+Current\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pobiera bieżące ustawienia motywu i czcionki z pliku JSON. 
+
+\begin{DoxyReturn}{Zwraca}
+Zwraca obiekt zawierający ustawienia motywu i czcionki. Jeśli plik "{}\+Settings.\+json"{} nie istnieje lub wystąpił błąd podczas wczytywania ustawień, zwraca domyślne ustawienia. 
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a777fcc3bf421c415c60f2de8ac428269}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a777fcc3bf421c415c60f2de8ac428269} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}{Font\+Types}} projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Get\+Font (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pobiera bieżący typ czcionki z ustawień. 
+
+\begin{DoxyReturn}{Zwraca}
+Zwraca typ czcionki.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8fe774b506ee2b650e4f49eae60284a5}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8fe774b506ee2b650e4f49eae60284a5} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!GetTheme@{GetTheme}}
+\index{GetTheme@{GetTheme}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{GetTheme()}{GetTheme()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}{Theme\+Types}} projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Get\+Theme (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pobiera bieżący typ motywu z ustawień. 
+
+\begin{DoxyReturn}{Zwraca}
+wraca typ motywu.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8d6f429fdce587562733da57a8ab497b}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a8d6f429fdce587562733da57a8ab497b} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!SetFont@{SetFont}}
+\index{SetFont@{SetFont}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{SetFont()}{SetFont()}}
+{\footnotesize\ttfamily static void projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Set\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_aa677807710493347543f59f5aa7b5dd4}{Font\+Types}}}]{font }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Ustawia czcionkę aplikacji na podstawie podanego typu czcionki. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em font} & Typ czcionki.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a7af458d07363c4d112e64c5e187271b3}\label{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a7af458d07363c4d112e64c5e187271b3} 
+\index{projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}!SetTheme@{SetTheme}}
+\index{SetTheme@{SetTheme}!projektIOv2.Themes.ThemesController@{projektIOv2.Themes.ThemesController}}
+\doxysubsubsection{\texorpdfstring{SetTheme()}{SetTheme()}}
+{\footnotesize\ttfamily static void projekt\+IOv2.\+Themes.\+Themes\+Controller.\+Set\+Theme (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classprojekt_i_ov2_1_1_themes_1_1_themes_controller_a00268cb70cf747ba9d022c7203d6449b}{Theme\+Types}}}]{theme }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Ustawia motyw aplikacji na podstawie podanego typu motywu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em theme} & Typ motywu.\\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Themes/Themes\+Controller.\+cs\end{DoxyCompactItemize}

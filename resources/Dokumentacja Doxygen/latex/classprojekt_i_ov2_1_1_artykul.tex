@@ -1,0 +1,117 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Artykul}
+\hypertarget{classprojekt_i_ov2_1_1_artykul}{}\label{classprojekt_i_ov2_1_1_artykul}\index{projektIOv2.Artykul@{projektIOv2.Artykul}}
+
+
+Klasa reprezentująca artykuł. Implementuje interfejs IComparable.  
+
+
+Diagram dziedziczenia dla projekt\+IOv2.\+Artykul\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classprojekt_i_ov2_1_1_artykul}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul_a9493050fc2af7078f55a9668cb0335fc}{Compare\+To}} (\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} other)
+\begin{DoxyCompactList}\small\item\em Porównuje obecny artykuł z innym artykułem na podstawie daty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul_ade0252b7114e874079ed4123941f6fd4}{is\+Positive}} (List$<$ String $>$ spolki)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy artykuł jest pozytywny dla podanych spółek. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul_a0997343577b7f4bb09d2ba58ea98ef98}{is\+Negative}} (List$<$ String $>$ spolki)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy artykuł jest negatywny dla podanych spółek. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_aa2a3d65898d9ef7eea347aa9baa57c02}\label{classprojekt_i_ov2_1_1_artykul_aa2a3d65898d9ef7eea347aa9baa57c02} 
+void {\bfseries Update\+In\+Cache} ()
+\begin{DoxyCompactList}\small\item\em Aktualizuje artykuł w pamięci podręcznej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Właściwości}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_afc85160be7f578910e92c57b3fe18cf9}\label{classprojekt_i_ov2_1_1_artykul_afc85160be7f578910e92c57b3fe18cf9} 
+Date\+Time {\bfseries Data}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia datę artykułu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_af862b4a6713451aa876950d963f37b4c}\label{classprojekt_i_ov2_1_1_artykul_af862b4a6713451aa876950d963f37b4c} 
+string? {\bfseries Naglowek}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia nagłówek artykułu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a663cc1047279358467a4ee75d33a0629}\label{classprojekt_i_ov2_1_1_artykul_a663cc1047279358467a4ee75d33a0629} 
+string? {\bfseries YEAR}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia date dla listy artykułów. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a6620992600e05f62f5f26f8aa11c4a71}\label{classprojekt_i_ov2_1_1_artykul_a6620992600e05f62f5f26f8aa11c4a71} 
+string? {\bfseries HOUR}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia godzine dla listy artykułów. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_ab31f93612d62329ee9700753f75559ef}\label{classprojekt_i_ov2_1_1_artykul_ab31f93612d62329ee9700753f75559ef} 
+string? {\bfseries Tresc}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia treść artykułu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a3d8ba59e5a0e33d57a276116c208dafa}\label{classprojekt_i_ov2_1_1_artykul_a3d8ba59e5a0e33d57a276116c208dafa} 
+string? {\bfseries Link}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia link do artykułu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a1dc7a4de7d5c114eda4d881cd47e0fa2}\label{classprojekt_i_ov2_1_1_artykul_a1dc7a4de7d5c114eda4d881cd47e0fa2} 
+Dictionary$<$ String, double $>$ {\bfseries gpt}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia słownik GPT artykułu. \end{DoxyCompactList}\item 
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a1bd3d048e93b3ce72fe447ede19b42df}\label{classprojekt_i_ov2_1_1_artykul_a1bd3d048e93b3ce72fe447ede19b42df} 
+Dictionary$<$ String, double $>$ {\bfseries bard}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Pobiera lub ustawia słownik BARD artykułu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa reprezentująca artykuł. Implementuje interfejs IComparable. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a9493050fc2af7078f55a9668cb0335fc}\label{classprojekt_i_ov2_1_1_artykul_a9493050fc2af7078f55a9668cb0335fc} 
+\index{projektIOv2.Artykul@{projektIOv2.Artykul}!CompareTo@{CompareTo}}
+\index{CompareTo@{CompareTo}!projektIOv2.Artykul@{projektIOv2.Artykul}}
+\doxysubsubsection{\texorpdfstring{CompareTo()}{CompareTo()}}
+{\footnotesize\ttfamily int projekt\+IOv2.\+Artykul.\+Compare\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}}}]{other }\end{DoxyParamCaption})}
+
+
+
+Porównuje obecny artykuł z innym artykułem na podstawie daty. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em other} & Inny artykuł do porównania.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Wartość ujemna, jeśli obecny artykuł jest wcześniejszy; wartość dodatnia, jeśli obecny artykuł jest późniejszy; zero, jeśli oba artykuły są takie same.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_a0997343577b7f4bb09d2ba58ea98ef98}\label{classprojekt_i_ov2_1_1_artykul_a0997343577b7f4bb09d2ba58ea98ef98} 
+\index{projektIOv2.Artykul@{projektIOv2.Artykul}!isNegative@{isNegative}}
+\index{isNegative@{isNegative}!projektIOv2.Artykul@{projektIOv2.Artykul}}
+\doxysubsubsection{\texorpdfstring{isNegative()}{isNegative()}}
+{\footnotesize\ttfamily bool projekt\+IOv2.\+Artykul.\+is\+Negative (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{spolki }\end{DoxyParamCaption})}
+
+
+
+Sprawdza, czy artykuł jest negatywny dla podanych spółek. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em spolki} & Lista trzyliterowych symboli spółek.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+True, jeśli artykuł jest negatywny dla wszystkich spółek; w przeciwnym razie false.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_artykul_ade0252b7114e874079ed4123941f6fd4}\label{classprojekt_i_ov2_1_1_artykul_ade0252b7114e874079ed4123941f6fd4} 
+\index{projektIOv2.Artykul@{projektIOv2.Artykul}!isPositive@{isPositive}}
+\index{isPositive@{isPositive}!projektIOv2.Artykul@{projektIOv2.Artykul}}
+\doxysubsubsection{\texorpdfstring{isPositive()}{isPositive()}}
+{\footnotesize\ttfamily bool projekt\+IOv2.\+Artykul.\+is\+Positive (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{spolki }\end{DoxyParamCaption})}
+
+
+
+Sprawdza, czy artykuł jest pozytywny dla podanych spółek. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em spolki} & Lista trzyliterowych symboli spółek.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+True, jeśli artykuł jest pozytywny dla wszystkich spółek; w przeciwnym razie false.
+\end{DoxyReturn}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Artykul.\+cs\end{DoxyCompactItemize}

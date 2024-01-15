@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "kFdlAPQ8G/mLkdvMKNqPkfWP5JbbZcA7xf98ZCGQAL8fossUA8Opfuro5qrEW6EpoEzAzGPM3kljAnWw+WxTkg==",
+  "dgSpecHash": "XKnfg6BBUbNHnL6q59avU4CQ7FJAQT4JlhfHRaa3yMWVypWq2o0srlZNn7Qu7b+ZT/kI+NPAZLVahxpR7CLwAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\patryk\\Desktop\\Nowy folder (9)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
+  "projectFilePath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\patryk\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
-    "C:\\Users\\patryk\\.nuget\\packages\\htmlagilitypack\\1.11.54\\htmlagilitypack.1.11.54.nupkg.sha512",
-    "C:\\Users\\patryk\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
-    "C:\\Users\\patryk\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
-    "C:\\Users\\patryk\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\patryk\\.nuget\\packages\\openai-dotnet\\7.5.0\\openai-dotnet.7.5.0.nupkg.sha512"
+    "C:\\Users\\komputerrozy\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
+    "C:\\Users\\komputerrozy\\.nuget\\packages\\htmlagilitypack\\1.11.54\\htmlagilitypack.1.11.54.nupkg.sha512",
+    "C:\\Users\\komputerrozy\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
+    "C:\\Users\\komputerrozy\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
+    "C:\\Users\\komputerrozy\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\komputerrozy\\.nuget\\packages\\openai-dotnet\\7.5.0\\openai-dotnet.7.5.0.nupkg.sha512"
   ],
   "logs": [
     {

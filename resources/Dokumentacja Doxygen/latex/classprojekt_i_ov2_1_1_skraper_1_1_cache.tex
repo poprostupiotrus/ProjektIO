@@ -1,0 +1,98 @@
+\doxysection{Dokumentacja klasy projekt\+IOv2.\+Skraper.\+Cache}
+\hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_cache}{}\label{classprojekt_i_ov2_1_1_skraper_1_1_cache}\index{projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}}
+
+
+Klasa odpowiedzialna za cachowanie artykułów.  
+
+
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_cache_af946498528db2b8e53366da11f6affa3}\label{classprojekt_i_ov2_1_1_skraper_1_1_cache_af946498528db2b8e53366da11f6affa3} 
+{\bfseries Cache} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje nową instancję klasy Cache. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_cache_a62aa2cfe4cf4ca4b1e0c94addbfada1f}{Has\+Date}} (Date\+Time expected\+Date)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy istnieje plik w cache o określonej dacie. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_cache_a3b5adb09cde4dff78f0cb6533ce41d6d}{Get\+List\+From\+Date}} (Date\+Time expected\+Date)
+\begin{DoxyCompactList}\small\item\em Pobiera listę artykułów z pliku cache o określonej dacie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_cache_ae15e1514a30fca5a166ddd3b5e32cc87}{Save\+List}} (List$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ list\+To\+Save)
+\begin{DoxyCompactList}\small\item\em Zapisuje listę artykułów do pliku cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classprojekt_i_ov2_1_1_skraper_1_1_cache_a969398872a66fd3535a1c21b287ac01a}{Update\+Artykul}} (\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} artykul)
+\begin{DoxyCompactList}\small\item\em Aktualizuje informacje o artykule w pliku cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa odpowiedzialna za cachowanie artykułów. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_cache_a3b5adb09cde4dff78f0cb6533ce41d6d}\label{classprojekt_i_ov2_1_1_skraper_1_1_cache_a3b5adb09cde4dff78f0cb6533ce41d6d} 
+\index{projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}!GetListFromDate@{GetListFromDate}}
+\index{GetListFromDate@{GetListFromDate}!projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}}
+\doxysubsubsection{\texorpdfstring{GetListFromDate()}{GetListFromDate()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$ projekt\+IOv2.\+Skraper.\+Cache.\+Get\+List\+From\+Date (\begin{DoxyParamCaption}\item[{Date\+Time}]{expected\+Date }\end{DoxyParamCaption})}
+
+
+
+Pobiera listę artykułów z pliku cache o określonej dacie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em expected\+Date} & Oczekiwana data pliku w formacie yyyy.\+MM.\+dd.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Lista artykułów z pliku cache.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_cache_a62aa2cfe4cf4ca4b1e0c94addbfada1f}\label{classprojekt_i_ov2_1_1_skraper_1_1_cache_a62aa2cfe4cf4ca4b1e0c94addbfada1f} 
+\index{projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}!HasDate@{HasDate}}
+\index{HasDate@{HasDate}!projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}}
+\doxysubsubsection{\texorpdfstring{HasDate()}{HasDate()}}
+{\footnotesize\ttfamily bool projekt\+IOv2.\+Skraper.\+Cache.\+Has\+Date (\begin{DoxyParamCaption}\item[{Date\+Time}]{expected\+Date }\end{DoxyParamCaption})}
+
+
+
+Sprawdza, czy istnieje plik w cache o określonej dacie. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em expected\+Date} & Oczekiwana data pliku w formacie yyyy.\+MM.\+dd.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+True, jeśli plik istnieje; w przeciwnym razie false.
+\end{DoxyReturn}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_cache_ae15e1514a30fca5a166ddd3b5e32cc87}\label{classprojekt_i_ov2_1_1_skraper_1_1_cache_ae15e1514a30fca5a166ddd3b5e32cc87} 
+\index{projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}!SaveList@{SaveList}}
+\index{SaveList@{SaveList}!projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}}
+\doxysubsubsection{\texorpdfstring{SaveList()}{SaveList()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+Skraper.\+Cache.\+Save\+List (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}} $>$}]{list\+To\+Save }\end{DoxyParamCaption})}
+
+
+
+Zapisuje listę artykułów do pliku cache. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em list\+To\+Save} & Lista artykułów do zapisania.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{classprojekt_i_ov2_1_1_skraper_1_1_cache_a969398872a66fd3535a1c21b287ac01a}\label{classprojekt_i_ov2_1_1_skraper_1_1_cache_a969398872a66fd3535a1c21b287ac01a} 
+\index{projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}!UpdateArtykul@{UpdateArtykul}}
+\index{UpdateArtykul@{UpdateArtykul}!projektIOv2.Skraper.Cache@{projektIOv2.Skraper.Cache}}
+\doxysubsubsection{\texorpdfstring{UpdateArtykul()}{UpdateArtykul()}}
+{\footnotesize\ttfamily void projekt\+IOv2.\+Skraper.\+Cache.\+Update\+Artykul (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classprojekt_i_ov2_1_1_artykul}{Artykul}}}]{artykul }\end{DoxyParamCaption})}
+
+
+
+Aktualizuje informacje o artykule w pliku cache. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em artykul} & Artykuł do zaktualizowania.\\
+\hline
+\end{DoxyParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Skraper/Cache.\+cs\end{DoxyCompactItemize}

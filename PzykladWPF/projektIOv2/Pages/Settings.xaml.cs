@@ -7,7 +7,7 @@ using System.Windows.Controls;
 namespace projektIOv2.Pages
 {
     /// <summary>
-    /// Klasa reprezentująca stronę ustawień.
+    /// Klasa reprezentująca stronę ustawień, logika interakcji klasy Settings.
     /// </summary>
     public partial class Settings : Page
     {
