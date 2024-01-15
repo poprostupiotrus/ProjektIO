@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace projektIOv2.Converters
@@ -11,20 +7,21 @@ namespace projektIOv2.Converters
 
 
     /// <summary>
-    /// Konwerter przyporządkowujący nazwę spółki do tickera.
+    /// Konwerter zwracajacy 2 dla wartosci null, w pozostałych przypadkach 1
+    /// Przydatny w layoucie gdy trzeba ukryc elementy bez danych
     /// </summary>
     public class SpanConverter : IValueConverter
     {
         
 
         /// <summary>
-        /// Konwertuje ticker na nazwę spółki.
+        /// zwraca liczbe w zaleznosci od tego czy wartość to null.
         /// </summary>
-        /// <param name="value">Ticker spółki.</param>
+        /// <param name="value">Dowolny obiekt</param>
         /// <param name="targetType">Typ docelowy.</param>
         /// <param name="parameter">Parametr konwertera.</param>
         /// <param name="culture">Informacje o kulturze.</param>
-        /// <returns>Nazwa spółki przypisana do tickera.</returns>
+        /// <returns>2 gdy value to null, w przeciwnym przypadku 1</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null) return 2; return 1;

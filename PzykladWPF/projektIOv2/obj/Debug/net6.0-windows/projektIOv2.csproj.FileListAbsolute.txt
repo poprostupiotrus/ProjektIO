@@ -666,3 +666,6 @@ C:\Users\jacek\OneDrive\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\De
 C:\Users\jacek\OneDrive\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\ref\projektIOv2.dll
 C:\Users\jacek\OneDrive\Documents\GitHub\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2_Content.g.cs
 C:\Users\komputerrozy\Desktop\repozytorium\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2_Content.g.cs
+C:\Users\patryk\Desktop\Nowy folder (9)\ProjektIO\PzykladWPF\projektIOv2\obj\Debug\net6.0-windows\projektIOv2_Content.g.cs
+C:\Users\patryk\Desktop\Nowy folder (9)\ProjektIO\PzykladWPF\projektIOv2\bin\Debug\net6.0-windows\artykulyV2.json
+C:\Users\patryk\Desktop\Nowy folder (9)\ProjektIO\PzykladWPF\projektIOv2\bin\Debug\net6.0-windows\danespolekWIG20.json

@@ -1,0 +1,104 @@
+\doxysection{Dokumentacja klasy baza.\+Baza}
+\hypertarget{classbaza_1_1_baza}{}\label{classbaza_1_1_baza}\index{baza.Baza@{baza.Baza}}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbaza_1_1_baza_a3215a56612d9244c378834c65433ea00}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, tabela)
+\item 
+\mbox{\hyperlink{classbaza_1_1_baza_a746e86ffdad32800567b794f971420d0}{get\+All}} (self)
+\item 
+\mbox{\hyperlink{classbaza_1_1_baza_a1ff25145a4a47eae83f75bfe33a2c678}{Query}} (self, query)
+\item 
+\mbox{\hyperlink{classbaza_1_1_baza_aeb996b7cae25e110e1850625a6113b95}{insert\+Notowanie}} (self, IDt1, Tickern, notowanie)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classbaza_1_1_baza_a4ac9c9d47ce43b8c581f558a0e9b8720}\label{classbaza_1_1_baza_a4ac9c9d47ce43b8c581f558a0e9b8720} 
+{\bfseries connection}
+\item 
+\Hypertarget{classbaza_1_1_baza_a22c4e32f0afdb4107895e3ef04343aa5}\label{classbaza_1_1_baza_a22c4e32f0afdb4107895e3ef04343aa5} 
+{\bfseries cursor}
+\item 
+\Hypertarget{classbaza_1_1_baza_aa6514b671ffe02d909f470f80f1f070e}\label{classbaza_1_1_baza_aa6514b671ffe02d909f470f80f1f070e} 
+{\bfseries tabela}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+\begin{DoxyVerb}Klasa reprezentująca połączenie z bazą danych MySQL.
+
+Attributes:
+    connection (pymysql.connections.Connection): Połączenie do bazy danych.
+    cursor (pymysql.cursors.Cursor): Kursor do bazy danych.
+    tabela (str): Nazwa tabeli w bazie danych.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{classbaza_1_1_baza_a3215a56612d9244c378834c65433ea00}\label{classbaza_1_1_baza_a3215a56612d9244c378834c65433ea00} 
+\index{baza.Baza@{baza.Baza}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!baza.Baza@{baza.Baza}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily baza.\+Baza.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tabela }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}cc
+Args:
+    tabela:
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Inicjalizuje obiekt Baza z podaną tabelą.
+
+Args:
+    tabela (str): Nazwa tabeli w bazie danych.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{classbaza_1_1_baza_a746e86ffdad32800567b794f971420d0}\label{classbaza_1_1_baza_a746e86ffdad32800567b794f971420d0} 
+\index{baza.Baza@{baza.Baza}!getAll@{getAll}}
+\index{getAll@{getAll}!baza.Baza@{baza.Baza}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily baza.\+Baza.\+get\+All (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Pobiera dane z tabeli 't1' spełniające określone kryteria.
+
+Returns:
+    list: Lista krotek zawierających kolumny 'id', 'h1', 'p' z tabeli 't1'.
+\end{DoxyVerb}
+ \Hypertarget{classbaza_1_1_baza_aeb996b7cae25e110e1850625a6113b95}\label{classbaza_1_1_baza_aeb996b7cae25e110e1850625a6113b95} 
+\index{baza.Baza@{baza.Baza}!insertNotowanie@{insertNotowanie}}
+\index{insertNotowanie@{insertNotowanie}!baza.Baza@{baza.Baza}}
+\doxysubsubsection{\texorpdfstring{insertNotowanie()}{insertNotowanie()}}
+{\footnotesize\ttfamily baza.\+Baza.\+insert\+Notowanie (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{IDt1,  }\item[{}]{Tickern,  }\item[{}]{notowanie }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Dodaje notowanie do tabeli o nazwie przekazanej podczas inicjalizacji.
+
+Args:
+    IDt1 (int): ID rekordu w tabeli 't1'.
+    Tickern (str): Oznaczenie notowanej spółki.
+    notowanie (float): Wartość notowania.
+
+Returns:
+    None
+\end{DoxyVerb}
+ \Hypertarget{classbaza_1_1_baza_a1ff25145a4a47eae83f75bfe33a2c678}\label{classbaza_1_1_baza_a1ff25145a4a47eae83f75bfe33a2c678} 
+\index{baza.Baza@{baza.Baza}!Query@{Query}}
+\index{Query@{Query}!baza.Baza@{baza.Baza}}
+\doxysubsubsection{\texorpdfstring{Query()}{Query()}}
+{\footnotesize\ttfamily baza.\+Baza.\+Query (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{query }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Wykonuje zapytanie do bazy danych i zatwierdza zmiany.
+
+Args:
+    query (str): Zapytanie SQL.
+
+Returns:
+    None
+\end{DoxyVerb}
+ 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/patryk/\+Desktop/\+Nowy folder (9)/\+Projekt\+IO/tools/baza.\+py\end{DoxyCompactItemize}

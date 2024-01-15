@@ -1,19 +1,8 @@
 ﻿using projektIOv2.Themes;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace projektIOv2.Pages
 {
@@ -102,7 +91,7 @@ namespace projektIOv2.Pages
         /// <summary>
         /// Obsługuje zdarzenie wybranej opcji w ComboBox dla rozmiaru czcionki Large.
         /// </summary>
-        /    /// <param name="sender">Przechowuje obiekt klasy na którym został wywołany</param>
+        /// <param name="sender">Przechowuje obiekt klasy na którym został wywołany</param>
         /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private void large_Selected(object sender, RoutedEventArgs e)
         {

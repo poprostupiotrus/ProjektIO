@@ -1,0 +1,73 @@
+\doxysection{Dokumentacja klasy Sledz.\+Skraper}
+\hypertarget{class_sledz_1_1_skraper}{}\label{class_sledz_1_1_skraper}\index{Sledz.Skraper@{Sledz.Skraper}}
+\doxysubsubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sledz_1_1_skraper_a163e79fee2e3dcec28655197ff409cb3}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{class_sledz_1_1_skraper_a5510023ac1d8b473f0bf92eb166c2e26}{create\+\_\+query}} (self, query)
+\item 
+\mbox{\hyperlink{class_sledz_1_1_skraper_a3e966342644e70a6786e63ea5337fb16}{\+\_\+\+\_\+del\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sledz_1_1_skraper_ae487630be009437e59741c98d2d8a28a}\label{class_sledz_1_1_skraper_ae487630be009437e59741c98d2d8a28a} 
+{\bfseries bard\+\_\+url}
+\item 
+\Hypertarget{class_sledz_1_1_skraper_ad57f1123db8bed3cdb36ac236b3116fb}\label{class_sledz_1_1_skraper_ad57f1123db8bed3cdb36ac236b3116fb} 
+{\bfseries options}
+\item 
+\Hypertarget{class_sledz_1_1_skraper_ab8309c39ca1ae354009c1a6205b4fde7}\label{class_sledz_1_1_skraper_ab8309c39ca1ae354009c1a6205b4fde7} 
+{\bfseries driver}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+\begin{DoxyVerb}@brief Klasa reprezentująca skraper dla strony bard.google.com/chat.
+
+@var bard_url: Adres URL strony Bard.
+@var options: Opcje konfiguracyjne dla przeglądarki.
+@var driver: Obiekt przeglądarki Chrome.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Dokumentacja konstruktora i destruktora}
+\Hypertarget{class_sledz_1_1_skraper_a163e79fee2e3dcec28655197ff409cb3}\label{class_sledz_1_1_skraper_a163e79fee2e3dcec28655197ff409cb3} 
+\index{Sledz.Skraper@{Sledz.Skraper}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Sledz.Skraper@{Sledz.Skraper}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily Sledz.\+Skraper.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Inicjalizuje obiekt Skraper i otwiera przeglądarkę Chrome.
+\end{DoxyVerb}
+ \Hypertarget{class_sledz_1_1_skraper_a3e966342644e70a6786e63ea5337fb16}\label{class_sledz_1_1_skraper_a3e966342644e70a6786e63ea5337fb16} 
+\index{Sledz.Skraper@{Sledz.Skraper}!\_\_del\_\_@{\_\_del\_\_}}
+\index{\_\_del\_\_@{\_\_del\_\_}!Sledz.Skraper@{Sledz.Skraper}}
+\doxysubsubsection{\texorpdfstring{\_\_del\_\_()}{\_\_del\_\_()}}
+{\footnotesize\ttfamily Sledz.\+Skraper.\+\_\+\+\_\+del\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Zamyka przeglądarkę Chrome po zniszczeniu obiektu Skraper.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\Hypertarget{class_sledz_1_1_skraper_a5510023ac1d8b473f0bf92eb166c2e26}\label{class_sledz_1_1_skraper_a5510023ac1d8b473f0bf92eb166c2e26} 
+\index{Sledz.Skraper@{Sledz.Skraper}!create\_query@{create\_query}}
+\index{create\_query@{create\_query}!Sledz.Skraper@{Sledz.Skraper}}
+\doxysubsubsection{\texorpdfstring{create\_query()}{create\_query()}}
+{\footnotesize\ttfamily Sledz.\+Skraper.\+create\+\_\+query (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{query }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tworzy zapytanie na stronie Bard i zwraca wyniki jako tabelę.
+
+Args:
+    query (str): Treść artykułu na podstawie którego ma być stworzone zapytanie.
+
+Returns:
+    list: Lista krotek zawierających nazwę spółki i przewidywanie.
+\end{DoxyVerb}
+ 
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/patryk/\+Desktop/\+Nowy folder (9)/\+Projekt\+IO/tools/Sledz.\+py\end{DoxyCompactItemize}

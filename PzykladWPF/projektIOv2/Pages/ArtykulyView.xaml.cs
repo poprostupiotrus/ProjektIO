@@ -122,6 +122,7 @@ namespace projektIOv2.Pages
         /// <param name="e">Przechowuje argumenty zdarzenia</param>
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Loaded -= Page_Loaded;
             if (l1 == null) return;
 
             DateTime dt1 = (DateTime)czas.SelectedDate;

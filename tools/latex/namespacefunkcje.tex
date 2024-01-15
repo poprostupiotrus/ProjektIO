@@ -1,0 +1,101 @@
+\doxysection{Dokumentacja przestrzeni nazw funkcje}
+\hypertarget{namespacefunkcje}{}\label{namespacefunkcje}\index{funkcje@{funkcje}}
+\doxysubsubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacefunkcje_ad000c14faa142199b2b8ec835abab98e}{extract\+\_\+first\+\_\+three\+\_\+letters}} (string)
+\item 
+\mbox{\hyperlink{namespacefunkcje_a6aef403f81b3ec23d35da5ea8ff11327}{extract\+\_\+number}} (string)
+\item 
+\mbox{\hyperlink{namespacefunkcje_a5b5adeff49cf4cad91241112f616aea5}{nieistotny\+Artykul}} (listaa)
+\item 
+\mbox{\hyperlink{namespacefunkcje_a3bbe3622b6d801e74d1bc0c15a72c7c6}{wypisz}} (nowa\+\_\+linia)
+\item 
+\mbox{\hyperlink{namespacefunkcje_af92527fc63467a118cd18cfe9f6dad1c}{log}} (nowa\+\_\+linia)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacefunkcje_a85ff696fb11b9c27f9c4c33069107ea0}\label{namespacefunkcje_a85ff696fb11b9c27f9c4c33069107ea0} 
+list {\bfseries brakinfo} = \mbox{[}"{}Brak wpływu"{},"{}Nie jestem w stanie"{},"{}nie jest możliwe"{},"{}brakuje informacji"{},"{}Brak informacji"{},"{}Brak konkretnej informacji"{},"{}Nie mogę odpowiedzieć"{},"{}nie zawiera"{},"{}nie dotyczy"{},"{}Nie można przewidzieć"{},"{}Nie ma w podanym artykule informacji"{},"{}brak powiązania"{},"{}Brak przewidywań"{},"{}ogólnikowy"{},"{}Nie można udzielić"{},"{}nie pozwala"{},"{}nie można"{},"{}nie ma informacji"{}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+\begin{DoxyVerb}@package docstring
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Dokumentacja funkcji}
+\Hypertarget{namespacefunkcje_ad000c14faa142199b2b8ec835abab98e}\label{namespacefunkcje_ad000c14faa142199b2b8ec835abab98e} 
+\index{funkcje@{funkcje}!extract\_first\_three\_letters@{extract\_first\_three\_letters}}
+\index{extract\_first\_three\_letters@{extract\_first\_three\_letters}!funkcje@{funkcje}}
+\doxysubsubsection{\texorpdfstring{extract\_first\_three\_letters()}{extract\_first\_three\_letters()}}
+{\footnotesize\ttfamily funkcje.\+extract\+\_\+first\+\_\+three\+\_\+letters (\begin{DoxyParamCaption}\item[{}]{string }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Wyodrębnia pierwsze trzy wielkie litery ze stringa, które nie są poprzedzone ani nie są za nimi wielkie litery.
+
+Args:
+    string (str): Wejściowy ciąg znaków.
+
+Returns:
+    str: Pierwsze trzy wielkie litery lub pusty ciąg znaków, jeśli warunek nie jest spełniony.
+\end{DoxyVerb}
+ \Hypertarget{namespacefunkcje_a6aef403f81b3ec23d35da5ea8ff11327}\label{namespacefunkcje_a6aef403f81b3ec23d35da5ea8ff11327} 
+\index{funkcje@{funkcje}!extract\_number@{extract\_number}}
+\index{extract\_number@{extract\_number}!funkcje@{funkcje}}
+\doxysubsubsection{\texorpdfstring{extract\_number()}{extract\_number()}}
+{\footnotesize\ttfamily funkcje.\+extract\+\_\+number (\begin{DoxyParamCaption}\item[{}]{string }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Wyodrębnia liczbę z ciągu znaków.
+
+Args:
+    string (str): Wejściowy ciąg znaków.
+
+Returns:
+    float: Wyodrębniona liczba lub 0, jeśli brak liczby w ciągu znaków.
+\end{DoxyVerb}
+ \Hypertarget{namespacefunkcje_af92527fc63467a118cd18cfe9f6dad1c}\label{namespacefunkcje_af92527fc63467a118cd18cfe9f6dad1c} 
+\index{funkcje@{funkcje}!log@{log}}
+\index{log@{log}!funkcje@{funkcje}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily funkcje.\+log (\begin{DoxyParamCaption}\item[{}]{nowa\+\_\+linia }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Dodaje podaną linię do pliku "raport2.txt" bez wypisywania na konsoli.
+
+Args:
+    nowa_linia (str): Linia do dodania do pliku.
+
+Returns:
+    None
+\end{DoxyVerb}
+ \Hypertarget{namespacefunkcje_a5b5adeff49cf4cad91241112f616aea5}\label{namespacefunkcje_a5b5adeff49cf4cad91241112f616aea5} 
+\index{funkcje@{funkcje}!nieistotnyArtykul@{nieistotnyArtykul}}
+\index{nieistotnyArtykul@{nieistotnyArtykul}!funkcje@{funkcje}}
+\doxysubsubsection{\texorpdfstring{nieistotnyArtykul()}{nieistotnyArtykul()}}
+{\footnotesize\ttfamily funkcje.\+nieistotny\+Artykul (\begin{DoxyParamCaption}\item[{}]{listaa }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sprawdza, czy artykuł jest nieistotny, bazując na liście wyrażeń 'brakinfo'.
+
+Args:
+    listaa (list): Lista artykułów.
+
+Returns:
+    bool: True, jeśli artykuł jest nieistotny, w przeciwnym razie False.
+\end{DoxyVerb}
+ \Hypertarget{namespacefunkcje_a3bbe3622b6d801e74d1bc0c15a72c7c6}\label{namespacefunkcje_a3bbe3622b6d801e74d1bc0c15a72c7c6} 
+\index{funkcje@{funkcje}!wypisz@{wypisz}}
+\index{wypisz@{wypisz}!funkcje@{funkcje}}
+\doxysubsubsection{\texorpdfstring{wypisz()}{wypisz()}}
+{\footnotesize\ttfamily funkcje.\+wypisz (\begin{DoxyParamCaption}\item[{}]{nowa\+\_\+linia }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Wypisuje podaną linię i dodaje ją do pliku "raport2.txt".
+
+
+Args:
+    nowa_linia (str): Linia do wypisania.
+
+Returns:
+    None
+\end{DoxyVerb}
+ 

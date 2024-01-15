@@ -24,4 +24,13 @@
     <PackageReference Include="OpenAI-DotNet" Version="7.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="artykulyV2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="danespolekWIG20.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

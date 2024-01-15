@@ -145,7 +145,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource przycisk}" Grid.Column="0"  x:Name="poprzedniArtykul" Click="poprzedniArtykul_Click">
+                        <Button Style="{DynamicResource przycisk}" Grid.Column="0"  x:Name="poprzedniArtykul" Click="nastepnyArtykul_Click">
 
                             <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  >
                                 <Canvas  Width="24" Height="24">
@@ -165,7 +165,7 @@
                             </Viewbox>
 
                         </Button>
-                        <Button Style="{DynamicResource przycisk}" Grid.Column="1"  x:Name="nastepnyArtykul" Click="nastepnyArtykul_Click">
+                        <Button Style="{DynamicResource przycisk}" Grid.Column="1"  x:Name="nastepnyArtykul" Click="poprzedniArtykul_Click">
                             <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform" Width="20" Height="20"  >
                                 <Canvas  Width="24" Height="24">
                                     <Canvas.RenderTransform>
