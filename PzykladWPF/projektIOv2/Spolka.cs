@@ -9,7 +9,7 @@ namespace projektIOv2 {
     /// <summary>
     /// Klasa reprezentująca spółkę.
     /// </summary>
-    internal class Spolka
+    public class Spolka
     {
         string nazwa;
         string ticker;

@@ -8,7 +8,7 @@ namespace projektIOv2
     /// <summary>
     /// Klasa przechowująca dane dotyczące spółek.
     /// </summary>
-    internal class DaneSpolek
+    public class DaneSpolek
     {
         /// <summary>
         /// Przechowuje liste spółek
