@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj": {}
+    "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj": {
+    "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj",
+        "projectUniqueName": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj",
         "projectName": "projektIOv2Tests",
-        "projectPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj",
-        "packagesPath": "C:\\Users\\komputerrozy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2Tests\\obj\\",
+        "projectPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2Tests\\projektIOv2Tests.csproj",
+        "packagesPath": "C:\\Users\\patryk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\komputerrozy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\patryk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj": {
-                "projectPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj"
+              "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj": {
+                "projectPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj"
               }
             }
           }
@@ -73,21 +78,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj": {
+    "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
+        "projectUniqueName": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
         "projectName": "projektIOv2",
-        "projectPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
-        "packagesPath": "C:\\Users\\komputerrozy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\komputerrozy\\Desktop\\repozytorium\\PzykladWPF\\projektIOv2\\obj\\",
+        "projectPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\projektIOv2.csproj",
+        "packagesPath": "C:\\Users\\patryk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\patryk\\Desktop\\Nowy folder (25)\\ProjektIO\\PzykladWPF\\projektIOv2\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\komputerrozy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\patryk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,6 +104,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -157,7 +167,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

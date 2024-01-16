@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projektIOv2Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f00e26c4cc905b46fd30f93f7a0285b8506cd191")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("projektIOv2Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projektIOv2Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
